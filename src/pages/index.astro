@@ -1,11 +1,20 @@
 ---
 import "../styles/global.css";
 import Layout from "../layouts/Layout.astro";
-import Main from "../components/Main.astro";
 import Header from "../components/Header.astro";
+import Main from "../components/Main.astro";
+import About from "../components/About.astro";
+import Projects from "../components/Projects.astro";
+import Services from "../components/Services.astro";
+import Contact from "../components/Contact.astro";
 ---
-
 <Layout>
     <Header/>
-    <Main/>
+    <div class="carousel carousel-center w-full h-screen">
+        <Main />
+        <About />
+        <Projects />
+        <Services />
+        <Contact />
+    </div>
 </Layout>

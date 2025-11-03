@@ -1,93 +1,92 @@
-<section class="fixed inset-0 w-screen h-screen overflow-hidden">
-    <!-- preload (hidden) to avoid flash if needed -->
-    <img src="/enginnering-testing.jpg" alt="" class="hidden" />
+<section
+  id="home"
+  class="carousel-item relative w-screen h-screen overflow-hidden flex items-center justify-center"
+>
+  <!-- Background Image -->
+  <div
+    class="absolute inset-0 bg-fixed bg-center bg-cover bg-no-repeat"
+    style="background-image: url('/enginnering-testing.jpg');"
+    aria-hidden="true"
+  ></div>
 
-    <!-- background image (fixed, cover, responsive) -->
-    <div
-        class="absolute inset-0 bg-fixed bg-center bg-cover bg-no-repeat"
-        style="background-image: url('/enginnering-testing.jpg');"
-        aria-hidden="true"
-    >
-    </div>
-    <div
-        class="absolute inset-0 bg-black/20 backdrop-blur-sm"
-        aria-hidden="true"
-    >
-    </div>
+  <!-- Dark overlay -->
+  <div
+    class="absolute inset-0 bg-black/40 backdrop-blur-sm"
+    aria-hidden="true"
+  ></div>
 
-    <!-- floating content -->
-    <div
-        class="relative z-10 flex flex-col items-center justify-center h-full px-6 text-center"
-    >
-        <!-- logo wrapper gives a soft white backdrop so the (black) logo is visible on any background -->
-        <!-- <div class="logo-rect mb-4" aria-hidden="true">
-            <img src="/logo.png" alt="SN logo" class="logo" />
-        </div> -->
-        <h1 class="text-white text-7xl pb-4">Nampalli Srinivas</h1>
-        <h1
-            class="text-3xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-white drop-shadow-md"
-        >
-            Mechanical Engineer | AI Systems Developer | Quantum Computing
-            Enthusiast
-        </h1>
-        <p class="mt-3 text-sm sm:text-base md:text-lg text-white/90 font-bold">
-            Student — Indian Institute of Technology Madras
-        </p>
-        <h2 class="text-white hover:underline mt-2 cursor-default">
-            Winner — IIIT Hyderabad x IBM Qiskit Fest 2025
-        </h2>
+  <!-- Content -->
+  <div
+    class="relative z-10 flex flex-col items-center justify-center text-center px-6"
+  >
+    <!-- Optional Logo -->
+    <!--
+    <div class="logo-rect mb-6">
+      <img src="/logo.svg" alt="Logo" class="logo" />
     </div>
+    -->
+
+    <h1 class="text-white text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight pb-4">
+      Nampalli Srinivas
+    </h1>
+
+    <h2
+      class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-white drop-shadow-md"
+    >
+      Mechanical Engineer · AI Systems Developer · Quantum Computing Enthusiast
+    </h2>
+
+    <p class="mt-4 text-base sm:text-lg text-white/90 font-medium">
+      Student — Indian Institute of Technology Madras
+    </p>
+
+    <p
+      class="mt-3 text-cyan-300 hover:underline text-sm sm:text-base font-semibold"
+    >
+      Winner — IIIT Hyderabad × IBM Qiskit Fest 2025
+    </p>
+  </div>
 </section>
 
 <style>
-    :global(html, body) {
-        height: 100%;
-        overflow: hidden; /* disables scrolling */
-    }
+  :global(html, body) {
+    height: 100%;
+    margin: 0;
+  }
 
-    /* rectangular logo plate with thick border and floating shadow */
+  .logo-rect {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    border: 6px solid #000;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+    transform: translateY(-8px);
+  }
+
+  .logo {
+    display: block;
+    width: 72px;
+    height: auto;
+    filter: brightness(0) saturate(100%);
+  }
+
+  @media (min-width: 640px) {
     .logo-rect {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        background: #ffffff; /* white plate so the logo is visible on any background */
-        padding: 0.5rem 0.75rem;
-        border-radius: 0.5rem;
-        border: 6px solid #000; /* thick black border */
-        box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
-        transform: translateY(-8px); /* slight floating effect */
+      padding: 0.6rem 1rem;
+      border-width: 8px;
+      transform: translateY(-10px);
     }
-
-    /* logo image inside the rect */
     .logo {
-        display: block;
-        width: 72px;
-        height: auto;
-        filter: brightness(0) saturate(100%); /* ensure dark silhouette */
-        -webkit-filter: brightness(0) saturate(100%);
+      width: 96px;
     }
+  }
 
-    /* Responsive adjustments */
-    @media (min-width: 640px) {
-        .logo-rect {
-            padding: 0.6rem 1rem;
-            border-width: 8px;
-        }
-        .logo {
-            width: 96px;
-        }
+  @media (min-width: 1024px) {
+    .logo-rect {
+      transform: translateY(-12px);
     }
-
-    @media (min-width: 1024px) {
-        .logo-rect {
-            transform: translateY(-12px);
-        }
-    }
-
-    /* make logo slightly larger on bigger screens */
-    @media (min-width: 640px) {
-        .logo {
-            width: 64px;
-        }
-    }
+  }
 </style>
