@@ -1,0 +1,151 @@
+---
+import { ContactRound, Linkedin, Github, Mail, Twitter } from "@lucide/astro";
+---
+
+<!-- Floating Action Button for social connections -->
+<div class="fixed bottom-6 right-6 z-50">
+    <div class="fab-container">
+        <!-- Toggle Button -->
+        <button
+            id="fab-toggle"
+            type="button"
+            class="btn btn-lg btn-circle btn-primary shadow-lg hover:shadow-xl transition-all duration-300"
+            aria-label="Toggle social links"
+        >
+            <ContactRound size={28} class="fab-icon" />
+        </button>
+
+        <!-- Social Action Buttons (hidden by default) -->
+        <div id="fab-actions" class="fab-actions">
+            <!-- LinkedIn -->
+            <a
+                href="https://in.linkedin.com/in/srinivas-nampalli"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-circle btn-info shadow-lg fab-action-btn"
+                aria-label="LinkedIn Profile"
+            >
+                <Linkedin size={20} />
+            </a>
+
+            <!-- GitHub -->
+            <a
+                href="https://github.com/yourusername"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-circle btn-neutral shadow-lg fab-action-btn"
+                aria-label="GitHub Profile"
+            >
+                <Github size={20} />
+            </a>
+
+            <!-- Email -->
+            <a
+                href="mailto:your.email@example.com"
+                class="btn btn-circle btn-success shadow-lg fab-action-btn"
+                aria-label="Email Me"
+            >
+                <Mail size={20} />
+            </a>
+
+            <!-- Twitter/X -->
+            <a
+                href="https://twitter.com/yourusername"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-circle btn-accent shadow-lg fab-action-btn"
+                aria-label="Twitter Profile"
+            >
+                <Twitter size={20} />
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+    .fab-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #fab-toggle {
+        position: relative;
+        z-index: 10;
+    }
+
+    .fab-icon {
+        transition: transform 0.3s ease;
+    }
+
+    #fab-toggle.active .fab-icon {
+        transform: rotate(45deg);
+    }
+
+    .fab-actions {
+        position: absolute;
+        bottom: 70px;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        opacity: 0;
+        pointer-events: none;
+        transform: scale(0);
+        transform-origin: bottom center;
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .fab-actions.active {
+        opacity: 1;
+        pointer-events: all;
+        transform: scale(1);
+    }
+
+    .fab-action-btn {
+        transform: translateY(20px);
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    .fab-actions.active .fab-action-btn {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    /* Staggered animation for buttons */
+    .fab-actions.active .fab-action-btn:nth-child(1) {
+        transition-delay: 0.05s;
+    }
+    .fab-actions.active .fab-action-btn:nth-child(2) {
+        transition-delay: 0.1s;
+    }
+    .fab-actions.active .fab-action-btn:nth-child(3) {
+        transition-delay: 0.15s;
+    }
+    .fab-actions.active .fab-action-btn:nth-child(4) {
+        transition-delay: 0.2s;
+    }
+</style>
+
+<script>
+    // Toggle FAB menu
+    const fabToggle = document.getElementById('fab-toggle');
+    const fabActions = document.getElementById('fab-actions');
+
+    if (fabToggle && fabActions) {
+        fabToggle.addEventListener('click', () => {
+            fabToggle.classList.toggle('active');
+            fabActions.classList.toggle('active');
+        });
+
+        // Close FAB when clicking outside
+        document.addEventListener('click', (e) => {
+            const target = e.target as HTMLElement;
+            if (!target.closest('.fab-container')) {
+                fabToggle.classList.remove('active');
+                fabActions.classList.remove('active');
+            }
+        });
+    }
+</script>
