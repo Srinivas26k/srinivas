@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+
 @plugin "daisyui/theme" {
   name: "dracula";
   default: false;
@@ -32,6 +33,6 @@
   --size-selector: 0.25rem;
   --size-field: 0.25rem;
   --border: 1px;
-  --depth: 0;
-  --noise: 0;
+  --depth: 1;
+  --noise: 1;
 }

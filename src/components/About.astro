@@ -1,9 +1,206 @@
-<section id="about" class="carousel-item relative w-screen h-screen flex items-center justify-center">
-    <div class="absolute inset-0 bg-linear-to-br from-purple-900 to-blue-900"></div>
-    <div class="relative z-10 text-center px-6">
-        <h1 class="text-6xl font-bold text-white mb-4">About Me</h1>
-        <p class="text-lg text-white/90">
-            I'm a Mechanical Engineer with a passion for AI and Quantum Computing.
+---
+import { Github, Linkedin, Rss, Package } from '@lucide/astro';
+---
+
+<section
+  id="about"
+  class="carousel-item relative w-screen h-screen overflow-hidden"
+>
+  <!-- Background Image -->
+  <div
+    class="absolute inset-0 bg-fixed bg-center bg-cover bg-no-repeat"
+    style="background-image: url('/designing.jpg');"
+    aria-hidden="true"
+  ></div>
+  
+  <!-- Dark overlay -->
+  <div
+    class="absolute inset-0 bg-black/40 backdrop-blur-sm"
+    aria-hidden="true"
+  ></div>
+
+  <!-- Scrollable content container -->
+  <div class="relative z-10 w-full h-full overflow-y-auto scroll-smooth">
+    <div class="px-6 py-12 max-w-7xl mx-auto">
+      
+      <!-- Header -->
+      <h1 class="text-white text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-center mb-3 pt-6">
+        About Me
+      </h1>
+      
+      <!-- Introduction Paragraph -->
+      <div class="max-w-4xl mx-auto text-center mb-12">
+        <p class="text-base sm:text-lg text-white/90 leading-relaxed">
+          I am an AI Systems Developer with primary interest in robotics, embedded systems, and software development. 
+          The majority of my work and project experience has involved combining software and hardware for developing robotic 
+          platforms along with developing software for various applications. I also have experience with full-cycle design, 
+          integration, and testing of robotic platforms. I have taken multiple leadership roles in teams ranging from 4 to 100 
+          student and professional members, and have additional experience with project management, product development, 
+          sponsorship, and website development.
         </p>
+      </div>
+
+      <!-- Divider Line -->
+      <div class="w-full h-px bg-white/30 mb-12"></div>
+
+      <!-- Education & Achievement -->
+      <div class="max-w-4xl mx-auto text-center mb-12">
+        <p class="text-base sm:text-lg text-white/90 mb-4">
+          I'm currently pursuing my Bachelor's degree in Data Science and AI applications from Indian Institute of Technology Madras, expected to graduate in Sept 2025.
+        </p>
+        <p class="text-base sm:text-lg text-cyan-300 font-semibold">
+          Winner — IIIT Hyderabad × IBM Qiskit Fest 2025 | GirlScript Summer of Code 2025 Contributor & Mentor
+        </p>
+      </div>
+
+      <!-- Divider Line -->
+      <div class="w-full h-px bg-white/30 mb-12"></div>
+
+      <!-- Overview Text -->
+      <div class="max-w-4xl mx-auto text-center mb-8">
+        <p class="text-base sm:text-lg text-white/90">
+          This website provides an overview of various work experiences, projects, and related activities that I have done 
+          since the start of my Bachelor's program.
+        </p>
+      </div>
+
+      <!-- Platforms Section -->
+      <h2 class="text-white text-3xl sm:text-4xl lg:text-5xl font-extrabold text-center mb-4">
+        Platforms
+      </h2>
+      
+      <p class="text-center text-base sm:text-lg text-white/90 mb-10 max-w-4xl mx-auto">
+        Below is a list of platforms that I have built and/or worked with since the start of my Bachelor's program along with descriptions and links.
+      </p>
+
+      <!-- Platform Cards Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-12">
+        
+        <!-- Card 1: AI Systems -->
+        <div class="bg-black/40 backdrop-blur-md rounded-lg p-6 border border-white/20 hover:border-primary/50 transition-all hover:transform hover:scale-105">
+          <div class="flex items-center justify-center mb-4">
+            <div class="w-full h-32 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg flex items-center justify-center">
+              <span class="text-5xl">🤖</span>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold text-white text-center mb-2">AI Systems</h3>
+          <p class="text-sm text-white/80 text-center">
+            Building intelligent multi-agent systems using LangChain, LangGraph, Google ADK and advanced AI architectures
+          </p>
+        </div>
+
+        <!-- Card 2: Mechanical Engineering -->
+        <div class="bg-black/40 backdrop-blur-md rounded-lg p-6 border border-white/20 hover:border-secondary/50 transition-all hover:transform hover:scale-105">
+          <div class="flex items-center justify-center mb-4">
+            <div class="w-full h-32 bg-gradient-to-br from-secondary/20 to-accent/20 rounded-lg flex items-center justify-center">
+              <span class="text-5xl">⚙️</span>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold text-white text-center mb-2">Mechanical Engineering</h3>
+          <p class="text-sm text-white/80 text-center">
+            CAD/CAM design, Thermal analysis and FEA and PhiFlow simulations 
+          </p>
+        </div>
+
+        <!-- Card 3: ML Models -->
+        <div class="bg-black/40 backdrop-blur-md rounded-lg p-6 border border-white/20 hover:border-accent/50 transition-all hover:transform hover:scale-105">
+          <div class="flex items-center justify-center mb-4">
+            <div class="w-full h-32 bg-gradient-to-br from-accent/20 to-success/20 rounded-lg flex items-center justify-center">
+              <span class="text-5xl">🧠</span>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold text-white text-center mb-2">ML Models</h3>
+          <p class="text-sm text-white/80 text-center">
+            Developing and deploying machine learning models for real-world applications
+          </p>
+        </div>
+
+        <!-- Card 4: AI Agents -->
+        <div class="bg-black/40 backdrop-blur-md rounded-lg p-6 border border-white/20 hover:border-info/50 transition-all hover:transform hover:scale-105">
+          <div class="flex items-center justify-center mb-4">
+            <div class="w-full h-32 bg-gradient-to-br from-info/20 to-primary/20 rounded-lg flex items-center justify-center">
+              <span class="text-5xl">🤝</span>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold text-white text-center mb-2">AI Agents</h3>
+          <p class="text-sm text-white/80 text-center">
+            Creating autonomous agents for complex problem-solving and decision-making
+          </p>
+        </div>
+
+        <!-- Card 5: Automation -->
+        <div class="bg-black/40 backdrop-blur-md rounded-lg p-6 border border-white/20 hover:border-warning/50 transition-all hover:transform hover:scale-105">
+          <div class="flex items-center justify-center mb-4">
+            <div class="w-full h-32 bg-gradient-to-br from-warning/20 to-error/20 rounded-lg flex items-center justify-center">
+              <span class="text-5xl">⚡</span>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold text-white text-center mb-2">Automation</h3>
+          <p class="text-sm text-white/80 text-center">
+            Full-stack automation solutions and workflow optimization systems
+          </p>
+        </div>
+
+        <!-- Card 6: Quantum Computing -->
+        <div class="bg-black/40 backdrop-blur-md rounded-lg p-6 border border-white/20 hover:border-error/50 transition-all hover:transform hover:scale-105">
+          <div class="flex items-center justify-center mb-4">
+            <div class="w-full h-32 bg-gradient-to-br from-error/20 to-primary/20 rounded-lg flex items-center justify-center">
+              <span class="text-5xl">⚛️</span>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold text-white text-center mb-2">Quantum Enthusiast</h3>
+          <p class="text-sm text-white/80 text-center">
+            Exploring quantum algorithms and BB84 quantum key distribution protocols
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Social Links Section -->
+      <div class="pt-8 border-t border-white/30 max-w-4xl mx-auto">
+        <h3 class="text-xl font-bold text-info mb-4 flex items-center gap-2 justify-center">
+          <span>🌐</span> Connect With Me
+        </h3>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a
+            href="https://github.com/yourusername"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-outline btn-primary gap-2"
+          >
+            <Github size={20} />
+            GitHub
+          </a>
+          <a
+            href="https://in.linkedin.com/in/srinivas-nampalli"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-outline btn-info gap-2"
+          >
+            <Linkedin size={20} />
+            LinkedIn
+          </a>
+          <a
+            href="https://medium.com/@yourusername"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-outline btn-accent gap-2"
+          >
+            <Rss size={20} />
+            Medium
+          </a>
+          <a
+            href="https://huggingface.co/yourusername"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-outline btn-warning gap-2"
+          >
+            <Package size={20} />
+            HuggingFace
+          </a>
+        </div>
+      </div>
+
     </div>
+  </div>
 </section>
