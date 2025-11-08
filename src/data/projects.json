@@ -1,142 +1,319 @@
 [
-  {
-    "id": "swerve-robotic-platform",
-    "title": "Swerve Robotic Platform",
-    "description": "Software Developer and Roboticist - Working with three other students on developing a highly nimble, high torque, high load supporting platform that is ROS-enabled with integrated autonomy targeted for the warehouse optimization and entertainment industry. Building the software for the platform within the ROS framework, developing simulations in Gazebo, developing state estimation algorithms, and the team project manager.",
-    "image": "/enginnering-testing.jpg",
-    "tags": ["Robotics", "ROS", "AI", "Automation"],
+    {
+        "id": "market-trend-agents",
+        "title": "Market Trend Analysis — Multi-Agent System",
+        "description": "Developed a multi-agent system using LangChain, LangGraph, and Google ADK to analyze live market data and collaboratively generate insights. Integrated retriever, planner, and reasoning agents with shared memory architecture for adaptive trend forecasting.",
+        "image": "https://miro.medium.com/v2/resize:fit:720/format:webp/1*hKP-3A8ofLjJGL3UicoUOw.png",
+        "tags": [
+            "AI",
+            "Agents",
+            "Google ADK"
+        ],
+        "links": [
+            {
+                "type": "github",
+                "label": "GitHub",
+                "url": "https://github.com/Srinivas26k/Market-trend"
+            },
+            {
+                "type": "medium",
+                "label": "Medium",
+                "url": "https://medium.com/@srinivasvarma764/day-1-building-a-multi-agent-market-trend-analysis-system-the-journey-begins-cec8ddec0886"
+            }
+        ],
+        "year": 2025,
+        "featured": true
+    },
+    {
+        "id": "ayurleaf-healthcare",
+        "title": "Ayurleaf — AI-Powered Healthcare Platform (GSSoC 2025)",
+        "description": "Contributed to Ayurleaf as part of GirlScript Summer of Code 2025 (GSSoC'25). Worked on implementing new UI modules, optimizing AI-based health recommendation logic, and enhancing the patient analytics dashboard. Focused on full-stack bug fixes, UI enhancement, and backend performance improvements.",
+        "image": "public/aurleaf.png",
+        "tags": [
+            "Healthcare",
+            "AI",
+            "Full Stack",
+            "Open Source",
+            "GSSoC 2025"
+        ],
+        "links": [
+            {
+                "type": "github",
+                "label": "GitHub Issue PR #6",
+                "url": "https://github.com/relatablepradeep/Aurleaf/issues/6"
+            },
+            {
+                "type": "github",
+                "label": "GitHub Issue PR #7",
+                "url": "https://github.com/relatablepradeep/Aurleaf/issues/7"
+            },
+            {
+                "type": "github",
+                "label": "GitHub Issue PR #15",
+                "url": "https://github.com/relatablepradeep/Aurleaf/issues/15"
+            }
+        ],
+        "year": 2025,
+        "featured": true
+    },
+    {
+        "id": "billforge-gst",
+        "title": "BillForge — Smart GST Invoice Generator (GSSoC 2025)",
+        "description": "Contributed to BillForge under GirlScript Summer of Code 2025 (GSSoC'25). BillForge is a modern, open-source GST invoicing web app for freelancers and small businesses in India. Implemented UI improvements, invoice automation features, and enhanced the PDF export workflow for smoother user experience.",
+        "image": "public/bill_forge.png",
+        "tags": [
+            "Finance",
+            "Web App",
+            "Open Source",
+            "GSSoC 2025"
+        ],
+        "links": [
+            {
+                "type": "demo",
+                "label": "Live App",
+                "url": "https://bill-forge-gst.vercel.app"
+            },
+            {
+                "type": "github",
+                "label": "GitHub Repository",
+                "url": "https://github.com/Vaibhav-Samdani/BillForge-gst-invoice"
+            },
+            {
+                "type": "github",
+                "label": "GitHub Issue PR #7",
+                "url": "https://github.com/Vaibhav-Samdani/BillForge-gst-invoice/issues/7"
+            },
+            {
+                "type": "github",
+                "label": "GitHub Pull Request #22",
+                "url": "https://github.com/Vaibhav-Samdani/BillForge-gst-invoice/pull/22"
+            }
+        ],
+        "year": 2025,
+        "featured": true
+    },
+    {
+        "id": "quantum-bb84-sim",
+        "title": "BB84 Quantum Key Distribution Simulator — Qiskit Fall Fest 2025 Winner",
+        "description": "Developed a production-grade implementation of the BB84 Quantum Key Distribution (QKD) protocol using Qiskit for the Qiskit Fall Fest 2025 at IIIT Hyderabad. Demonstrated secure key exchange using quantum mechanics, eavesdrop detection via the no-cloning theorem, and real-time visualization of qubit interactions, noise models, and information flow. The project includes comparative analysis with E91 protocol and Monte Carlo validation runs.",
+        "image": "https://github.com/Srinivas26k/ISAQC-QFF25-Hackathon-Srinivas26k/raw/main/assets/bb84_comprehensive_dashboard.png",
+        "tags": [
+            "Quantum Computing",
+            "Qiskit",
+            "Hackathon"
+        ],
+        "links": [
+            {
+                "type": "github",
+                "label": "GitHub Repository",
+                "url": "https://github.com/Srinivas26k/ISAQC-QFF25-Hackathon-Srinivas26k"
+            },
+            {
+                "type": "demo",
+                "label": "Live Demo",
+                "url": "https://isaqc-qff-25-hackathon-srinivas26k.vercel.app/"
+            }
+        ],
+        "year": 2025,
+        "featured": true
+    },
+    {
+        "id": "llm-dataset-suite",
+        "title": "LLM Fine-Tuning Dataset Suite — Multidomain Synthetic Corpora",
+        "description": "Created four high-quality, domain-specific datasets for fine-tuning midsize LLMs, combining AI-generated and web-scraped educational data from Wikipedia and GK sources. Each dataset includes prompt-response pairs, structured metadata, and augmentation scripts for scalable NLP experimentation.",
+        "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
+        "tags": [
+            "LLM",
+            "Datasets",
+            "NLP",
+            "AI Research",
+            "Data Engineering"
+        ],
+        "links": [
+            {
+                "type": "huggingface",
+                "label": "Educational Flashcards for Global Learners",
+                "url": "https://huggingface.co/datasets/Srinivasmec26/Educational-Flashcards-for-Global-Learners"
+            },
+            {
+                "type": "huggingface",
+                "label": "Task Reminders for Education and Professionals",
+                "url": "https://huggingface.co/datasets/Srinivasmec26/Task-Reminders-for-Education-and-Professionals"
+            },
+            {
+                "type": "huggingface",
+                "label": "Multidisciplinary Educational Summaries",
+                "url": "https://huggingface.co/datasets/Srinivasmec26/Multidisciplinary-Educational-Summaries"
+            },
+            {
+                "type": "huggingface",
+                "label": "Structured Todo Lists for Learning and Projects",
+                "url": "https://huggingface.co/datasets/Srinivasmec26/Structured-Todo-Lists-for-Learning-and-Projects"
+            }
+        ],
+        "year": 2024,
+        "featured": false
+    },
+    {
+        "id": "comicgenius-pro",
+        "title": "ComicGenius Pro — AI-Powered Comic Creator",
+        "description": "Built an advanced AI comic creation tool leveraging Gemini 2.5 Flash Image Preview API for consistent character generation across sequential panels. Enables users to create professional comic strips in minutes through text prompts, iterative refinement, and multi-style rendering. Designed a full responsive UI with Tailwind CSS + shadcn theme system.",
+        "image": "https://storage.googleapis.com/kaggle-writeups/19010/media/7be456da0afc34e0ff5f82cbc4f64d82.png?GoogleAccessId=web-data@kaggle-161607.iam.gserviceaccount.com&Expires=1762692155&Signature=IzNF4Rfxi9e%2FAG%2FT93oDMQO5BRkRHfml0uUA8f8ZSE%2BcY6ErSJI5SIAzUjVo9mZO8k2TT6OqFA3Q4Sy98543k61OVvdiinfL9kBzsp1rLo0J%2B7Ae%2FT8eBb5%2B4ehCHxyz3nfW%2B8IBHEY1PDu%2B1McklTCBnPeQVBWaslbjGycE3MsakX57pxhpMG6trISJvgx%2F1pJGpaGKIKQHnA4MYR0LcEeFBrHFemrTemxo37oNb4qNmZX2wddSM1gAfy2e64Svkr05sU6hMnp9qf7I6gCTX8D7aHGHCUET2mZgm%2Bu6cO6EAV2TN7Zcm0HUcsN2Q7soILj2EhKWnfbsdp2i9RdgYQ%3D%3D",
+        "tags": [
+            "AI",
+            "Frontend"
+        ],
+        "links": [
+            {
+                "type": "github",
+                "label": "GitHub",
+                "url": "https://github.com/Srinivas26k/ComicGenius-Pro"
+            },
+            {
+                "type": "kaggle",
+                "label": "Kaggle Writeup",
+                "url": "https://www.kaggle.com/competitions/banana/writeups/comicgenius-pro"
+            },
+            {
+                "type": "youtube",
+                "label": "Demo Video",
+                "url": "https://youtu.be/2F41cagcfGs"
+            },
+            {
+                "type": "deepwiki",
+                "label": "DeepWiki Article",
+                "url": "https://deepwiki.com/Srinivas26k/ComicGenius-Pro"
+            }
+        ],
+        "year": 2025,
+        "featured": false
+    },
+    {
+        "id": "pustak-ghar",
+        "title": "Pustak Ghar — Study Resources Platform (GSSoC 2025)",
+        "description": "Contributed as an open-source developer during GirlScript Summer of Code 2025 (GSSoC'25). Pustak Ghar provides organized study resources, PYQs, and playlists for university students. Implemented responsive UI components, bug fixes, and branch-wise content filters improving accessibility and navigation.",
+        "image": "public/pusthak_ghar.png",
+        "tags": [
+            "Open Source",
+            "Education",
+            "Web App",
+            "GSSoC 2025"
+        ],
+        "links": [
+            {
+                "type": "demo",
+                "label": "Live App",
+                "url": "https://pustak-ghar-bv42.vercel.app/"
+            },
+            {
+                "type": "github",
+                "label": "GitHub Repository",
+                "url": "https://github.com/Srinivas26k/Pustak_Ghar"
+            },
+            {
+                "type": "github",
+                "label": "GitHub Pull Request #73",
+                "url": "https://github.com/arjavjain5203/Pustak_Ghar/pull/73"
+            }
+        ],
+        "year": 2025,
+        "featured": true
+    },
+    {
+        "id": "bakegenius-ai",
+        "title": "BakeGenius AI — Precision Baking for Everyone (GSSoC 2025)",
+        "description": "Developed under GSSoC 2025, BakeGenius AI converts vague recipe measurements into precise gram-based values using AI. It empowers home cooks and professionals to bake with accuracy by applying intelligent unit conversion and culinary reasoning through AI models.",
+        "image": "public/bake_genius.png",
+        "tags": [
+            "AI",
+            "Open Source",
+            "GSSoC 2025"
+        ],
+        "links": [
+            {
+                "type": "demo",
+                "label": "Live App",
+                "url": "https://bake-genius-ai.vercel.app/"
+            },
+            {
+                "type": "github",
+                "label": "GitHub Repository",
+                "url": "https://github.com/Srinivas26k/AI-CookChef"
+            },
+            {
+                "type": "github",
+                "label": "GitHub Pull Request #47",
+                "url": "https://github.com/supriya46788/BakeGenuis-AI/pull/47"
+            },
+            {
+                "type": "github",
+                "label": "GitHub Pull Request #64",
+                "url": "https://github.com/supriya46788/BakeGenuis-AI/pull/64"
+            }
+        ],
+        "year": 2025,
+        "featured": false
+    },
+    {
+        "id": "stockgpt-traveleva",
+        "title": "StockGPT & TravelEva — Financial and Travel Assistant Apps",
+        "description": "Built twin Streamlit apps — StockGPT for real-time stock market analysis and TravelEva for AI-assisted travel planning. StockGPT integrates yfinance API and Plotly for candlestick charts and technical indicators, while TravelEva offers smart itinerary generation and history tracking.",
+        "image": "public/ssgpt.png",
+        "tags": [
+            "Open Source",
+            "GSSoC 2025",
+            "Frontend"
+        ],
+        "links": [
+            {
+                "type": "demo",
+                "label": "Live App",
+                "url": "https://tushsharmas-ssgpt.streamlit.app/"
+            },
+            {
+                "type": "github",
+                "label": "GitHub Repository",
+                "url": "https://github.com/Srinivas26k/ssgpt"
+            },
+            {
+                "type": "github",
+                "label": "GitHub Pull Request #11",
+                "url": "https://github.com/tushsharmas/ssgpt/pull/11"
+            },
+            {
+                "type": "github",
+                "label": "GitHub Pull Request #13",
+                "url": "https://github.com/tushsharmas/ssgpt/pull/13"
+            }
+        ],
+        "year": 2025,
+        "featured": false
+    },
+    {
+    "id": "bounty-hub",
+    "title": "Bounty Hub — Open Source Bounty Platform (GSSoC 2025)",
+    "description": "Contributed to OSHub as part of GirlScript Summer of Code 2025 (GSSoC'25). OSHub is an open-source platform connecting developers and maintainers through bounty-based issue solving. It promotes incentivized collaboration by allowing maintainers to place bounties and contributors to claim rewards for solving issues.",
+    "image": "public/os_hub.png",
+    "tags": ["Open Source", "Web App", "GSSoC 2025"],
     "links": [
-      {"type": "github", "label": "GitHub", "url": "https://github.com/yourrepo/swerve"},
-      {"type": "docs", "label": "Documentation", "url": "#"}
+      {"type": "website", "label": "Open Source Hub", "url": "https://www.opensourcehub.works/"},
+      {"type": "github", "label": "GitHub Repository", "url": "https://github.com/Srinivas26k/Bounty_Hub"},
+      {"type": "github", "label": "Pull Request #55", "url": "https://github.com/HimanshuKabra01/OSHub/pull/55"},
+      {"type": "github", "label": "Pull Request #75", "url": "https://github.com/HimanshuKabra01/OSHub/pull/75"}
     ],
-    "year": 2018,
-    "featured": true,
-    "period": "Fall 2017 to Spring 2018"
+    "year": 2025,
+    "featured": false
   },
   {
-    "id": "soccer-robots",
-    "title": "Soccer Robots",
-    "description": "Developed autonomous soccer-playing robots with computer vision and multi-agent coordination. Implemented real-time ball tracking, path planning, and team strategy algorithms for competitive robotics.",
-    "image": "https://images.unsplash.com/photo-1589802829985-817e51171b92?w=800&h=600&fit=crop",
-    "tags": ["Robotics", "Computer Vision", "AI", "Agents"],
+    "id": "annam-ai-rag-scraper",
+    "title": "Annam.ai RAG Scraper — Automated Data Pipeline for LLM Training",
+    "description": "Developed an advanced Python-based web scraper for Annam.ai to collect, clean, and structure web data for training domain-specific LLMs. Handles multi-format extraction including text, tables, PDFs, and images. Features recursive crawling, dynamic directory management, PDF text extraction, base64 ZIP export, and structured metadata output for RAG (Retrieval-Augmented Generation) datasets.",
+    "image": "data:image/jpeg;base64,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",
+    "tags": ["AI", "LLM", "Data Engineering", "Automation", "Web Scraping"],
     "links": [
-      {"type": "github", "label": "GitHub", "url": "https://github.com/yourrepo/soccer-robots"}
-    ],
-    "year": 2024,
-    "featured": true
-  },
-  {
-    "id": "micromouse",
-    "title": "Micromouse",
-    "description": "Autonomous maze-solving robot using flood-fill algorithm and sensor fusion. Designed PCB, implemented path optimization, and achieved competition-level performance in maze navigation.",
-    "image": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=600&fit=crop",
-    "tags": ["Robotics", "Embedded Systems", "Algorithms"],
-    "links": [
-      {"type": "github", "label": "GitHub", "url": "https://github.com/yourrepo/micromouse"},
-      {"type": "demo", "label": "Demo Video", "url": "#"}
-    ],
-    "year": 2023,
-    "featured": false
-  },
-  {
-    "id": "drexel-hyperloop",
-    "title": "Drexel Hyperloop",
-    "description": "Member of university's SpaceX Hyperloop Competition team. Contributed to pod design, control systems, and safety protocols for high-speed transportation prototype.",
-    "image": "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&h=600&fit=crop",
-    "tags": ["Mechanical", "Engineering", "Transportation"],
-    "links": [],
-    "year": 2019,
-    "featured": false
-  },
-  {
-    "id": "lit-project",
-    "title": "LIT - Learning Interactive Technology",
-    "description": "Interactive educational platform using AR/VR for immersive learning experiences. Built frontend interfaces for lesson management and student progress tracking.",
-    "image": "https://images.unsplash.com/photo-1617802690992-15d93263d3a9?w=800&h=600&fit=crop",
-    "tags": ["Education", "AR/VR", "Frontend"],
-    "links": [
-      {"type": "demo", "label": "Live Demo", "url": "#"}
-    ],
-    "year": 2024,
-    "featured": false
-  },
-  {
-    "id": "thor-robot",
-    "title": "THOR - Tracked Hexapod Observation Robot",
-    "description": "Six-legged tracked robot for rough terrain navigation. Developed control algorithms and sensor integration for autonomous exploration and obstacle avoidance.",
-    "image": "https://images.unsplash.com/photo-1563207153-f403bf289096?w=800&h=600&fit=crop",
-    "tags": ["Robotics", "Hardware", "Embedded Systems"],
-    "links": [
-      {"type": "github", "label": "GitHub", "url": "https://github.com/yourrepo/thor"}
-    ],
-    "year": 2022,
-    "featured": true
-  },
-  {
-    "id": "nia-rascal",
-    "title": "NIA RASCAL Competition",
-    "description": "Team participation in National Instruments Autonomous Robotics Student Competition. Developed autonomous navigation and task completion algorithms for mobile robots.",
-    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop",
-    "tags": ["Robotics", "Competition", "Teamwork"],
-    "links": [],
-    "year": 2020,
-    "featured": false
-  },
-  {
-    "id": "asce-concrete-canoe",
-    "title": "ASCE Concrete Canoe Competition",
-    "description": "Structural design and fabrication of lightweight concrete canoe for ASCE competition. Applied engineering principles to optimize buoyancy and structural integrity.",
-    "image": "https://images.unsplash.com/photo-1542362567-b07e54358753?w=800&h=600&fit=crop",
-    "tags": ["Mechanical", "Engineering", "Competition"],
-    "links": [],
-    "year": 2019,
-    "featured": false
-  },
-  {
-    "id": "asme-minigolf",
-    "title": "ASME Minigolf Course",
-    "description": "Designed and built creative engineering-themed miniature golf course for ASME competition. Combined mechanical design with interactive elements.",
-    "image": "https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?w=800&h=600&fit=crop",
-    "tags": ["Mechanical", "Design", "Competition"],
-    "links": [],
-    "year": 2020,
-    "featured": false
-  },
-  {
-    "id": "agent-ui-workbench",
-    "title": "Agent UI Workbench",
-    "description": "Frontend workbench for rapid prototyping of multi-agent LangGraph workflows with drag-and-connect nodes and real-time run traces.",
-    "image": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=600&fit=crop",
-    "tags": ["AI", "Agents", "LangGraph", "Frontend"],
-    "links": [
-      {"type": "github", "label": "GitHub", "url": "https://github.com/yourrepo/agent-ui"},
-      {"type": "demo", "label": "Live Demo", "url": "#"}
+      {"type": "github", "label": "GitHub Repository", "url": "https://github.com/Srinivas26k/Annam.ai_RAG"}
     ],
     "year": 2025,
     "featured": true
-  },
-  {
-    "id": "quantum-bb84-sim",
-    "title": "BB84 Quantum Key Distribution Simulator",
-    "description": "Interactive visual simulator explaining BB84 protocol steps, basis selection, sifting, and eavesdrop detection with educational overlays.",
-    "image": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&h=600&fit=crop",
-    "tags": ["Quantum", "Education", "Security"],
-    "links": [
-      {"type": "github", "label": "GitHub", "url": "https://github.com/yourrepo/bb84"}
-    ],
-    "year": 2025,
-    "featured": false
-  },
-  {
-    "id": "llm-dataset-suite",
-    "title": "Domain-Specific LLM Dataset Suite",
-    "description": "Curated & cleaned domain-specific corpora with evaluation splits for fine-tuning midsize LLMs. Includes prompt templates & augmentation scripts.",
-    "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
-    "tags": ["LLM", "Datasets", "NLP"],
-    "links": [
-      {"type": "huggingface", "label": "HuggingFace", "url": "https://huggingface.co/youruser"}
-    ],
-    "year": 2024,
-    "featured": false
   }
 ]
