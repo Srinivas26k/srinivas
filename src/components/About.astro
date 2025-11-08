@@ -1,5 +1,44 @@
 ---
 import { Github, Linkedin, Rss, Package } from '@lucide/astro';
+import aboutData from "../data/about.json";
+
+type Platform = {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  image: string | null;
+  borderColor: string;
+};
+
+type SocialLink = {
+  type: string;
+  label: string;
+  url: string;
+  color: string;
+};
+
+const data = aboutData as {
+  title: string;
+  introduction: string;
+  education: {
+    degree: string;
+    institution: string;
+    status: string;
+  };
+  achievements: string[];
+  overview: string;
+  platforms: Platform[];
+  socialLinks: SocialLink[];
+};
+
+// Icon component mapping
+const iconMap: Record<string, any> = {
+  github: Github,
+  linkedin: Linkedin,
+  medium: Rss,
+  huggingface: Package,
+};
 ---
 
 <section
@@ -25,13 +64,13 @@ import { Github, Linkedin, Rss, Package } from '@lucide/astro';
       
       <!-- Header -->
       <h1 class="text-white text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-center mb-3 pt-6">
-        About Me
+        {data.title}
       </h1>
       
       <!-- Introduction Paragraph -->
       <div class="max-w-4xl mx-auto text-center mb-12">
         <p class="text-base sm:text-lg text-white/90 leading-relaxed font-light">
-          I am an AI agent systems developer focused on building intuitive front-end interfaces, UI/UX mockups, and agent-driven automations that make complex workflows simple and efficient. My work emphasizes front-end engineering and human-centered design for AI products: I integrate multi-agent frameworks and LLMs into responsive web interfaces and prototype UIs that non-technical users can operate. I contribute to open-source projects (ranked <h1 class="font-bold">#259 / 3,425 — Top 9.1%</h1> in GSSoC 2025) and have delivered frontend contributions to projects such as Ayurleaf and BillForge. I have practical industry exposure through internships at Ford (EV Engineering), GE Aerospace (Aerospace), and DRDL–DRDO (Mechanical R&D), and I completed a Minor in AI at IIT Ropar. I create domain-specific LLM datasets for fine-tuning, design prototypes and front-end sites for clients, and build automation pipelines that improve productivity without doing backend/full-stack development. I communicate clearly, prioritize usability, and focus on shipping polished, accessible AI experiences.
+          {data.introduction}
         </p>
       </div>
 
@@ -41,10 +80,10 @@ import { Github, Linkedin, Rss, Package } from '@lucide/astro';
       <!-- Education & Achievement -->
       <div class="max-w-4xl mx-auto text-center mb-12">
         <p class="text-base sm:text-lg text-white/90 mb-4">
-          I'm currently pursuing my <h2 class="font-bold">Bachelor's degree in Data Science and AI applications</h2> from <h2 class="font-bold">Indian Institute of Technology Madras</h2>
+          {data.education.status} <span class="font-bold">{data.education.degree}</span> from <span class="font-bold">{data.education.institution}</span>
         </p>
         <p class="text-base sm:text-lg text-cyan-300 font-semibold">
-          Winner — IIIT Hyderabad × IBM Qiskit Fest 2025 | GirlScript Summer of Code 2025 Contributor & Mentor
+          {data.achievements.join(' | ')}
         </p>
       </div>
 
@@ -54,7 +93,7 @@ import { Github, Linkedin, Rss, Package } from '@lucide/astro';
       <!-- Overview Text -->
       <div class="max-w-4xl mx-auto text-center mb-8">
         <p class="text-base sm:text-lg text-white/90">
-          This website provides an overview of various work experiences, projects, and related activities that I have done as self-learner and freelancer.
+          {data.overview}
         </p>
       </div>
 
@@ -69,85 +108,23 @@ import { Github, Linkedin, Rss, Package } from '@lucide/astro';
 
       <!-- Platform Cards Grid -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-12">
-        
-        <!-- Card 1: AI Systems -->
-        <div class="bg-black/40 backdrop-blur-md rounded-lg p-6 border border-white/20 hover:border-primary/50 transition-all hover:transform hover:scale-105">
-          <div class="flex items-center justify-center mb-4">
-            <div class="w-full h-32 bg-linear-to-br from-primary/20 to-secondary/20 rounded-lg flex items-center justify-center">
-              <span class="text-5xl">🤖</span>
+        {data.platforms.map(platform => (
+          <div class={`bg-black/40 backdrop-blur-md rounded-lg p-6 border border-white/20 hover:border-${platform.borderColor}/50 transition-all hover:transform hover:scale-105`}>
+            <div class="flex items-center justify-center mb-4">
+              {platform.image ? (
+                <img src={platform.image} alt={platform.title} class="w-full h-32 object-cover rounded-lg" />
+              ) : (
+                <div class={`w-full h-32 bg-linear-to-br from-${platform.borderColor}/20 to-primary/20 rounded-lg flex items-center justify-center`}>
+                  <span class="text-5xl">{platform.icon}</span>
+                </div>
+              )}
             </div>
+            <h3 class="text-xl font-bold text-white text-center mb-2">{platform.title}</h3>
+            <p class="text-sm text-white/80 text-center">
+              {platform.description}
+            </p>
           </div>
-          <h3 class="text-xl font-bold text-white text-center mb-2">AI Systems</h3>
-          <p class="text-sm text-white/80 text-center">
-            Building intelligent multi-agent systems using LangChain, LangGraph, Google ADK and advanced AI architectures
-          </p>
-        </div>
-
-        <!-- Card 2: Mechanical Engineering -->
-        <div class="bg-black/40 backdrop-blur-md rounded-lg p-6 border border-white/20 hover:border-secondary/50 transition-all hover:transform hover:scale-105">
-          <div class="flex items-center justify-center mb-4">
-            <div class="w-full h-32 bg-linear-to-br from-secondary/20 to-accent/20 rounded-lg flex items-center justify-center">
-              <span class="text-5xl">⚙️</span>
-            </div>
-          </div>
-          <h3 class="text-xl font-bold text-white text-center mb-2">Mechanical Engineering</h3>
-          <p class="text-sm text-white/80 text-center">
-            CAD/CAM design, Thermal analysis and FEA and PhiFlow simulations 
-          </p>
-        </div>
-
-        <!-- Card 3: ML Models -->
-        <div class="bg-black/40 backdrop-blur-md rounded-lg p-6 border border-white/20 hover:border-accent/50 transition-all hover:transform hover:scale-105">
-          <div class="flex items-center justify-center mb-4">
-            <div class="w-full h-32 bg-linear-to-br from-accent/20 to-success/20 rounded-lg flex items-center justify-center">
-              <span class="text-5xl">🧠</span>
-            </div>
-          </div>
-          <h3 class="text-xl font-bold text-white text-center mb-2">ML Models</h3>
-          <p class="text-sm text-white/80 text-center">
-            Developing and deploying machine learning models for real-world applications
-          </p>
-        </div>
-
-        <!-- Card 4: AI Agents -->
-        <div class="bg-black/40 backdrop-blur-md rounded-lg p-6 border border-white/20 hover:border-info/50 transition-all hover:transform hover:scale-105">
-          <div class="flex items-center justify-center mb-4">
-            <div class="w-full h-32 bg-linear-to-br from-info/20 to-primary/20 rounded-lg flex items-center justify-center">
-              <span class="text-5xl">🤝</span>
-            </div>
-          </div>
-          <h3 class="text-xl font-bold text-white text-center mb-2">AI Agents</h3>
-          <p class="text-sm text-white/80 text-center">
-            Creating autonomous agents for complex problem-solving and decision-making
-          </p>
-        </div>
-
-        <!-- Card 5: Automation -->
-        <div class="bg-black/40 backdrop-blur-md rounded-lg p-6 border border-white/20 hover:border-warning/50 transition-all hover:transform hover:scale-105">
-          <div class="flex items-center justify-center mb-4">
-            <div class="w-full h-32 bg-linear-to-br from-warning/20 to-error/20 rounded-lg flex items-center justify-center">
-              <span class="text-5xl">⚡</span>
-            </div>
-          </div>
-          <h3 class="text-xl font-bold text-white text-center mb-2">Automation</h3>
-          <p class="text-sm text-white/80 text-center">
-            Full-stack automation solutions and workflow optimization systems
-          </p>
-        </div>
-
-        <!-- Card 6: Quantum Computing -->
-        <div class="bg-black/40 backdrop-blur-md rounded-lg p-6 border border-white/20 hover:border-error/50 transition-all hover:transform hover:scale-105">
-          <div class="flex items-center justify-center mb-4">
-            <div class="w-full h-32 bg-linear-to-br from-error/20 to-primary/20 rounded-lg flex items-center justify-center">
-              <span class="text-5xl">⚛️</span>
-            </div>
-          </div>
-          <h3 class="text-xl font-bold text-white text-center mb-2">Quantum Enthusiast</h3>
-          <p class="text-sm text-white/80 text-center">
-            Exploring quantum algorithms and BB84 quantum key distribution protocols
-          </p>
-        </div>
-
+        ))}
       </div>
 
       <!-- Social Links Section -->
@@ -156,42 +133,20 @@ import { Github, Linkedin, Rss, Package } from '@lucide/astro';
           <span>🌐</span> Connect With Me
         </h3>
         <div class="flex flex-wrap gap-4 justify-center">
-          <a
-            href="https://github.com/srinivas26k"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn btn-outline btn-primary gap-2"
-          >
-            <Github size={20} />
-            GitHub
-          </a>
-          <a
-            href="https://in.linkedin.com/in/srinivas-nampalli"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn btn-outline btn-info gap-2"
-          >
-            <Linkedin size={20} />
-            LinkedIn
-          </a>
-          <a
-            href="https://medium.com/@yourusername"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn btn-outline btn-accent gap-2"
-          >
-            <Rss size={20} />
-            Medium
-          </a>
-          <a
-            href="https://huggingface.co/yourusername"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn btn-outline btn-warning gap-2"
-          >
-            <Package size={20} />
-            HuggingFace
-          </a>
+          {data.socialLinks.map(link => {
+            const Icon = iconMap[link.type];
+            return (
+              <a
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class={`btn btn-outline btn-${link.color} gap-2`}
+              >
+                {Icon && <Icon size={20} />}
+                {link.label}
+              </a>
+            );
+          })}
         </div>
       </div>
 

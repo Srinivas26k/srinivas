@@ -1,0 +1,90 @@
+{
+  "title": "About Me",
+  "introduction": "I am an AI agent systems developer focused on building intuitive front-end interfaces, UI/UX mockups, and agent-driven automations that make complex workflows simple and efficient. My work emphasizes front-end engineering and human-centered design for AI products: I integrate multi-agent frameworks and LLMs into responsive web interfaces and prototype UIs that non-technical users can operate. I contribute to open-source projects (ranked #259 / 3,425 — Top 9.1% in GSSoC 2025) and have delivered frontend contributions to projects such as Ayurleaf and BillForge. I have practical industry exposure through internships at Ford (EV Engineering), GE Aerospace (Aerospace), and DRDL–DRDO (Mechanical R&D), and I completed a Minor in AI at IIT Ropar. I create domain-specific LLM datasets for fine-tuning, design prototypes and front-end sites for clients, and build automation pipelines that improve productivity without doing backend/full-stack development. I communicate clearly, prioritize usability, and focus on shipping polished, accessible AI experiences.",
+  "education": {
+    "degree": "Bachelor's degree in Data Science and AI applications",
+    "institution": "Indian Institute of Technology Madras",
+    "status": "Currently pursuing"
+  },
+  "achievements": [
+    "Winner — IIIT Hyderabad × IBM Qiskit Fest 2025",
+    "GirlScript Summer of Code 2025 Contributor & Mentor"
+  ],
+  "overview": "This website provides an overview of various work experiences, projects, and related activities that I have done as self-learner and freelancer.",
+  "platforms": [
+    {
+      "id": "ai-systems",
+      "title": "AI Systems",
+      "description": "Building intelligent multi-agent systems using LangChain, LangGraph, Google ADK and advanced AI architectures",
+      "icon": "🤖",
+      "image": "https://images.pexels.com/photos/8438954/pexels-photo-8438954.jpeg",
+      "borderColor": "primary"
+    },
+    {
+      "id": "mechanical-engineering",
+      "title": "Mechanical Engineering",
+      "description": "CAD/CAM design, Thermal analysis and FEA and PhiFlow simulations",
+      "icon": "⚙️",
+      "image": "https://images.pexels.com/photos/3862379/pexels-photo-3862379.jpeg",
+      "borderColor": "secondary"
+    },
+    {
+      "id": "ml-models",
+      "title": "ML Models",
+      "description": "Developing and deploying machine learning models for real-world applications",
+      "icon": "🧠",
+      "image": "https://miro.medium.com/v2/resize:fit:720/format:webp/1*4IRk4eOjCOfHoK0CHtKBLA.png",
+      "borderColor": "accent"
+    },
+    {
+      "id": "ai-agents",
+      "title": "AI Agents",
+      "description": "Creating autonomous agents for complex problem-solving and decision-making",
+      "icon": "🤝",
+      "image": "https://miro.medium.com/v2/resize:fit:720/format:webp/0*GFZ-L3YKFhjspZ2i.png",
+      "borderColor": "info"
+    },
+    {
+      "id": "automation",
+      "title": "Automation",
+      "description": "Full-stack automation solutions and workflow optimization systems",
+      "icon": "⚡",
+      "image": "https://miro.medium.com/v2/resize:fit:720/format:webp/0*yj26DILNJcoX20o6.png",
+      "borderColor": "warning"
+    },
+    {
+      "id": "quantum",
+      "title": "Quantum Enthusiast",
+      "description": "Exploring quantum algorithms and BB84 quantum key distribution protocols",
+      "icon": "⚛️",
+      "image": "https://github.com/Srinivas26k/ISAQC-QFF25-Hackathon-Srinivas26k/blob/main/assets/bb84_comprehensive_dashboard.png?raw=true",
+      "borderColor": "error"
+    }
+  ],
+  "socialLinks": [
+    {
+      "type": "github",
+      "label": "GitHub",
+      "url": "https://github.com/srinivas26k",
+      "color": "primary"
+    },
+    {
+      "type": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://in.linkedin.com/in/srinivas-nampalli",
+      "color": "info"
+    },
+    {
+      "type": "medium",
+      "label": "Medium",
+      "url": "https://medium.com/@srinivasvarma764",
+      "color": "accent"
+    },
+    {
+      "type": "huggingface",
+      "label": "HuggingFace",
+      "url": "https://huggingface.co/Srinivasmec26",
+      "color": "warning"
+    }
+  ]
+}
