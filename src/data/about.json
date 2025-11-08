@@ -1,29 +1,47 @@
 {
   "title": "About Me",
-  "introduction": "AI Systems Engineer and Quantum Computing Researcher specializing in frontend development, intelligent automation, and human-centered AI design. Winner of ISAQC Qiskit Fall Fest 2025. Published 4 AI datasets on HuggingFace with 10,000+ downloads. Ranked Top 8.2% contributor in GirlScript Summer of Code 2025.",
+  "introduction": "AI Systems Engineer and Quantum Computing Researcher specializing in frontend development, intelligent automation, and human-centered AI design. Winner of ISAQC Qiskit Fall Fest 2025. Published 4 AI datasets on HuggingFace with 1,000+ downloads. Ranked Top 8.2% contributor in GirlScript Summer of Code 2025.",
   "education": {
     "degree": "Bachelor's in Data Science & AI Applications",
     "institution": "Indian Institute of Technology Madras",
     "status": "Currently pursuing",
-    "minor": "Minor in Artificial Intelligence from IIT Ropar (Completed 2024-25)"
+    "minor": "Minor in Artificial Intelligence from IIT Ropar (Completed 2024-25)",
+    "gallery": [
+      "https://upload.wikimedia.org/wikipedia/en/thumb/1/1d/Indian_Institute_of_Technology_Madras_Logo.svg/1200px-Indian_Institute_of_Technology_Madras_Logo.svg.png",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj8vOWuXdmcxuW0wWoYMm7SkqKOD51rWIzZQ&s",
+      "https://upload.wikimedia.org/wikipedia/en/thumb/5/54/Indian_Institute_of_Technology%2C_Ropar_Logo.png/220px-Indian_Institute_of_Technology%2C_Ropar_Logo.png",
+      "https://www.iitm.ac.in/sites/default/files/images/campus-life/campus-aerial-view.jpg"
+    ]
   },
   "achievements": [
     "Winner — IIIT Hyderabad × IBM Qiskit Fest 2025",
     "Top 8.2% — GirlScript Summer of Code 2025 (Rank #245)",
-    "10,000+ Downloads — Published 4 AI Datasets on HuggingFace"
+    "1k +Downloads — Published 4 AI Datasets on HuggingFace"
+  ],
+  "achievementGallery": [
+    "https://github.com/Srinivas26k/ISAQC-QFF25-Hackathon-Srinivas26k/blob/main/assets/bb84_comprehensive_dashboard.png?raw=true",
+    "https://raw.githubusercontent.com/huggingface/badges/refs/heads/main/hf-logo-with-title.svg",
+    "https://gssoc.girlscript.tech/GS_logo_White.svg",
+    "https://avatars.githubusercontent.com/u/25720743?s=200&v=4"
+  ],
+  "experienceGallery": [
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/2560px-Ford_logo_flat.svg.png",
+    "https://logos-world.net/wp-content/uploads/2022/02/GE-Aerospace-Logo.png",
+    "https://upload.wikimedia.org/wikipedia/en/thumb/0/09/Defenceresearchanddevelopmentorganisation.svg/1200px-Defenceresearchanddevelopmentorganisation.svg.png",
+    "https://upload.wikimedia.org/wikipedia/en/thumb/5/54/Indian_Institute_of_Technology%2C_Ropar_Logo.png/220px-Indian_Institute_of_Technology%2C_Ropar_Logo.png"
   ],
   "experience": [
     {
       "role": "Freelance Consultant & Developer",
       "organization": "Self-Employed",
       "period": "Jan 2024 – Present",
-      "description": "Delivering custom AI-driven solutions, CAD/CAM design, and web applications for automotive, aerospace, and AI sectors"
+      "description": "Delivering custom AI-driven solutions, CAD/CAM design, and web applications for Small Ecommerce, Tech-Startups and Graduate students"
     },
     {
       "role": "Executive Assistant",
       "organization": "Lab of Education Design, IIT Ropar",
       "period": "Mar 2025 – May 2025",
-      "description": "Developed automation pipeline with Zoom OAuth, Whisper transcription, and AI-based reporting tools"
+      "description": "Developed automation pipeline with Zoom OAuth, Whisper transcription."
     },
     {
       "role": "Project Intern",
@@ -73,7 +91,7 @@
     {
       "id": "ml-models",
       "title": "ML & LLM Datasets",
-      "description": "Published 4 HuggingFace datasets with 10,000+ downloads — Stock prediction models with TensorFlow/Keras",
+      "description": "Published 4 HuggingFace datasets with 1k +downloads — Stock prediction models with TensorFlow/Keras",
       "icon": "🧠",
       "image": "https://miro.medium.com/v2/resize:fit:720/format:webp/1*4IRk4eOjCOfHoK0CHtKBLA.png",
       "borderColor": "accent"
