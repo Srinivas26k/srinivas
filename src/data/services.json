@@ -1,175 +1,134 @@
 [
   {
-    "id": "ai-agent-interfaces",
-    "title": "AI Agent Interface Development",
-    "description": "Build intuitive frontend interfaces for multi-agent AI systems with real-time interaction and monitoring capabilities.",
-    "icon": "🤖",
-    "features": [
-      "Custom UI for LangGraph and multi-agent workflows",
-      "Real-time agent state visualization and monitoring",
-      "Interactive chat interfaces with streaming responses",
-      "Agent tool invocation displays and debug views",
-      "Responsive design optimized for all devices"
-    ],
-    "tools": [
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "LangChain",
-      "WebSockets",
-      "Zustand"
-    ],
-    "deliverables": [
-      "Source code",
-      "Figma mockups",
-      "Documentation",
-      "Deployment guide"
-    ],
-    "pricing": "Starting at $1,500",
-    "turnaround": "3-5 weeks"
-  },
-  {
     "id": "ui-ux-design",
     "title": "UI/UX Design & Prototyping",
-    "description": "Create polished, user-centered design mockups and interactive prototypes for web applications and AI products.",
-    "icon": "🎨",
+    "description": "Creating intuitive, human-centered interfaces for AI products and web applications. From wireframes to high-fidelity mockups, I design experiences that non-technical users can easily navigate.",
+    "image": "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800",
     "features": [
-      "High-fidelity Figma mockups and design systems",
-      "Interactive prototypes with user flows",
-      "Accessibility-first design approach (WCAG AA)",
-      "Mobile-responsive layouts and components",
-      "Design handoff with developer specs"
+      "User interface design for AI agent systems",
+      "Interactive prototypes & mockups",
+      "Design systems & component libraries",
+      "Responsive web design",
+      "User flow optimization"
     ],
-    "tools": [
-      "Figma",
-      "Adobe XD",
-      "Framer",
-      "Sketch",
-      "InVision",
-      "Miro"
-    ],
+    "tools": ["Figma", "Adobe XD", "Tailwind CSS", "DaisyUI"],
     "deliverables": [
-      "Figma files",
-      "Design system",
-      "Prototype links",
-      "Asset exports"
+      "High-fidelity mockups",
+      "Interactive prototypes",
+      "Design documentation",
+      "Component specifications"
     ],
-    "pricing": "Starting at $800",
+    "pricing": "Starting at $500",
     "turnaround": "1-2 weeks"
   },
   {
     "id": "frontend-development",
-    "title": "Frontend Web Development",
-    "description": "Develop fast, modern, and maintainable frontend applications using the latest web technologies and best practices.",
-    "icon": "💻",
+    "title": "Frontend Development",
+    "description": "Building responsive, accessible web interfaces using modern frameworks. Specializing in AI-powered applications with clean, maintainable code and polished user experiences.",
+    "image": "https://images.pexels.com/photos/270404/pexels-photo-270404.jpeg?auto=compress&cs=tinysrgb&w=800",
     "features": [
-      "Modern framework implementation (React, Astro, Next.js)",
-      "Component-driven architecture with reusable UI",
-      "State management and data fetching optimization",
-      "Performance optimization and code splitting",
-      "Cross-browser compatibility and testing"
+      "React & Astro development",
+      "LangChain/LangGraph UI integration",
+      "Responsive design implementation",
+      "Component-based architecture",
+      "Performance optimization"
     ],
-    "tools": [
-      "React",
-      "Astro",
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Vite"
-    ],
+    "tools": ["React", "Astro", "TypeScript", "Tailwind CSS", "Lucide Icons"],
     "deliverables": [
-      "Production code",
-      "Component library",
-      "Test suite",
-      "README docs"
+      "Production-ready code",
+      "Responsive web applications",
+      "Documentation & handoff",
+      "Deployment setup"
     ],
     "pricing": "Starting at $1,200",
     "turnaround": "2-4 weeks"
   },
   {
-    "id": "automation-workflows",
-    "title": "AI Workflow Automation",
-    "description": "Design and implement automated workflows that integrate AI capabilities into existing processes and tools.",
-    "icon": "⚡",
+    "id": "ai-agent-interfaces",
+    "title": "AI Agent System Interfaces",
+    "description": "Designing and building frontend workbenches for multi-agent systems. Creating intuitive interfaces that make complex AI workflows accessible and easy to operate.",
+    "image": "https://images.pexels.com/photos/8438918/pexels-photo-8438918.jpeg?auto=compress&cs=tinysrgb&w=800",
     "features": [
-      "Custom automation pipeline design and implementation",
-      "Integration with APIs, LLMs, and third-party services",
-      "User-friendly control panels and dashboards",
-      "Error handling and monitoring interfaces",
-      "Documentation and training materials"
+      "Multi-agent workflow visualization",
+      "Real-time trace monitoring",
+      "Drag-and-connect node interfaces",
+      "LangGraph integration",
+      "Agent state management UI"
     ],
-    "tools": [
-      "Python",
-      "LangChain",
-      "Google ADK",
-      "REST APIs",
-      "Docker",
-      "GitHub Actions"
-    ],
+    "tools": ["LangChain", "LangGraph", "Google ADK", "React", "TypeScript"],
     "deliverables": [
-      "Automation scripts",
-      "UI dashboard",
-      "Integration docs",
-      "Setup guide"
+      "Agent control interface",
+      "Workflow visualization",
+      "Integration documentation",
+      "Testing suite"
     ],
     "pricing": "Starting at $2,000",
-    "turnaround": "3-6 weeks"
+    "turnaround": "3-5 weeks"
   },
   {
-    "id": "llm-dataset-creation",
-    "title": "LLM Dataset Creation & Curation",
-    "description": "Build domain-specific datasets for fine-tuning language models with proper formatting, cleaning, and evaluation splits.",
-    "icon": "📊",
+    "id": "automation-pipelines",
+    "title": "Automation Pipelines & Workflows",
+    "description": "Building intelligent automation solutions that streamline repetitive tasks. Frontend-focused automation interfaces that connect AI agents with your existing tools.",
+    "image": "https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=800",
     "features": [
-      "Domain-specific data collection and curation",
-      "Data cleaning and quality assurance pipelines",
-      "Prompt template design and optimization",
-      "Train/validation/test split preparation",
-      "Dataset documentation and usage guides"
+      "Workflow automation design",
+      "AI-powered task automation",
+      "Integration with existing tools",
+      "Custom automation dashboards",
+      "Process optimization"
     ],
-    "tools": [
-      "Python",
-      "Pandas",
-      "HuggingFace Datasets",
-      "OpenAI API",
-      "Regex",
-      "JSON"
-    ],
+    "tools": ["Python", "LangChain", "API Integration", "React", "Node.js"],
     "deliverables": [
-      "Cleaned dataset",
-      "Augmentation scripts",
-      "Eval framework",
-      "Documentation"
+      "Automation workflow",
+      "Dashboard interface",
+      "Integration scripts",
+      "User documentation"
     ],
-    "pricing": "Starting at $1,000",
+    "pricing": "Starting at $1,500",
+    "turnaround": "2-4 weeks"
+  },
+  {
+    "id": "llm-datasets",
+    "title": "LLM Dataset Creation & Fine-tuning",
+    "description": "Curating domain-specific datasets for LLM fine-tuning. Creating clean, structured data with prompt templates and evaluation splits for specialized AI models.",
+    "image": "https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "features": [
+      "Domain-specific data curation",
+      "Dataset cleaning & validation",
+      "Prompt template creation",
+      "Evaluation split design",
+      "Augmentation scripts"
+    ],
+    "tools": ["Python", "HuggingFace", "Pandas", "Data Processing Tools"],
+    "deliverables": [
+      "Curated dataset",
+      "Prompt templates",
+      "Preprocessing scripts",
+      "Documentation & metadata"
+    ],
+    "pricing": "Starting at $800",
     "turnaround": "2-3 weeks"
   },
   {
-    "id": "consulting",
-    "title": "AI Product Consulting",
-    "description": "Strategic guidance on building user-friendly AI products, from ideation to deployment, with a focus on frontend excellence.",
-    "icon": "💡",
+    "id": "ml-model-development",
+    "title": "Machine Learning Model Development",
+    "description": "Developing and deploying machine learning models for real-world applications. Focus on practical implementation with clear documentation and user-friendly interfaces.",
+    "image": "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800",
     "features": [
-      "Product strategy and roadmap planning",
-      "Technical architecture recommendations",
-      "UX/UI audit and improvement suggestions",
-      "Technology stack selection and evaluation",
-      "Best practices for AI integration in frontends"
+      "Custom ML model development",
+      "Model training & optimization",
+      "Deployment setup",
+      "Performance monitoring",
+      "Integration with web apps"
     ],
-    "tools": [
-      "Miro",
-      "Notion",
-      "Figma",
-      "Technical docs",
-      "Architecture diagrams"
-    ],
+    "tools": ["Python", "TensorFlow", "PyTorch", "Scikit-learn", "FastAPI"],
     "deliverables": [
-      "Strategy deck",
-      "Architecture docs",
-      "Roadmap",
-      "Recommendations"
+      "Trained model",
+      "API endpoints",
+      "Performance metrics",
+      "Deployment documentation"
     ],
-    "pricing": "$150/hour",
-    "turnaround": "Flexible"
+    "pricing": "Starting at $2,500",
+    "turnaround": "4-6 weeks"
   }
 ]

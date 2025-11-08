@@ -1,5 +1,5 @@
 ---
-import { Github, Linkedin, Rss, Package } from '@lucide/astro';
+import { Github, Linkedin, Rss, Package, Briefcase, GraduationCap, Award } from '@lucide/astro';
 import aboutData from "../data/about.json";
 
 type Platform = {
@@ -9,6 +9,13 @@ type Platform = {
   icon: string;
   image: string | null;
   borderColor: string;
+};
+
+type Experience = {
+  role: string;
+  organization: string;
+  period: string;
+  description: string;
 };
 
 type SocialLink = {
@@ -25,8 +32,10 @@ const data = aboutData as {
     degree: string;
     institution: string;
     status: string;
+    minor: string;
   };
   achievements: string[];
+  experience: Experience[];
   overview: string;
   platforms: Platform[];
   socialLinks: SocialLink[];
@@ -77,33 +86,68 @@ const iconMap: Record<string, any> = {
       <!-- Divider Line -->
       <div class="w-full h-px bg-white/30 mb-12"></div>
 
-      <!-- Education & Achievement -->
-      <div class="max-w-4xl mx-auto text-center mb-12">
-        <p class="text-base sm:text-lg text-white/90 mb-4">
-          {data.education.status} <span class="font-bold">{data.education.degree}</span> from <span class="font-bold">{data.education.institution}</span>
-        </p>
-        <p class="text-base sm:text-lg text-cyan-300 font-semibold">
-          {data.achievements.join(' | ')}
-        </p>
+      <!-- Three Column Stats -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-12">
+        <!-- Education -->
+        <div class="bg-black/40 backdrop-blur-md rounded-xl border border-white/20 p-6 text-center">
+          <GraduationCap size={32} class="mx-auto mb-3 text-primary" />
+          <h3 class="text-lg font-bold text-white mb-2">Education</h3>
+          <p class="text-sm text-white/80">{data.education.degree}</p>
+          <p class="text-xs text-white/60 mt-1">{data.education.institution}</p>
+          <p class="text-xs text-accent mt-2">{data.education.minor}</p>
+        </div>
+        
+        <!-- Experience -->
+        <div class="bg-black/40 backdrop-blur-md rounded-xl border border-white/20 p-6 text-center">
+          <Briefcase size={32} class="mx-auto mb-3 text-secondary" />
+          <h3 class="text-lg font-bold text-white mb-2">Experience</h3>
+          <p class="text-sm text-white/80">Ford • GE Aerospace • DRDO</p>
+          <p class="text-xs text-white/60 mt-1">5+ Industry Internships</p>
+          <p class="text-xs text-accent mt-2">AI • Mechanical • Quantum</p>
+        </div>
+        
+        <!-- Achievements -->
+        <div class="bg-black/40 backdrop-blur-md rounded-xl border border-white/20 p-6 text-center">
+          <Award size={32} class="mx-auto mb-3 text-accent" />
+          <h3 class="text-lg font-bold text-white mb-2">Recognition</h3>
+          <p class="text-sm text-white/80">Qiskit Fest Winner</p>
+          <p class="text-xs text-white/60 mt-1">GSSoC Top 8.2%</p>
+          <p class="text-xs text-accent mt-2">10K+ Dataset Downloads</p>
+        </div>
       </div>
 
       <!-- Divider Line -->
       <div class="w-full h-px bg-white/30 mb-12"></div>
 
-      <!-- Overview Text -->
-      <div class="max-w-4xl mx-auto text-center mb-8">
-        <p class="text-base sm:text-lg text-white/90">
-          {data.overview}
-        </p>
+      <!-- Professional Experience Timeline -->
+      <div class="max-w-4xl mx-auto mb-12">
+        <h2 class="text-white text-3xl sm:text-4xl font-extrabold text-center mb-8">Professional Experience</h2>
+        <div class="space-y-4">
+          {data.experience.map((exp, index) => (
+            <div class="bg-black/40 backdrop-blur-md rounded-xl border border-white/20 p-6 hover:border-primary/50 transition-all">
+              <div class="flex items-start justify-between gap-4 mb-2">
+                <div>
+                  <h3 class="text-lg font-bold text-white">{exp.role}</h3>
+                  <p class="text-sm text-primary">{exp.organization}</p>
+                </div>
+                <span class="text-xs text-white/60 whitespace-nowrap">{exp.period}</span>
+              </div>
+              <p class="text-sm text-white/80 leading-relaxed">{exp.description}</p>
+            </div>
+          ))}
+        </div>
       </div>
+
+      <!-- Divider Line -->
+      <div class="w-full h-px bg-white/30 mb-12"></div>
 
       <!-- Platforms Section -->
       <h2 class="text-white text-3xl sm:text-4xl lg:text-5xl font-extrabold text-center mb-4">
-        Platforms
+        Expertise & Platforms
       </h2>
       
       <p class="text-center text-base sm:text-lg text-white/90 mb-10 max-w-4xl mx-auto">
-        Below is a list of platforms that I have built and/or worked with since the start of my Bachelor's program along with descriptions and links.
+        {data.overview}
       </p>
 
       <!-- Platform Cards Grid -->
@@ -114,7 +158,7 @@ const iconMap: Record<string, any> = {
               {platform.image ? (
                 <img src={platform.image} alt={platform.title} class="w-full h-32 object-cover rounded-lg" />
               ) : (
-                <div class={`w-full h-32 bg-linear-to-br from-${platform.borderColor}/20 to-primary/20 rounded-lg flex items-center justify-center`}>
+                <div class={`w-full h-32 bg-gradient-to-br from-${platform.borderColor}/20 to-primary/20 rounded-lg flex items-center justify-center`}>
                   <span class="text-5xl">{platform.icon}</span>
                 </div>
               )}
@@ -125,6 +169,21 @@ const iconMap: Record<string, any> = {
             </p>
           </div>
         ))}
+      </div>
+
+      <!-- Achievements Section -->
+      <div class="max-w-4xl mx-auto mb-12">
+        <h2 class="text-white text-3xl font-bold text-center mb-6">Key Achievements</h2>
+        <div class="bg-gradient-to-r from-primary/20 via-secondary/20 to-accent/20 backdrop-blur-md rounded-xl border border-white/20 p-8">
+          <div class="space-y-3">
+            {data.achievements.map(achievement => (
+              <div class="flex items-start gap-3">
+                <Award size={20} class="text-accent mt-1 flex-shrink-0" />
+                <p class="text-white/90">{achievement}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
 
       <!-- Social Links Section -->
