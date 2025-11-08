@@ -1,7 +1,281 @@
-<section id="projects" class="carousel-item relative w-screen h-screen flex items-center justify-center">
-    <div class="absolute inset-0 bg-linear-to-br from-base-300 via-base-200 to-base-100"></div>
-    <div class="relative z-10 text-center px-6 max-w-6xl">
-        <h1 class="text-6xl font-bold text-success mb-4">My Projects</h1>
-        <!-- You'll add your project cards here -->
+---
+import { Github, Linkedin, Rss, Package, ExternalLink, Globe, Book } from '@lucide/astro';
+import projects from "../data/projects.json";
+
+type Link = { type: string; label: string; url: string };
+type Project = {
+    id: string;
+    title: string;
+    description: string;
+    image: string;
+    gallery?: string[];
+    tags: string[];
+    links?: Link[];
+    year?: number;
+    featured?: boolean;
+    period?: string;
+};
+
+const allProjects = (projects as Project[]);
+const allTags = Array.from(new Set(allProjects.flatMap(p => p.tags))).sort();
+---
+
+<section id="projects" class="carousel-item relative w-screen h-screen overflow-hidden">
+    <!-- Background Image -->
+    <div
+        class="absolute inset-0 bg-fixed bg-center bg-cover bg-no-repeat"
+        style="background-image: url('https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1920');"
+        aria-hidden="true"
+    ></div>
+    
+    <!-- Dark overlay -->
+    <div
+        class="absolute inset-0 bg-black/50 backdrop-blur-sm"
+        aria-hidden="true"
+    ></div>
+
+    <!-- Content wrapper -->
+    <div class="relative z-10 w-full h-full overflow-y-auto scroll-smooth">
+        <div class="px-6 py-12 max-w-7xl mx-auto">
+            <h1 class="text-white text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-center mb-2 pt-6">
+                Projects
+            </h1>
+            <p class="text-center text-base sm:text-lg text-white/80 mb-8">Browse selected work. Use search and tags to filter. Everything is static and loads instantly.</p>
+
+            <!-- Search and Filters -->
+            <div class="bg-black/30 backdrop-blur-md border border-white/10 rounded-xl p-4 mb-6">
+                <div class="flex flex-col gap-3">
+                    <div class="join w-full">
+                        <input id="project-search" class="input input-bordered join-item w-full bg-base-300/50 text-white" placeholder="Search by title, description, tags, or link labels" />
+                        <button id="clear-search" class="btn btn-ghost join-item">Clear</button>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2 items-center">
+                        <span class="text-sm text-white/60">Filter tags:</span>
+                        {allTags.map(tag => (
+                            <button class="btn btn-xs md:btn-sm btn-outline tag-filter-btn" data-tag={tag}>{tag}</button>
+                        ))}
+                        <button class="btn btn-xs md:btn-sm" id="clear-tags">Reset</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results meta -->
+            <div class="flex items-center justify-between text-white/70 text-sm mb-4">
+                <div><span id="results-count">{allProjects.length}</span> items</div>
+                <div class="flex items-center gap-2">
+                    <label class="label cursor-pointer gap-2 text-white/70">
+                        <span class="label-text">Featured first</span>
+                        <input type="checkbox" class="toggle toggle-primary toggle-sm" id="sort-featured" checked />
+                    </label>
+                </div>
+            </div>
+
+            <!-- Grid -->
+            <div id="projects-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                {allProjects.map(p => (
+                    <article 
+                        class="project-card group relative bg-base-200/30 border border-white/10 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all cursor-pointer" 
+                        data-project-id={p.id} 
+                        data-tags={p.tags.join(",")} 
+                        data-title={p.title.toLowerCase()} 
+                        data-description={p.description.toLowerCase()}
+                        data-link-labels={(p.links || []).map(l => `${l.type} ${l.label}`.toLowerCase()).join(" ")}
+                        data-featured={p.featured ? "true" : "false"}
+                    >
+                        <!-- Image Container -->
+                        <div class="relative aspect-[4/3] bg-base-300 overflow-hidden">
+                            <img src={p.image} alt={p.title} loading="lazy" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
+                            
+                            <!-- Overlay - Shows on hover -->
+                            <div class="absolute inset-0 bg-black/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-between overflow-y-auto">
+                                <!-- Top Section: Title + Period/Year -->
+                                <div>
+                                    <h3 class="text-xl font-bold text-white mb-2">{p.title}</h3>
+                                    {p.period && (
+                                        <p class="text-xs text-primary mb-3">{p.period}</p>
+                                    )}
+                                    {!p.period && p.year && (
+                                        <p class="text-xs text-primary mb-3">{p.year}</p>
+                                    )}
+                                    <p class="text-sm text-white/90 leading-relaxed">{p.description}</p>
+                                </div>
+
+                                <!-- Bottom Section: Links -->
+                                {p.links && p.links.length > 0 && (
+                                    <div class="mt-4 flex flex-wrap gap-2">
+                                        {p.links.map(link => (
+                                            <a 
+                                                href={link.url} 
+                                                target="_blank" 
+                                                rel="noopener noreferrer" 
+                                                class="btn btn-xs btn-outline btn-primary gap-1 hover:btn-primary"
+                                                onclick="event.stopPropagation()"
+                                            >
+                                                {link.type === 'github' && (<Github size={14} />)}
+                                                {link.type === 'linkedin' && (<Linkedin size={14} />)}
+                                                {link.type === 'medium' && (<Rss size={14} />)}
+                                                {link.type === 'huggingface' && (<Package size={14} />)}
+                                                {link.type === 'docs' && (<Book size={14} />)}
+                                                {link.type === 'demo' && (<Globe size={14} />)}
+                                                {link.type !== 'github' && link.type !== 'linkedin' && link.type !== 'medium' && link.type !== 'huggingface' && link.type !== 'docs' && link.type !== 'demo' && (<ExternalLink size={14} />)}
+                                                <span>{link.label}</span>
+                                            </a>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+
+                        <!-- Bottom Bar: Title + Tags (Always visible) -->
+                        <div class="p-4 bg-base-200/50 backdrop-blur-sm">
+                            <div class="flex items-start justify-between gap-2 mb-2">
+                                <h3 class="text-base font-semibold text-white/90 line-clamp-1">{p.title}</h3>
+                                {p.featured && <span class="badge badge-primary badge-sm flex-shrink-0">Featured</span>}
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                {p.tags.slice(0, 3).map(t => <span class="badge badge-outline badge-xs">{t}</span>)}
+                                {p.tags.length > 3 && <span class="badge badge-outline badge-xs">+{p.tags.length - 3}</span>}
+                            </div>
+                        </div>
+                    </article>
+                ))}
+            </div>
+
+            <div id="no-results" class="hidden text-center text-white/70 py-12">
+                <div class="text-6xl mb-4">🔍</div>
+                <p class="text-xl">No projects match your filters.</p>
+            </div>
+        </div>
     </div>
+
+    <!-- Client-side filtering logic -->
+    <script>
+        // State management
+        const state = {
+            query: '',
+            tags: new Set<string>(),
+            featuredFirst: true,
+        };
+
+        // DOM elements
+        const grid = document.getElementById('projects-grid');
+        const searchInput = document.getElementById('project-search') as HTMLInputElement;
+        const clearSearchBtn = document.getElementById('clear-search');
+        const resultsCount = document.getElementById('results-count');
+        const noResults = document.getElementById('no-results');
+        const sortFeaturedEl = document.getElementById('sort-featured') as HTMLInputElement;
+        const clearTagsBtn = document.getElementById('clear-tags');
+        const tagButtons = document.querySelectorAll('.tag-filter-btn');
+
+        // Simple fuzzy search function
+        function fuzzyMatch(text: string, query: string): boolean {
+            if (!query) return true;
+            text = text.toLowerCase();
+            query = query.toLowerCase();
+            
+            // Exact substring match
+            if (text.includes(query)) return true;
+            
+            // Word-by-word match
+            const queryWords = query.split(/\s+/);
+            return queryWords.every(word => text.includes(word));
+        }
+
+        // Apply all filters
+        function applyFilters() {
+            const cards = Array.from(document.querySelectorAll('.project-card')) as HTMLElement[];
+            let visibleCount = 0;
+
+            cards.forEach(card => {
+                const title = card.getAttribute('data-title') || '';
+                const description = card.getAttribute('data-description') || '';
+                const tags = card.getAttribute('data-tags') || '';
+                const linkLabels = card.getAttribute('data-link-labels') || '';
+                const cardTags = tags.split(',').filter(t => t);
+
+                // Search filter
+                const searchText = `${title} ${description} ${tags} ${linkLabels}`;
+                const matchesSearch = fuzzyMatch(searchText, state.query);
+
+                // Tag filter
+                const requiredTags = Array.from(state.tags);
+                const matchesTags = requiredTags.length === 0 || 
+                                   requiredTags.every(tag => cardTags.includes(tag));
+
+                // Show/hide card
+                const shouldShow = matchesSearch && matchesTags;
+                card.classList.toggle('hidden', !shouldShow);
+                if (shouldShow) visibleCount++;
+            });
+
+            // Sort by featured
+            if (state.featuredFirst) {
+                const sortedCards = cards
+                    .filter(card => !card.classList.contains('hidden'))
+                    .sort((a, b) => {
+                        const aFeatured = a.getAttribute('data-featured') === 'true';
+                        const bFeatured = b.getAttribute('data-featured') === 'true';
+                        return (bFeatured ? 1 : 0) - (aFeatured ? 1 : 0);
+                    });
+                
+                sortedCards.forEach(card => grid?.appendChild(card));
+            }
+
+            // Update UI
+            if (resultsCount) resultsCount.textContent = String(visibleCount);
+            noResults?.classList.toggle('hidden', visibleCount > 0);
+        }
+
+        // Tag button interactions
+        tagButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tag = btn.getAttribute('data-tag');
+                if (!tag) return;
+
+                if (state.tags.has(tag)) {
+                    state.tags.delete(tag);
+                    btn.classList.remove('btn-primary');
+                    btn.classList.add('btn-outline');
+                } else {
+                    state.tags.add(tag);
+                    btn.classList.add('btn-primary');
+                    btn.classList.remove('btn-outline');
+                }
+                applyFilters();
+            });
+        });
+
+        // Clear tags
+        clearTagsBtn?.addEventListener('click', () => {
+            state.tags.clear();
+            tagButtons.forEach(btn => {
+                btn.classList.add('btn-outline');
+                btn.classList.remove('btn-primary');
+            });
+            applyFilters();
+        });
+
+        // Search input
+        searchInput?.addEventListener('input', (e) => {
+            state.query = (e.target as HTMLInputElement).value || '';
+            applyFilters();
+        });
+
+        // Clear search
+        clearSearchBtn?.addEventListener('click', () => {
+            if (searchInput) searchInput.value = '';
+            state.query = '';
+            applyFilters();
+        });
+
+        // Sort toggle
+        sortFeaturedEl?.addEventListener('change', () => {
+            state.featuredFirst = sortFeaturedEl.checked;
+            applyFilters();
+        });
+
+        // Initial render
+        applyFilters();
+    </script>
 </section>

@@ -1,0 +1,142 @@
+[
+  {
+    "id": "swerve-robotic-platform",
+    "title": "Swerve Robotic Platform",
+    "description": "Software Developer and Roboticist - Working with three other students on developing a highly nimble, high torque, high load supporting platform that is ROS-enabled with integrated autonomy targeted for the warehouse optimization and entertainment industry. Building the software for the platform within the ROS framework, developing simulations in Gazebo, developing state estimation algorithms, and the team project manager.",
+    "image": "/enginnering-testing.jpg",
+    "tags": ["Robotics", "ROS", "AI", "Automation"],
+    "links": [
+      {"type": "github", "label": "GitHub", "url": "https://github.com/yourrepo/swerve"},
+      {"type": "docs", "label": "Documentation", "url": "#"}
+    ],
+    "year": 2018,
+    "featured": true,
+    "period": "Fall 2017 to Spring 2018"
+  },
+  {
+    "id": "soccer-robots",
+    "title": "Soccer Robots",
+    "description": "Developed autonomous soccer-playing robots with computer vision and multi-agent coordination. Implemented real-time ball tracking, path planning, and team strategy algorithms for competitive robotics.",
+    "image": "https://images.unsplash.com/photo-1589802829985-817e51171b92?w=800&h=600&fit=crop",
+    "tags": ["Robotics", "Computer Vision", "AI", "Agents"],
+    "links": [
+      {"type": "github", "label": "GitHub", "url": "https://github.com/yourrepo/soccer-robots"}
+    ],
+    "year": 2024,
+    "featured": true
+  },
+  {
+    "id": "micromouse",
+    "title": "Micromouse",
+    "description": "Autonomous maze-solving robot using flood-fill algorithm and sensor fusion. Designed PCB, implemented path optimization, and achieved competition-level performance in maze navigation.",
+    "image": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=600&fit=crop",
+    "tags": ["Robotics", "Embedded Systems", "Algorithms"],
+    "links": [
+      {"type": "github", "label": "GitHub", "url": "https://github.com/yourrepo/micromouse"},
+      {"type": "demo", "label": "Demo Video", "url": "#"}
+    ],
+    "year": 2023,
+    "featured": false
+  },
+  {
+    "id": "drexel-hyperloop",
+    "title": "Drexel Hyperloop",
+    "description": "Member of university's SpaceX Hyperloop Competition team. Contributed to pod design, control systems, and safety protocols for high-speed transportation prototype.",
+    "image": "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&h=600&fit=crop",
+    "tags": ["Mechanical", "Engineering", "Transportation"],
+    "links": [],
+    "year": 2019,
+    "featured": false
+  },
+  {
+    "id": "lit-project",
+    "title": "LIT - Learning Interactive Technology",
+    "description": "Interactive educational platform using AR/VR for immersive learning experiences. Built frontend interfaces for lesson management and student progress tracking.",
+    "image": "https://images.unsplash.com/photo-1617802690992-15d93263d3a9?w=800&h=600&fit=crop",
+    "tags": ["Education", "AR/VR", "Frontend"],
+    "links": [
+      {"type": "demo", "label": "Live Demo", "url": "#"}
+    ],
+    "year": 2024,
+    "featured": false
+  },
+  {
+    "id": "thor-robot",
+    "title": "THOR - Tracked Hexapod Observation Robot",
+    "description": "Six-legged tracked robot for rough terrain navigation. Developed control algorithms and sensor integration for autonomous exploration and obstacle avoidance.",
+    "image": "https://images.unsplash.com/photo-1563207153-f403bf289096?w=800&h=600&fit=crop",
+    "tags": ["Robotics", "Hardware", "Embedded Systems"],
+    "links": [
+      {"type": "github", "label": "GitHub", "url": "https://github.com/yourrepo/thor"}
+    ],
+    "year": 2022,
+    "featured": true
+  },
+  {
+    "id": "nia-rascal",
+    "title": "NIA RASCAL Competition",
+    "description": "Team participation in National Instruments Autonomous Robotics Student Competition. Developed autonomous navigation and task completion algorithms for mobile robots.",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop",
+    "tags": ["Robotics", "Competition", "Teamwork"],
+    "links": [],
+    "year": 2020,
+    "featured": false
+  },
+  {
+    "id": "asce-concrete-canoe",
+    "title": "ASCE Concrete Canoe Competition",
+    "description": "Structural design and fabrication of lightweight concrete canoe for ASCE competition. Applied engineering principles to optimize buoyancy and structural integrity.",
+    "image": "https://images.unsplash.com/photo-1542362567-b07e54358753?w=800&h=600&fit=crop",
+    "tags": ["Mechanical", "Engineering", "Competition"],
+    "links": [],
+    "year": 2019,
+    "featured": false
+  },
+  {
+    "id": "asme-minigolf",
+    "title": "ASME Minigolf Course",
+    "description": "Designed and built creative engineering-themed miniature golf course for ASME competition. Combined mechanical design with interactive elements.",
+    "image": "https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?w=800&h=600&fit=crop",
+    "tags": ["Mechanical", "Design", "Competition"],
+    "links": [],
+    "year": 2020,
+    "featured": false
+  },
+  {
+    "id": "agent-ui-workbench",
+    "title": "Agent UI Workbench",
+    "description": "Frontend workbench for rapid prototyping of multi-agent LangGraph workflows with drag-and-connect nodes and real-time run traces.",
+    "image": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=600&fit=crop",
+    "tags": ["AI", "Agents", "LangGraph", "Frontend"],
+    "links": [
+      {"type": "github", "label": "GitHub", "url": "https://github.com/yourrepo/agent-ui"},
+      {"type": "demo", "label": "Live Demo", "url": "#"}
+    ],
+    "year": 2025,
+    "featured": true
+  },
+  {
+    "id": "quantum-bb84-sim",
+    "title": "BB84 Quantum Key Distribution Simulator",
+    "description": "Interactive visual simulator explaining BB84 protocol steps, basis selection, sifting, and eavesdrop detection with educational overlays.",
+    "image": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&h=600&fit=crop",
+    "tags": ["Quantum", "Education", "Security"],
+    "links": [
+      {"type": "github", "label": "GitHub", "url": "https://github.com/yourrepo/bb84"}
+    ],
+    "year": 2025,
+    "featured": false
+  },
+  {
+    "id": "llm-dataset-suite",
+    "title": "Domain-Specific LLM Dataset Suite",
+    "description": "Curated & cleaned domain-specific corpora with evaluation splits for fine-tuning midsize LLMs. Includes prompt templates & augmentation scripts.",
+    "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
+    "tags": ["LLM", "Datasets", "NLP"],
+    "links": [
+      {"type": "huggingface", "label": "HuggingFace", "url": "https://huggingface.co/youruser"}
+    ],
+    "year": 2024,
+    "featured": false
+  }
+]

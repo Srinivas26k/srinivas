@@ -1,7 +1,343 @@
-<section id="contact" class="carousel-item relative w-screen h-screen flex items-center justify-center">
-    <div class="absolute inset-0 bg-linear-to-br from-base-100 via-base-300 to-base-200"></div>
-    <div class="relative z-10 text-center px-6 max-w-4xl">
-        <h1 class="text-6xl font-bold text-info mb-4">Contact Me</h1>
-        <!-- You'll add your contact form here -->
+---
+import { Mail, Linkedin, Github, MapPin, Phone, Send, Calendar, Clock } from '@lucide/astro';
+---
+
+<section id="contact" class="carousel-item relative w-screen h-screen overflow-hidden">
+    <!-- Background Image -->
+    <div
+        class="absolute inset-0 bg-fixed bg-center bg-cover bg-no-repeat"
+        style="background-image: url('https://images.pexels.com/photos/7413915/pexels-photo-7413915.jpeg?auto=compress&cs=tinysrgb&w=1920');"
+        aria-hidden="true"
+    ></div>
+    
+    <!-- Dark overlay -->
+    <div
+        class="absolute inset-0 bg-black/50 backdrop-blur-sm"
+        aria-hidden="true"
+    ></div>
+
+    <!-- Scrollable content container -->
+    <div class="relative z-10 w-full h-full overflow-y-auto scroll-smooth">
+        <div class="px-6 py-12 max-w-7xl mx-auto">
+            
+            <!-- Header -->
+            <h1 class="text-white text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-center mb-3 pt-6">
+                Let's Work Together
+            </h1>
+            
+            <!-- Introduction -->
+            <div class="max-w-3xl mx-auto text-center mb-12">
+                <p class="text-base sm:text-lg text-white/90 leading-relaxed font-light">
+                    Have a project in mind? I'd love to hear about it. Fill out the form below or reach out directly through any of my social channels.
+                </p>
+            </div>
+
+            <!-- Divider Line -->
+            <div class="w-full h-px bg-white/30 mb-12"></div>
+
+            <!-- Main Content Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
+                
+                <!-- Contact Form - Takes 2 columns -->
+                <div class="lg:col-span-2">
+                    <div class="bg-black/40 backdrop-blur-md rounded-xl border border-white/20 p-8">
+                        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                            <Send size={24} class="text-primary" />
+                            Send a Message
+                        </h2>
+                        
+                        <form id="contact-form" class="space-y-6">
+                            <!-- Name -->
+                            <div class="form-control">
+                                <label class="label">
+                                    <span class="label-text text-white/80">Your Name *</span>
+                                </label>
+                                <input 
+                                    type="text" 
+                                    name="name"
+                                    placeholder="John Doe" 
+                                    class="input input-bordered w-full bg-base-300/50 text-white border-white/20 focus:border-primary" 
+                                    required 
+                                />
+                            </div>
+
+                            <!-- Email -->
+                            <div class="form-control">
+                                <label class="label">
+                                    <span class="label-text text-white/80">Your Email *</span>
+                                </label>
+                                <input 
+                                    type="email" 
+                                    name="email"
+                                    placeholder="john@example.com" 
+                                    class="input input-bordered w-full bg-base-300/50 text-white border-white/20 focus:border-primary" 
+                                    required 
+                                />
+                            </div>
+
+                            <!-- Subject -->
+                            <div class="form-control">
+                                <label class="label">
+                                    <span class="label-text text-white/80">Subject *</span>
+                                </label>
+                                <select 
+                                    name="subject"
+                                    class="select select-bordered w-full bg-base-300/50 text-white border-white/20 focus:border-primary"
+                                    required
+                                >
+                                    <option disabled selected>Select a service</option>
+                                    <option>UI/UX Design & Prototyping</option>
+                                    <option>Frontend Development</option>
+                                    <option>AI Agent System Interfaces</option>
+                                    <option>Automation Pipelines</option>
+                                    <option>LLM Dataset Creation</option>
+                                    <option>ML Model Development</option>
+                                    <option>General Inquiry</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+
+                            <!-- Budget (Optional) -->
+                            <div class="form-control">
+                                <label class="label">
+                                    <span class="label-text text-white/80">Budget Range (Optional)</span>
+                                </label>
+                                <select 
+                                    name="budget"
+                                    class="select select-bordered w-full bg-base-300/50 text-white border-white/20 focus:border-primary"
+                                >
+                                    <option disabled selected>Select budget range</option>
+                                    <option>Under $1,000</option>
+                                    <option>$1,000 - $2,500</option>
+                                    <option>$2,500 - $5,000</option>
+                                    <option>$5,000 - $10,000</option>
+                                    <option>$10,000+</option>
+                                    <option>Let's discuss</option>
+                                </select>
+                            </div>
+
+                            <!-- Message -->
+                            <div class="form-control">
+                                <label class="label">
+                                    <span class="label-text text-white/80">Your Message *</span>
+                                </label>
+                                <textarea 
+                                    name="message"
+                                    class="textarea textarea-bordered h-32 bg-base-300/50 text-white border-white/20 focus:border-primary" 
+                                    placeholder="Tell me about your project..."
+                                    required
+                                ></textarea>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button type="submit" class="btn btn-primary w-full gap-2">
+                                <Send size={20} />
+                                Send Message
+                            </button>
+
+                            <!-- Success/Error Messages -->
+                            <div id="form-message" class="hidden"></div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Contact Info Sidebar - Takes 1 column -->
+                <div class="space-y-6">
+                    
+                    <!-- Direct Contact Info -->
+                    <div class="bg-black/40 backdrop-blur-md rounded-xl border border-white/20 p-6">
+                        <h3 class="text-xl font-bold text-white mb-4">Contact Information</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-3">
+                                <Mail size={20} class="text-primary mt-1 flex-shrink-0" />
+                                <div>
+                                    <div class="text-white/60 text-sm">Email</div>
+                                    <a href="mailto:your.email@example.com" class="text-white hover:text-primary transition-colors">
+                                        your.email@example.com
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <MapPin size={20} class="text-secondary mt-1 flex-shrink-0" />
+                                <div>
+                                    <div class="text-white/60 text-sm">Location</div>
+                                    <div class="text-white">Hyderabad, Telangana, India</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <Clock size={20} class="text-accent mt-1 flex-shrink-0" />
+                                <div>
+                                    <div class="text-white/60 text-sm">Response Time</div>
+                                    <div class="text-white">Within 24-48 hours</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="bg-black/40 backdrop-blur-md rounded-xl border border-white/20 p-6">
+                        <h3 class="text-xl font-bold text-white mb-4">Connect With Me</h3>
+                        <div class="space-y-3">
+                            <a 
+                                href="https://github.com/srinivas26k" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                class="flex items-center gap-3 p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-primary/50 transition-all group"
+                            >
+                                <Github size={20} class="text-white group-hover:text-primary transition-colors" />
+                                <div>
+                                    <div class="text-white text-sm font-medium">GitHub</div>
+                                    <div class="text-white/60 text-xs">@srinivas26k</div>
+                                </div>
+                            </a>
+                            <a 
+                                href="https://in.linkedin.com/in/srinivas-nampalli" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                class="flex items-center gap-3 p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-info/50 transition-all group"
+                            >
+                                <Linkedin size={20} class="text-white group-hover:text-info transition-colors" />
+                                <div>
+                                    <div class="text-white text-sm font-medium">LinkedIn</div>
+                                    <div class="text-white/60 text-xs">Srinivas Nampalli</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Availability Calendar -->
+                    <div class="bg-gradient-to-br from-primary/20 to-secondary/20 backdrop-blur-md rounded-xl border border-white/20 p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <Calendar size={20} class="text-white" />
+                            <h3 class="text-lg font-bold text-white">Availability</h3>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-white/80">Current Status:</span>
+                                <span class="badge badge-success badge-sm">Available</span>
+                            </div>
+                            <div class="text-white/70 text-xs mt-3">
+                                Open for new projects starting January 2025
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="max-w-4xl mx-auto mb-12">
+                <h2 class="text-white text-3xl font-bold text-center mb-8">Before You Reach Out</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-black/40 backdrop-blur-md rounded-xl border border-white/20 p-6">
+                        <h3 class="text-lg font-semibold text-primary mb-3">What to Include</h3>
+                        <ul class="space-y-2 text-white/80 text-sm">
+                            <li class="flex items-start gap-2">
+                                <span class="text-primary">✓</span>
+                                <span>Brief project description</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-primary">✓</span>
+                                <span>Timeline and budget expectations</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-primary">✓</span>
+                                <span>Any reference designs or examples</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-primary">✓</span>
+                                <span>Your preferred communication method</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-black/40 backdrop-blur-md rounded-xl border border-white/20 p-6">
+                        <h3 class="text-lg font-semibold text-accent mb-3">Response Time</h3>
+                        <ul class="space-y-2 text-white/80 text-sm">
+                            <li class="flex items-start gap-2">
+                                <span class="text-accent">→</span>
+                                <span>I respond to all inquiries within 24-48 hours</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-accent">→</span>
+                                <span>Initial consultation calls are free</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-accent">→</span>
+                                <span>Project proposals within 3-5 business days</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-accent">→</span>
+                                <span>Detailed quotes provided after discussion</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
+
+    <!-- Client-side form handling -->
+    <script>
+        const form = document.getElementById('contact-form') as HTMLFormElement;
+        const formMessage = document.getElementById('form-message');
+
+        form?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+
+            // Show loading state
+            const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+            const originalText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="loading loading-spinner"></span> Sending...';
+
+            try {
+                // For static site: Create mailto link with form data
+                const subject = encodeURIComponent(`Contact Form: ${data.subject}`);
+                const body = encodeURIComponent(`
+Name: ${data.name}
+Email: ${data.email}
+Subject: ${data.subject}
+Budget: ${data.budget || 'Not specified'}
+
+Message:
+${data.message}
+                `);
+
+                // Open mailto link
+                window.location.href = `mailto:your.email@example.com?subject=${subject}&body=${body}`;
+
+                // Show success message
+                if (formMessage) {
+                    formMessage.className = 'alert alert-success';
+                    formMessage.textContent = 'Opening your email client... Please send the pre-filled email.';
+                    formMessage.classList.remove('hidden');
+                }
+
+                // Reset form
+                form.reset();
+
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    formMessage?.classList.add('hidden');
+                }, 5000);
+
+            } catch (error) {
+                // Show error message
+                if (formMessage) {
+                    formMessage.className = 'alert alert-error';
+                    formMessage.textContent = 'Something went wrong. Please try again or email me directly.';
+                    formMessage.classList.remove('hidden');
+                }
+            } finally {
+                // Reset button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
+            }
+        });
+    </script>
 </section>

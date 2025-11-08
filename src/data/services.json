@@ -1,0 +1,175 @@
+[
+  {
+    "id": "ai-agent-interfaces",
+    "title": "AI Agent Interface Development",
+    "description": "Build intuitive frontend interfaces for multi-agent AI systems with real-time interaction and monitoring capabilities.",
+    "icon": "🤖",
+    "features": [
+      "Custom UI for LangGraph and multi-agent workflows",
+      "Real-time agent state visualization and monitoring",
+      "Interactive chat interfaces with streaming responses",
+      "Agent tool invocation displays and debug views",
+      "Responsive design optimized for all devices"
+    ],
+    "tools": [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "LangChain",
+      "WebSockets",
+      "Zustand"
+    ],
+    "deliverables": [
+      "Source code",
+      "Figma mockups",
+      "Documentation",
+      "Deployment guide"
+    ],
+    "pricing": "Starting at $1,500",
+    "turnaround": "3-5 weeks"
+  },
+  {
+    "id": "ui-ux-design",
+    "title": "UI/UX Design & Prototyping",
+    "description": "Create polished, user-centered design mockups and interactive prototypes for web applications and AI products.",
+    "icon": "🎨",
+    "features": [
+      "High-fidelity Figma mockups and design systems",
+      "Interactive prototypes with user flows",
+      "Accessibility-first design approach (WCAG AA)",
+      "Mobile-responsive layouts and components",
+      "Design handoff with developer specs"
+    ],
+    "tools": [
+      "Figma",
+      "Adobe XD",
+      "Framer",
+      "Sketch",
+      "InVision",
+      "Miro"
+    ],
+    "deliverables": [
+      "Figma files",
+      "Design system",
+      "Prototype links",
+      "Asset exports"
+    ],
+    "pricing": "Starting at $800",
+    "turnaround": "1-2 weeks"
+  },
+  {
+    "id": "frontend-development",
+    "title": "Frontend Web Development",
+    "description": "Develop fast, modern, and maintainable frontend applications using the latest web technologies and best practices.",
+    "icon": "💻",
+    "features": [
+      "Modern framework implementation (React, Astro, Next.js)",
+      "Component-driven architecture with reusable UI",
+      "State management and data fetching optimization",
+      "Performance optimization and code splitting",
+      "Cross-browser compatibility and testing"
+    ],
+    "tools": [
+      "React",
+      "Astro",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Vite"
+    ],
+    "deliverables": [
+      "Production code",
+      "Component library",
+      "Test suite",
+      "README docs"
+    ],
+    "pricing": "Starting at $1,200",
+    "turnaround": "2-4 weeks"
+  },
+  {
+    "id": "automation-workflows",
+    "title": "AI Workflow Automation",
+    "description": "Design and implement automated workflows that integrate AI capabilities into existing processes and tools.",
+    "icon": "⚡",
+    "features": [
+      "Custom automation pipeline design and implementation",
+      "Integration with APIs, LLMs, and third-party services",
+      "User-friendly control panels and dashboards",
+      "Error handling and monitoring interfaces",
+      "Documentation and training materials"
+    ],
+    "tools": [
+      "Python",
+      "LangChain",
+      "Google ADK",
+      "REST APIs",
+      "Docker",
+      "GitHub Actions"
+    ],
+    "deliverables": [
+      "Automation scripts",
+      "UI dashboard",
+      "Integration docs",
+      "Setup guide"
+    ],
+    "pricing": "Starting at $2,000",
+    "turnaround": "3-6 weeks"
+  },
+  {
+    "id": "llm-dataset-creation",
+    "title": "LLM Dataset Creation & Curation",
+    "description": "Build domain-specific datasets for fine-tuning language models with proper formatting, cleaning, and evaluation splits.",
+    "icon": "📊",
+    "features": [
+      "Domain-specific data collection and curation",
+      "Data cleaning and quality assurance pipelines",
+      "Prompt template design and optimization",
+      "Train/validation/test split preparation",
+      "Dataset documentation and usage guides"
+    ],
+    "tools": [
+      "Python",
+      "Pandas",
+      "HuggingFace Datasets",
+      "OpenAI API",
+      "Regex",
+      "JSON"
+    ],
+    "deliverables": [
+      "Cleaned dataset",
+      "Augmentation scripts",
+      "Eval framework",
+      "Documentation"
+    ],
+    "pricing": "Starting at $1,000",
+    "turnaround": "2-3 weeks"
+  },
+  {
+    "id": "consulting",
+    "title": "AI Product Consulting",
+    "description": "Strategic guidance on building user-friendly AI products, from ideation to deployment, with a focus on frontend excellence.",
+    "icon": "💡",
+    "features": [
+      "Product strategy and roadmap planning",
+      "Technical architecture recommendations",
+      "UX/UI audit and improvement suggestions",
+      "Technology stack selection and evaluation",
+      "Best practices for AI integration in frontends"
+    ],
+    "tools": [
+      "Miro",
+      "Notion",
+      "Figma",
+      "Technical docs",
+      "Architecture diagrams"
+    ],
+    "deliverables": [
+      "Strategy deck",
+      "Architecture docs",
+      "Roadmap",
+      "Recommendations"
+    ],
+    "pricing": "$150/hour",
+    "turnaround": "Flexible"
+  }
+]
