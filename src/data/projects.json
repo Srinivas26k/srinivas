@@ -158,7 +158,7 @@
         "id": "comicgenius-pro",
         "title": "ComicGenius Pro — AI-Powered Comic Creator",
         "description": "Built an advanced AI comic creation tool leveraging Gemini 2.5 Flash Image Preview API for consistent character generation across sequential panels. Enables users to create professional comic strips in minutes through text prompts, iterative refinement, and multi-style rendering. Designed a full responsive UI with Tailwind CSS + shadcn theme system.",
-        "image": "https://storage.googleapis.com/kaggle-writeups/19010/media/7be456da0afc34e0ff5f82cbc4f64d82.png?GoogleAccessId=web-data@kaggle-161607.iam.gserviceaccount.com&Expires=1762692155&Signature=IzNF4Rfxi9e%2FAG%2FT93oDMQO5BRkRHfml0uUA8f8ZSE%2BcY6ErSJI5SIAzUjVo9mZO8k2TT6OqFA3Q4Sy98543k61OVvdiinfL9kBzsp1rLo0J%2B7Ae%2FT8eBb5%2B4ehCHxyz3nfW%2B8IBHEY1PDu%2B1McklTCBnPeQVBWaslbjGycE3MsakX57pxhpMG6trISJvgx%2F1pJGpaGKIKQHnA4MYR0LcEeFBrHFemrTemxo37oNb4qNmZX2wddSM1gAfy2e64Svkr05sU6hMnp9qf7I6gCTX8D7aHGHCUET2mZgm%2Bu6cO6EAV2TN7Zcm0HUcsN2Q7soILj2EhKWnfbsdp2i9RdgYQ%3D%3D",
+        "image": "/7870595edb1e571358ea48489398b6c7.png",
         "tags": [
             "AI",
             "Frontend"
