@@ -28,7 +28,7 @@
         "id": "ayurleaf-healthcare",
         "title": "Ayurleaf — AI-Powered Healthcare Platform (GSSoC 2025)",
         "description": "Contributed to Ayurleaf as part of GirlScript Summer of Code 2025 (GSSoC'25). Worked on implementing new UI modules, optimizing AI-based health recommendation logic, and enhancing the patient analytics dashboard. Focused on full-stack bug fixes, UI enhancement, and backend performance improvements.",
-        "image": "public/aurleaf.png",
+        "image": "/aurleaf.png",
         "tags": [
             "Healthcare",
             "AI",
@@ -60,7 +60,7 @@
         "id": "billforge-gst",
         "title": "BillForge — Smart GST Invoice Generator (GSSoC 2025)",
         "description": "Contributed to BillForge under GirlScript Summer of Code 2025 (GSSoC'25). BillForge is a modern, open-source GST invoicing web app for freelancers and small businesses in India. Implemented UI improvements, invoice automation features, and enhanced the PDF export workflow for smoother user experience.",
-        "image": "public/bill_forge.png",
+        "image": "/bill_forge.png",
         "tags": [
             "Finance",
             "Web App",
@@ -192,7 +192,7 @@
         "id": "pustak-ghar",
         "title": "Pustak Ghar — Study Resources Platform (GSSoC 2025)",
         "description": "Contributed as an open-source developer during GirlScript Summer of Code 2025 (GSSoC'25). Pustak Ghar provides organized study resources, PYQs, and playlists for university students. Implemented responsive UI components, bug fixes, and branch-wise content filters improving accessibility and navigation.",
-        "image": "public/pusthak_ghar.png",
+        "image": "/pusthak_ghar.png",
         "tags": [
             "Open Source",
             "Education",
@@ -223,7 +223,7 @@
         "id": "bakegenius-ai",
         "title": "BakeGenius AI — Precision Baking for Everyone (GSSoC 2025)",
         "description": "Developed under GSSoC 2025, BakeGenius AI converts vague recipe measurements into precise gram-based values using AI. It empowers home cooks and professionals to bake with accuracy by applying intelligent unit conversion and culinary reasoning through AI models.",
-        "image": "public/bake_genius.png",
+        "image": "/bake_genius.png",
         "tags": [
             "AI",
             "Open Source",
@@ -258,7 +258,7 @@
         "id": "stockgpt-traveleva",
         "title": "StockGPT & TravelEva — Financial and Travel Assistant Apps",
         "description": "Built twin Streamlit apps — StockGPT for real-time stock market analysis and TravelEva for AI-assisted travel planning. StockGPT integrates yfinance API and Plotly for candlestick charts and technical indicators, while TravelEva offers smart itinerary generation and history tracking.",
-        "image": "public/ssgpt.png",
+        "image": "/ssgpt.png",
         "tags": [
             "Open Source",
             "GSSoC 2025",
@@ -293,7 +293,7 @@
     "id": "bounty-hub",
     "title": "Bounty Hub — Open Source Bounty Platform (GSSoC 2025)",
     "description": "Contributed to OSHub as part of GirlScript Summer of Code 2025 (GSSoC'25). OSHub is an open-source platform connecting developers and maintainers through bounty-based issue solving. It promotes incentivized collaboration by allowing maintainers to place bounties and contributors to claim rewards for solving issues.",
-    "image": "public/os_hub.png",
+    "image": "/os_hub.png",
     "tags": ["Open Source", "Web App", "GSSoC 2025"],
     "links": [
       {"type": "website", "label": "Open Source Hub", "url": "https://www.opensourcehub.works/"},
