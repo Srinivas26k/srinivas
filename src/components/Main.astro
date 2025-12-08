@@ -1,3 +1,6 @@
+---
+import engineeringBg from '../assets/engineering-testing.jpg';
+---
 <section
   id="home"
   class="carousel-item relative w-screen h-screen overflow-hidden flex items-center justify-center"
@@ -5,7 +8,7 @@
   <!-- Background Image -->
   <div
     class="absolute inset-0 bg-fixed bg-center bg-cover bg-no-repeat"
-    style="background-image: url('src/assets/enginnering-testing.jpg');"
+    style={`background-image: url('${engineeringBg.src}');`}
     aria-hidden="true"
   ></div>
 
