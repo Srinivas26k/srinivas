@@ -5,16 +5,61 @@
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/logo.png" />
 		<meta name="generator" content={Astro.generator} />
+		<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+
+		<!-- Primary Meta Tags -->
+		<title>Srinivas Nampalli | AI Systems Developer & Quantum Enthusiast</title>
+		<meta name="title" content="Srinivas Nampalli | AI Systems Developer & Quantum Enthusiast" />
 		<meta
 			name="description"
-			content="Portfolio of Srinivas Nampalli — AI Systems Developer, Quantum Computing Enthusiast, and Open Source Contributor from Hyderabad, India. Winner of IIIT Hyderabad × IBM Qiskit Fall Fest 2025."
+			content="Portfolio of Srinivas Nampalli — AI Systems Developer, Quantum Computing Enthusiast, and Open Source Contributor from Hyderabad. Winner of IIIT Hyderabad × IBM Qiskit Fall Fest 2025."
 		/>
 		<meta
 			name="keywords"
 			content="Srinivas Nampalli, AI Systems Developer, Quantum Computing, BB84, Qiskit, IIT Madras, Hyderabad, Open Source, Multi Agent Systems, Google ADK, Astro.js Portfolio"
 		/>
 
-		<title>Nampalli Srinivas-Techie</title>
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={Astro.url} />
+		<meta property="og:title" content="Srinivas Nampalli | AI Systems Developer & Quantum Enthusiast" />
+		<meta
+			property="og:description"
+			content="AI Systems Developer, Quantum Computing Enthusiast, and Open Source Contributor. Explore my projects and research."
+		/>
+		<meta property="og:image" content="/og-image.jpg" />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={Astro.url} />
+		<meta property="twitter:title" content="Srinivas Nampalli | AI Systems Developer & Quantum Enthusiast" />
+		<meta
+			property="twitter:description"
+			content="AI Systems Developer, Quantum Computing Enthusiast, and Open Source Contributor. Explore my projects and research."
+		/>
+		<meta property="twitter:image" content="/og-image.jpg" />
+
+		<!-- AEO: JSON-LD Structured Data for Person -->
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "Person",
+				"name": "Srinivas Nampalli",
+				"url": "https://srinivas.ai",
+				"image": "https://srinivas.ai/logo.png",
+				"sameAs": [
+					"https://github.com/Srinivas26k",
+					"https://linkedin.com/in/srinivas-nampalli",
+					"https://twitter.com/yourhandle"
+				],
+				"jobTitle": "AI Systems Developer",
+				"worksFor": {
+					"@type": "Organization",
+					"name": "Freelance"
+				},
+				"description": "AI Systems Developer, Quantum Computing Enthusiast, and Open Source Contributor from Hyderabad, India."
+			}
+		</script>
 	</head>
 	<body>
 		<slot />

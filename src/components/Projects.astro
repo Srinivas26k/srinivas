@@ -1,6 +1,10 @@
 ---
 import { Github, Linkedin, Rss, Package, ExternalLink, Globe, Book } from '@lucide/astro';
+import { Image } from 'astro:assets';
 import projects from "../data/projects.json";
+
+// Dynamic import for project images
+const projectImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/projects/*.{jpeg,jpg,png,gif}');
 
 type Link = { type: string; label: string; url: string };
 type Project = {
@@ -85,7 +89,19 @@ const allTags = Array.from(new Set(allProjects.flatMap(p => p.tags))).sort();
                     >
                         <!-- Image Container -->
                         <div class="relative aspect-[4/3] bg-base-300 overflow-hidden">
-                            <img src={p.image} alt={p.title} loading="lazy" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
+                            {p.image.startsWith('http') ? (
+                              <img src={p.image} alt={p.title} loading="lazy" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
+                            ) : (
+                              projectImages[`/src/assets/projects/${p.image}`] ? (
+                                <Image 
+                                  src={projectImages[`/src/assets/projects/${p.image}`]()} 
+                                  alt={p.title} 
+                                  class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" 
+                                />
+                              ) : (
+                                <img src={p.image} alt={p.title} class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
+                              )
+                            )}
                             
                             <!-- Overlay - Shows on hover -->
                             <div class="absolute inset-0 bg-black/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-between overflow-y-auto">
