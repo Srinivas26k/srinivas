@@ -1,38 +1,346 @@
-@import "tailwindcss";
-@plugin "daisyui";
+/* ═════════════════════════════════════════════════════════════════
+   DARK INK DESIGN SYSTEM
+   Srinivas Nampalli Portfolio Redesign
+   Inspired by StringTune scroll-driven visual language
+   ═════════════════════════════════════════════════════════════════ */
 
+:root {
+  /* ─────────────────────────────────────────────────────────────
+     COLOR PALETTE — Dark Ink
+     ───────────────────────────────────────────────────────────── */
 
-@plugin "daisyui/theme" {
-  name: "dracula";
-  default: false;
-  prefersdark: false;
-  color-scheme: "dark";
-  --color-base-100: oklch(28.822% 0.022 277.508);
-  --color-base-200: oklch(26.805% 0.02 277.508);
-  --color-base-300: oklch(24.787% 0.019 277.508);
-  --color-base-content: oklch(97.747% 0.007 106.545);
-  --color-primary: oklch(75.461% 0.183 346.812);
-  --color-primary-content: oklch(15.092% 0.036 346.812);
-  --color-secondary: oklch(74.202% 0.148 301.883);
-  --color-secondary-content: oklch(14.84% 0.029 301.883);
-  --color-accent: oklch(83.392% 0.124 66.558);
-  --color-accent-content: oklch(16.678% 0.024 66.558);
-  --color-neutral: oklch(39.445% 0.032 275.524);
-  --color-neutral-content: oklch(87.889% 0.006 275.524);
-  --color-info: oklch(88.263% 0.093 212.846);
-  --color-info-content: oklch(17.652% 0.018 212.846);
-  --color-success: oklch(87.099% 0.219 148.024);
-  --color-success-content: oklch(17.419% 0.043 148.024);
-  --color-warning: oklch(95.533% 0.134 112.757);
-  --color-warning-content: oklch(19.106% 0.026 112.757);
-  --color-error: oklch(68.22% 0.206 24.43);
-  --color-error-content: oklch(13.644% 0.041 24.43);
-  --radius-selector: 1rem;
-  --radius-field: 0.5rem;
-  --radius-box: 1rem;
-  --size-selector: 0.25rem;
-  --size-field: 0.25rem;
-  --border: 1px;
-  --depth: 1;
-  --noise: 1;
+  /* Backgrounds & Surfaces */
+  --c-void: #0a0a0c;        /* deepest black — page backgrounds */
+  --c-ink: #141417;         /* charcoal — card surfaces */
+  --c-ash: #2a2a30;         /* dark grey — borders, dividers */
+  --c-smoke: #6b6b78;       /* mid grey — secondary text */
+  --c-mist: #c8c4cf;        /* light grey — body text */
+  --c-paper: #f0ece8;       /* warm off-white — headlines, highlights */
+
+  /* Accents */
+  --c-violet: #7c6fa8;      /* muted indigo — primary accent */
+  --c-brush: #4a3f6b;       /* deep indigo — hover, active states */
+  --c-gold: #c4a882;        /* warm gold — highlight, special accent */
+
+  /* Semantic Aliases */
+  --color-bg: var(--c-void);
+  --color-surface: var(--c-ink);
+  --color-border: var(--c-ash);
+  --color-text-secondary: var(--c-smoke);
+  --color-text: var(--c-mist);
+  --color-text-heading: var(--c-paper);
+  --color-accent: var(--c-violet);
+  --color-accent-dark: var(--c-brush);
+  --color-accent-gold: var(--c-gold);
+
+  /* ─────────────────────────────────────────────────────────────
+     TYPOGRAPHY
+     ───────────────────────────────────────────────────────────── */
+
+  /* Font Families */
+  --font-display: ui-serif, system-ui, -apple-system, "Segoe UI", serif;
+  --font-heading: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --font-body: ui-monospace, "Menlo", "Monaco", "Courier New", monospace;
+  --font-mono: ui-monospace, "Menlo", monospace;
+
+  /* Display / Hero */
+  --fs-display: clamp(4rem, 12vw, 14rem);
+  --lh-display: 1.1;
+  --fw-display: 400;
+  --ls-display: -0.02em;
+
+  /* Headings */
+  --fs-h1: clamp(2.5rem, 6vw, 4rem);
+  --fs-h2: clamp(1.875rem, 4vw, 3rem);
+  --fs-h3: clamp(1.5rem, 3vw, 2.25rem);
+  --lh-heading: 1.2;
+  --fw-heading: 300;
+  --ls-heading: 0.02em;
+
+  /* Body Text */
+  --fs-body: 1rem;
+  --lh-body: 1.6;
+  --fw-body: 400;
+
+  /* Secondary / Small Text */
+  --fs-small: 0.875rem;
+  --lh-small: 1.5;
+
+  /* Accent Labels */
+  --fs-label: 0.65rem;
+  --lh-label: 1.4;
+  --fw-label: 500;
+  --ls-label: 0.08em;
+
+  /* ─────────────────────────────────────────────────────────────
+     SPACING & LAYOUT
+     ───────────────────────────────────────────────────────────── */
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+  --space-4xl: 8rem;
+
+  /* ─────────────────────────────────────────────────────────────
+     BORDERS & RADII
+     ───────────────────────────────────────────────────────────── */
+
+  --border-width: 1px;
+  --border-style: solid;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+
+  /* ─────────────────────────────────────────────────────────────
+     TRANSITIONS & MOTION
+     ───────────────────────────────────────────────────────────── */
+
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+  --duration-slow: 500ms;
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ─────────────────────────────────────────────────────────────
+     SCROLLBAR & UI
+     ───────────────────────────────────────────────────────────── */
+
+  color-scheme: dark;
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   RESET & BASE STYLES
+   ═════════════════════════════════════════════════════════════════ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--c-void);
+  color: var(--c-mist);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  font-weight: var(--fw-body);
+  overflow-x: hidden;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   TYPOGRAPHY ELEMENTS
+   ───────────────────────────────────────────────────────────── */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  line-height: var(--lh-heading);
+  font-weight: var(--fw-heading);
+  letter-spacing: var(--ls-heading);
+  color: var(--c-paper);
+}
+
+h1 {
+  font-size: var(--fs-h1);
+  margin-bottom: var(--space-lg);
+}
+
+h2 {
+  font-size: var(--fs-h2);
+  margin-bottom: var(--space-md);
+}
+
+h3 {
+  font-size: var(--fs-h3);
+  margin-bottom: var(--space-md);
+}
+
+p {
+  margin-bottom: var(--space-md);
+}
+
+a {
+  color: var(--c-violet);
+  text-decoration: none;
+  transition: color var(--duration-base) var(--ease-in-out);
+}
+
+a:hover {
+  color: var(--c-gold);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   INK BRUSH TYPOGRAPHY (for display text)
+   ───────────────────────────────────────────────────────────── */
+
+.display {
+  font-family: var(--font-display);
+  font-size: var(--fs-display);
+  font-weight: var(--fw-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  color: var(--c-paper);
+}
+
+.accent-label {
+  font-size: var(--fs-label);
+  font-weight: var(--fw-label);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--c-violet);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   CONTAINERS & CARD SURFACES
+   ───────────────────────────────────────────────────────────── */
+
+.card {
+  background-color: var(--c-ink);
+  border: var(--border-width) var(--border-style) var(--c-ash);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  transition: all var(--duration-base) var(--ease-in-out);
+}
+
+.card:hover {
+  border-color: var(--c-violet);
+  transform: translateY(-4px);
+}
+
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+    padding: 0 var(--space-2xl);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   MOTION PRINCIPLES
+   ───────────────────────────────────────────────────────────── */
+
+/* Ink Dissolve: Fade + Scale transition */
+.ink-dissolve {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity var(--duration-slow) var(--ease-in-out),
+              transform var(--duration-slow) var(--ease-in-out);
+}
+
+.ink-dissolve.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Ink Stroke: Clip-path reveal (left to right) */
+.ink-stroke {
+  position: relative;
+  overflow: hidden;
+}
+
+.ink-stroke::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--c-void);
+  clip-path: inset(0 100% 0 0);
+  pointer-events: none;
+}
+
+.ink-stroke.active::before {
+  clip-path: inset(0 0% 0 0);
+  transition: clip-path var(--duration-slow) var(--ease-in-out);
+}
+
+/* Ink Ripple: Subtle stagger animation on children */
+.ink-ripple > * {
+  animation: ink-ripple-stagger var(--duration-slow) var(--ease-out) both;
+}
+
+@keyframes ink-ripple-stagger {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   UTILITY CLASSES
+   ───────────────────────────────────────────────────────────── */
+
+.text-muted {
+  color: var(--c-smoke);
+}
+
+.text-accent {
+  color: var(--c-violet);
+}
+
+.text-gold {
+  color: var(--c-gold);
+}
+
+.bg-void {
+  background-color: var(--c-void);
+}
+
+.bg-ink {
+  background-color: var(--c-ink);
+}
+
+.border-ash {
+  border-color: var(--c-ash);
+}
+
+.grid-bento {
+  display: grid;
+  gap: var(--space-lg);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+@media (min-width: 768px) {
+  .grid-bento {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   SCROLLBAR STYLING
+   ═════════════════════════════════════════════════════════════════ */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--c-void);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--c-ash);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--c-smoke);
 }

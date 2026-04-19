@@ -1,18 +1,78 @@
-<section class="fixed top-0 left-0 right-0 z-50 bg-black/30 backdrop-blur-md">
-    <div class="flex flex-row items-center justify-between px-6 py-4">
-        <div class="text-white">
-            <a href="#home" class="text-2xl font-bold hover:text-gray-300">SN</a>
-        </div>
-        <div>
-            <nav>
-                <ul class="flex flex-row gap-6 text-white">
-                    <li><a href="#home" class="hover:text-gray-300 cursor-pointer">Home</a></li>
-                    <li><a href="#about" class="hover:text-gray-300 cursor-pointer">About</a></li>
-                    <li><a href="#projects" class="hover:text-gray-300 cursor-pointer">Projects</a></li>
-                    <li><a href="#services" class="hover:text-gray-300 cursor-pointer">Services</a></li>
-                    <li><a href="#contact" class="hover:text-gray-300 cursor-pointer">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </div>
-</section>
+---
+interface Props {
+  hideOnHome?: boolean;
+}
+
+const { hideOnHome = false } = Astro.props;
+---
+
+<header
+  class:list={[
+    "fixed top-0 left-0 right-0 z-50",
+    "bg-void/80 backdrop-blur-md",
+    "border-b border-ash",
+    { "home-header": hideOnHome }
+  ]}
+  style={`
+    transition: opacity var(--duration-base) var(--ease-in-out);
+    padding: var(--space-md) var(--space-lg);
+  `}
+>
+  <nav class="container flex items-center justify-between">
+    <!-- Logo / Monogram -->
+    <a
+      href="/"
+      class="text-lg font-display text-paper hover:text-gold"
+      style="letter-spacing: 0.1em;"
+    >
+      SN
+    </a>
+
+    <!-- Navigation Links -->
+    <ul class="flex items-center gap-6 text-small">
+      <li>
+        <a href="/about" class="text-muted hover:text-accent transition-colors">
+          About
+        </a>
+      </li>
+      <li>
+        <a href="/research" class="text-muted hover:text-accent transition-colors">
+          Research
+        </a>
+      </li>
+      <li>
+        <a href="/projects" class="text-muted hover:text-accent transition-colors">
+          Projects
+        </a>
+      </li>
+      <li>
+        <a href="/services" class="text-muted hover:text-accent transition-colors">
+          Services
+        </a>
+      </li>
+      <li>
+        <a href="/contact" class="text-muted hover:text-accent transition-colors">
+          Contact
+        </a>
+      </li>
+      <li class="ml-2 pl-2 border-l border-ash">
+        <a href="/" class="text-muted hover:text-accent text-lg">
+          →
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<style>
+  header.home-header {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Show header when not on home page or when scrolled past Act 2 */
+  :global(body.scrolled-past-identity) header.home-header {
+    opacity: 1;
+    pointer-events: auto;
+  }
+</style>
