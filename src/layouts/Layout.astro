@@ -41,6 +41,10 @@ import Analytics from '../components/Analytics.astro';
   <Analytics />
 </head>
 <body>
+  <div class="noise-layer" aria-hidden="true"></div>
+  <div class="orb-layer orb-layer--one" aria-hidden="true"></div>
+  <div class="orb-layer orb-layer--two" aria-hidden="true"></div>
+
   <!-- Scroll Progress Indicator -->
   <div id="scroll-progress" aria-hidden="true"></div>
 
@@ -56,7 +60,7 @@ import Analytics from '../components/Analytics.astro';
 
     // ── Lenis Smooth Scroll ──────────────────────────────────────
     const lenis = new Lenis({
-      lerp: 0.08,
+      lerp: 0.075,
       smoothWheel: true,
     });
 
@@ -80,20 +84,47 @@ import Analytics from '../components/Analytics.astro';
     const revealEls = document.querySelectorAll('.reveal');
     revealEls.forEach((el) => {
       gsap.fromTo(el,
-        { opacity: 0, y: 16 },
+        { opacity: 0, y: 22 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.8,
+          duration: 0.9,
           ease: 'expo.out',
           scrollTrigger: {
             trigger: el,
-            start: 'top 88%',
+            start: 'top 86%',
             toggleActions: 'play none none none',
           }
         }
       );
       (el as HTMLElement).style.opacity = '0'; // ensure hidden until triggered
+    });
+
+    // ── Parallax sections ─────────────────────────────────────────
+    document.querySelectorAll('.parallax-slow').forEach((el) => {
+      gsap.to(el, {
+        yPercent: -10,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1,
+        }
+      });
+    });
+
+    document.querySelectorAll('.parallax-fast').forEach((el) => {
+      gsap.to(el, {
+        yPercent: -18,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1,
+        }
+      });
     });
 
     // ── Hero Entry Sequence ──────────────────────────────────────
@@ -108,10 +139,52 @@ import Analytics from '../components/Analytics.astro';
 
     if (heroLabel)   heroTl.fromTo(heroLabel,   { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, ease: 'expo.out' }, 0);
     if (heroName)    heroTl.fromTo(heroName,    { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.75, ease: 'expo.out' }, 0.1);
+    heroTl.fromTo('.hero-script', { opacity: 0, y: 34, rotate: -2 }, { opacity: 1, y: 0, rotate: 0, duration: 0.9, ease: 'expo.out' }, 0.2);
     if (heroRole)    heroTl.fromTo(heroRole,    { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: 'expo.out' }, 0.25);
     if (heroMeta)    heroTl.fromTo(heroMeta,    { opacity: 0 },        { opacity: 1, duration: 0.5, ease: 'none' }, 0.4);
     if (heroActions) heroTl.fromTo(heroActions, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, ease: 'expo.out' }, 0.5);
     if (headerEl)    heroTl.fromTo(headerEl,    { opacity: 0 },        { opacity: 1, duration: 0.4, ease: 'none' }, 0.0);
+
+    // Pin hero briefly for a cinematic opening
+    const heroSection = document.querySelector('#home');
+    if (heroSection) {
+      ScrollTrigger.create({
+        trigger: heroSection,
+        start: 'top top',
+        end: '+=35%',
+        pin: true,
+        scrub: 0.5,
+        pinSpacing: true,
+      });
+      gsap.to('.hero-name', {
+        yPercent: -14,
+        opacity: 0.85,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: heroSection,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1,
+        }
+      });
+    }
+
+    // Stagger project rows when visible
+    gsap.fromTo('.project-entry',
+      { opacity: 0, y: 28 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.85,
+        stagger: 0.08,
+        ease: 'expo.out',
+        scrollTrigger: {
+          trigger: '#work',
+          start: 'top 72%',
+          toggleActions: 'play none none none',
+        }
+      }
+    );
 
     // ── Header scroll-hide behavior ──────────────────────────────
     if (headerEl) {
@@ -144,5 +217,47 @@ import Analytics from '../components/Analytics.astro';
   header {
     transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
     will-change: transform;
+  }
+
+  .noise-layer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.06;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.85) 0.5px, transparent 0.5px);
+    background-size: 3px 3px;
+  }
+
+  .orb-layer {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(90px);
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.12;
+  }
+
+  .orb-layer--one {
+    width: 340px;
+    height: 340px;
+    top: -110px;
+    left: -80px;
+    background: color-mix(in srgb, var(--c-violet) 65%, transparent);
+  }
+
+  .orb-layer--two {
+    width: 300px;
+    height: 300px;
+    right: -90px;
+    bottom: 8vh;
+    background: color-mix(in srgb, var(--c-gold) 50%, transparent);
+  }
+
+  @media (max-width: 768px) {
+    .orb-layer {
+      opacity: 0.09;
+      filter: blur(80px);
+    }
   }
 </style>

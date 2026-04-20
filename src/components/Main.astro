@@ -1,6 +1,9 @@
 ---
 ---
 <section id="home" aria-label="Hero — Identity">
+  <div class="hero-bg-word parallax-slow" aria-hidden="true">Srinivas</div>
+  <div class="hero-bg-rings" aria-hidden="true"></div>
+
   <div class="container hero-layout">
 
     <!-- Top label -->
@@ -10,8 +13,9 @@
 
     <!-- Primary Name -->
     <h1 class="t-hero hero-name" data-hero="name" style="opacity:0">
-      Systems<br/>Engineer.
+      Systems
     </h1>
+    <p class="t-script hero-script parallax-fast" style="opacity:0">Engineer</p>
 
     <!-- Role statement -->
     <p class="hero-role" data-hero="role" style="opacity:0">
@@ -69,8 +73,10 @@
   .hero-layout {
     display: flex;
     flex-direction: column;
-    gap: var(--sp-5);
+    gap: var(--sp-4);
     max-width: 900px;
+    position: relative;
+    z-index: 3;
   }
 
   .hero-label {
@@ -81,15 +87,23 @@
 
   .hero-name {
     /* Override line-height for dramatic effect */
-    line-height: 0.93;
-    margin-top: var(--sp-2);
+    line-height: 0.88;
+    margin-top: var(--sp-1);
+    text-wrap: balance;
+    text-shadow: 0 20px 70px rgba(0, 0, 0, 0.45);
+  }
+
+  .hero-script {
+    margin-top: calc(var(--sp-2) * -1);
+    margin-left: clamp(8px, 3vw, 34px);
+    transform-origin: left center;
   }
 
   .hero-role {
     font-size: clamp(1rem, 2vw, 1.2rem);
     line-height: 1.6;
     color: var(--c-text-secondary);
-    max-width: 560px;
+    max-width: 620px;
     margin-top: var(--sp-1);
   }
 
@@ -107,7 +121,12 @@
     flex-wrap: wrap;
     align-items: center;
     gap: var(--sp-2);
-    margin-top: var(--sp-1);
+    margin-top: var(--sp-2);
+    padding: 12px 14px;
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-md);
+    background: rgba(18, 18, 18, 0.6);
+    backdrop-filter: blur(10px);
   }
 
   .hero-meta-item {
@@ -134,7 +153,7 @@
     display: flex;
     align-items: center;
     gap: var(--sp-4);
-    margin-top: var(--sp-3);
+    margin-top: var(--sp-2);
   }
 
   .btn-primary-text {
@@ -143,11 +162,16 @@
     font-weight: 500;
     color: var(--c-text-primary);
     text-decoration: none;
-    transition: color var(--dur-fast) var(--ease-in-out);
+    transition: color var(--dur-fast) var(--ease-in-out), transform var(--dur-base) var(--ease-out-expo);
+    padding: 11px 16px;
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.02);
   }
 
   .btn-primary-text:hover {
     color: var(--c-white);
+    transform: translateY(-2px);
   }
 
   .btn-secondary-text {
@@ -156,11 +180,42 @@
     letter-spacing: var(--ls-mono);
     color: var(--c-text-mono);
     text-decoration: none;
-    transition: color var(--dur-fast) var(--ease-in-out);
+    transition: color var(--dur-fast) var(--ease-in-out), transform var(--dur-base) var(--ease-out-expo);
+    padding: 11px 16px;
+    border: 1px solid var(--c-border-subtle);
+    border-radius: var(--radius-sm);
   }
 
   .btn-secondary-text:hover {
     color: var(--c-text-secondary);
+    transform: translateY(-2px);
+  }
+
+  .hero-bg-word {
+    position: absolute;
+    top: 44%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: clamp(4.8rem, 19vw, 18rem);
+    letter-spacing: -0.04em;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.06);
+    opacity: 0.33;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 1;
+  }
+
+  .hero-bg-rings {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 75% 25%, rgba(117, 104, 160, 0.16) 0, transparent 34%),
+      radial-gradient(circle at 20% 70%, rgba(181, 154, 111, 0.12) 0, transparent 38%);
+    z-index: 0;
   }
 
   /* Vertical decorative line */
@@ -186,10 +241,32 @@
   }
 
   @media (max-width: 600px) {
+    .hero-script {
+      margin-top: -8px;
+      margin-left: 4px;
+    }
+
     .hero-meta {
       flex-direction: column;
       align-items: flex-start;
     }
     .hero-meta-sep { display: none; }
+
+    .hero-actions {
+      flex-wrap: wrap;
+      gap: var(--sp-2);
+    }
+
+    .btn-primary-text,
+    .btn-secondary-text {
+      width: 100%;
+      text-align: center;
+    }
+
+    .hero-bg-word {
+      font-size: 7.5rem;
+      top: 40%;
+      opacity: 0.24;
+    }
   }
 </style>

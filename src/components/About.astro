@@ -13,7 +13,7 @@
     <div class="about-grid">
 
       <!-- Left: Bio -->
-      <div class="about-bio reveal">
+      <div class="about-bio reveal parallax-slow">
         <p class="about-statement">
           I build systems that think. From quantum key distribution
           protocols to multi-agent AI architectures, my work sits at
@@ -28,7 +28,7 @@
       </div>
 
       <!-- Right: System Manifest (capabilities) -->
-      <div class="about-manifest reveal">
+      <div class="about-manifest reveal surface-card">
         <div class="manifest-block">
           <span class="t-label manifest-heading">Experience</span>
           <ul class="manifest-list">
@@ -128,9 +128,10 @@
   /* Bio */
   .about-statement {
     font-size: clamp(1.05rem, 2vw, 1.2rem);
-    line-height: 1.65;
+    line-height: 1.72;
     color: var(--c-text-secondary);
     letter-spacing: -0.01em;
+    text-wrap: pretty;
   }
 
   .about-statement em {
@@ -139,6 +140,10 @@
   }
 
   /* Manifest */
+  .about-manifest {
+    padding: clamp(18px, 3vw, 28px);
+  }
+
   .manifest-block {}
 
   .manifest-heading {
@@ -161,7 +166,7 @@
     gap: var(--sp-2);
     align-items: baseline;
     padding-bottom: var(--sp-3);
-    border-bottom: 1px solid var(--c-border-subtle);
+    border-bottom: 1px solid var(--c-border);
   }
 
   .manifest-item:last-child {
@@ -226,6 +231,7 @@
     gap: 8px;
     color: var(--c-text-secondary);
     font-size: var(--fs-mono);
+    line-height: 1.5;
   }
 
   .rec-dot {
