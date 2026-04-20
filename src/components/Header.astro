@@ -1,78 +1,107 @@
 ---
-interface Props {
-  hideOnHome?: boolean;
-}
-
-const { hideOnHome = false } = Astro.props;
 ---
-
-<header
-  class:list={[
-    "fixed top-0 left-0 right-0 z-50",
-    "bg-void/80 backdrop-blur-md",
-    "border-b border-ash",
-    { "home-header": hideOnHome }
-  ]}
-  style={`
-    transition: opacity var(--duration-base) var(--ease-in-out);
-    padding: var(--space-md) var(--space-lg);
-  `}
->
-  <nav class="container flex items-center justify-between">
-    <!-- Logo / Monogram -->
-    <a
-      href="/"
-      class="text-lg font-display text-paper hover:text-gold"
-      style="letter-spacing: 0.1em;"
-    >
-      SN
+<header>
+  <div class="container header-inner">
+    <!-- Identity -->
+    <a href="/" class="header-logo" aria-label="Srinivas Nampalli — Home">
+      <span class="logo-name">Srinivas Nampalli</span>
     </a>
 
-    <!-- Navigation Links -->
-    <ul class="flex items-center gap-6 text-small">
-      <li>
-        <a href="/about" class="text-muted hover:text-accent transition-colors">
-          About
-        </a>
-      </li>
-      <li>
-        <a href="/research" class="text-muted hover:text-accent transition-colors">
-          Research
-        </a>
-      </li>
-      <li>
-        <a href="/projects" class="text-muted hover:text-accent transition-colors">
-          Projects
-        </a>
-      </li>
-      <li>
-        <a href="/services" class="text-muted hover:text-accent transition-colors">
-          Services
-        </a>
-      </li>
-      <li>
-        <a href="/contact" class="text-muted hover:text-accent transition-colors">
-          Contact
-        </a>
-      </li>
-      <li class="ml-2 pl-2 border-l border-ash">
-        <a href="/" class="text-muted hover:text-accent text-lg">
-          →
-        </a>
-      </li>
-    </ul>
-  </nav>
+    <!-- Nav -->
+    <nav aria-label="Primary navigation">
+      <ul class="nav-links">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li class="nav-cta">
+          <a href="https://github.com/Srinivas26k" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </header>
 
 <style>
-  header.home-header {
-    opacity: 0;
-    pointer-events: none;
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    opacity: 0; /* initialized by GSAP in Layout */
   }
 
-  /* Show header when not on home page or when scrolled past Act 2 */
-  :global(body.scrolled-past-identity) header.home-header {
-    opacity: 1;
-    pointer-events: auto;
+  header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(9, 9, 9, 0.82);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--c-border-subtle);
+    z-index: -1;
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+
+  .header-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+  }
+
+  .logo-name {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--c-text-primary);
+    transition: color var(--dur-base) var(--ease-in-out);
+  }
+
+  .logo-name:hover {
+    color: var(--c-white);
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-4);
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--font-sans);
+    font-size: var(--fs-small);
+    color: var(--c-text-secondary);
+    text-decoration: none;
+    transition: color var(--dur-fast) var(--ease-in-out);
+  }
+
+  .nav-links a:hover {
+    color: var(--c-text-primary);
+  }
+
+  .nav-cta a {
+    font-family: var(--font-mono);
+    font-size: var(--fs-mono);
+    letter-spacing: var(--ls-mono);
+    color: var(--c-text-mono);
+  }
+
+  .nav-cta a:hover {
+    color: var(--c-text-secondary);
+  }
+
+  @media (max-width: 600px) {
+    .nav-links li:not(.nav-cta):not(:last-of-type:not(.nav-cta)) {
+      display: none;
+    }
   }
 </style>

@@ -1,261 +1,248 @@
 ---
-import { Github, Linkedin, Rss, Package, Briefcase, GraduationCap, Award } from '@lucide/astro';
-import { Image, getImage } from 'astro:assets';
-import aboutData from "../data/about.json";
-
-// Import local images for optimization
-import designingImgRaw from '../assets/designing.jpg';
-import iitmImg from '../assets/education/iitm.png';
-import iitrprImg from '../assets/education/iitrpr.png';
-import fordImg from '../assets/experience/ford.png';
-import geImg from '../assets/experience/ge.png';
-import iitrpseImg from '../assets/experience/iitrps-e.png';
-import qiskitImg from '../assets/achievements/qiskit.png';
-import gssocImg from '../assets/achievements/gssoc-dash.png';
-import hfImg from '../assets/achievements/hf.png';
-
-const optimizedDesigningImg = await getImage({src: designingImgRaw, format: 'webp', width: 1920, quality: 80});
-
-type Platform = {
-  id: string;
-  title: string;
-  description: string;
-  icon: string;
-  image: string | null;
-  borderColor: string;
-};
-
-type Experience = {
-  role: string;
-  organization: string;
-  period: string;
-  description: string;
-};
-
-type SocialLink = {
-  type: string;
-  label: string;
-  url: string;
-  color: string;
-  };
-
-const data = aboutData as {
-  title: string;
-  introduction: string;
-  education: {
-    degree: string;
-    institution: string;
-    status: string;
-    minor: string;
-  };
-  achievements: string[];
-  experience: Experience[];
-  overview: string;
-  platforms: Platform[];
-  socialLinks: SocialLink[];
-};
-
-// Icon component mapping
-const iconMap: Record<string, any> = {
-  github: Github,
-  linkedin: Linkedin,
-  medium: Rss,
-  huggingface: Package,
-};
 ---
+<section id="about" aria-label="About Srinivas Nampalli">
+  <div class="container">
 
-<section
-  id="about"
-  class="carousel-item relative w-screen h-screen overflow-hidden"
->
-  <!-- Background Image -->
-  <div
-    class="absolute inset-0 bg-fixed bg-center bg-cover bg-no-repeat"
-    style={`background-image: url('${optimizedDesigningImg.src}');`}
-    aria-hidden="true"
-  ></div>
-  
-  <!-- Dark overlay -->
-  <div
-    class="absolute inset-0 bg-black/40 backdrop-blur-sm"
-    aria-hidden="true"
-  ></div>
+    <!-- Section header -->
+    <div class="section-header reveal">
+      <span class="t-label">About</span>
+      <div class="divider" style="margin-top: var(--sp-3)"></div>
+    </div>
 
-  <!-- Scrollable content container -->
-  <div class="relative z-10 w-full h-full overflow-y-auto scroll-smooth">
-    <div class="px-6 py-12 max-w-7xl mx-auto">
-      
-      <!-- Header -->
-      <h1 class="text-white text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-center mb-3 pt-6">
-        {data.title}
-      </h1>
-      
-      <!-- Introduction Paragraph -->
-      <div class="max-w-4xl mx-auto text-center mb-12">
-        <p class="text-base sm:text-lg text-white/90 leading-relaxed font-light">
-          {data.introduction}
+    <!-- Two-column layout -->
+    <div class="about-grid">
+
+      <!-- Left: Bio -->
+      <div class="about-bio reveal">
+        <p class="about-statement">
+          I build systems that think. From quantum key distribution
+          protocols to multi-agent AI architectures, my work sits at
+          the boundary of <em>engineering discipline</em> and
+          <em>computational intelligence</em>.
+        </p>
+        <p class="t-small" style="margin-top: var(--sp-4)">
+          Currently pursuing B.S. in Data Science & AI Applications at
+          IIT Madras, with a completed Minor in Artificial Intelligence
+          from IIT Ropar.
         </p>
       </div>
 
-      <!-- Divider Line -->
-      <div class="w-full h-px bg-white/30 mb-12"></div>
-
-      <!-- Three Column Stats with Hover Gallery -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-12">
-        
-        <!-- Education Card with Hover Gallery -->
-        <div class="card bg-black/40 backdrop-blur-md border border-white/20 shadow-xl hover:shadow-2xl transition-all">
-          <figure class="hover-gallery">
-            <Image src={iitmImg} alt="IIT Madras" class="w-full h-48 object-cover" />
-            <Image src={iitrprImg} alt="IIT Ropar" class="w-full h-48 object-cover" />
-          </figure>
-          <div class="card-body text-center p-6">
-            <div class="flex justify-center mb-3">
-              <GraduationCap size={32} class="text-primary" />
-            </div>
-            <h3 class="card-title justify-center text-lg font-bold text-white mb-2">Education</h3>
-            <p class="text-sm text-white/80">{data.education.degree}</p>
-            <p class="text-xs text-white/60 mt-1">{data.education.institution}</p>
-            <p class="text-xs text-accent mt-2">{data.education.minor}</p>
-          </div>
+      <!-- Right: System Manifest (capabilities) -->
+      <div class="about-manifest reveal">
+        <div class="manifest-block">
+          <span class="t-label manifest-heading">Experience</span>
+          <ul class="manifest-list">
+            <li class="manifest-item">
+              <span class="t-mono item-role">Project Intern</span>
+              <span class="t-mono item-org">Ford Motor Company (EV Engineering)</span>
+              <span class="t-mono item-period">Apr – May 2024</span>
+            </li>
+            <li class="manifest-item">
+              <span class="t-mono item-role">Aerospace Engineering Intern</span>
+              <span class="t-mono item-org">GE Aerospace</span>
+              <span class="t-mono item-period">Oct – Nov 2023</span>
+            </li>
+            <li class="manifest-item">
+              <span class="t-mono item-role">Defense Technology Intern</span>
+              <span class="t-mono item-org">DRDO (DRDL)</span>
+              <span class="t-mono item-period">Jun – Nov 2022</span>
+            </li>
+            <li class="manifest-item">
+              <span class="t-mono item-role">Executive Assistant</span>
+              <span class="t-mono item-org">Lab of Education Design, IIT Ropar</span>
+              <span class="t-mono item-period">Mar – May 2025</span>
+            </li>
+            <li class="manifest-item">
+              <span class="t-mono item-role">Freelance Consultant</span>
+              <span class="t-mono item-org">Self-Employed</span>
+              <span class="t-mono item-period">Jan 2024 – Present</span>
+            </li>
+          </ul>
         </div>
-        
-        <!-- Experience Card with Hover Gallery -->
-        <div class="card bg-black/40 backdrop-blur-md border border-white/20 shadow-xl hover:shadow-2xl transition-all">
-          <figure class="hover-gallery">
-            <Image src={fordImg} alt="Ford Motor Company" class="w-full h-48 object-cover bg-white/10 p-4" />
-            <Image src={geImg} alt="GE Aerospace" class="w-full h-48 object-cover bg-white/10 p-4" />
-            <Image src={iitrpseImg} alt="IIT Ropar Lab" class="w-full h-48 object-cover bg-white/10 p-4" />
-          </figure>
-          <div class="card-body text-center p-6">
-            <div class="flex justify-center mb-3">
-              <Briefcase size={32} class="text-secondary" />
+
+        <div class="manifest-block" style="margin-top: var(--sp-6)">
+          <span class="t-label manifest-heading">Stack</span>
+          <div class="stack-grid">
+            <div class="stack-group">
+              <span class="t-mono stack-category">AI / ML</span>
+              <span class="t-mono stack-items">LangChain · LangGraph · Google ADK · Qiskit · TensorFlow</span>
             </div>
-            <h3 class="card-title justify-center text-lg font-bold text-white mb-2">Experience</h3>
-            <p class="text-sm text-white/80">Ford • GE Aerospace • DRDO</p>
-            <p class="text-xs text-white/60 mt-1">5+ Industry Internships</p>
-            <p class="text-xs text-accent mt-2">AI • Mechanical • Quantum</p>
-          </div>
-        </div>
-        
-        <!-- Achievements Card with Hover Gallery -->
-        <div class="card bg-black/40 backdrop-blur-md border border-white/20 shadow-xl hover:shadow-2xl transition-all">
-          <figure class="hover-gallery">
-            <Image src={qiskitImg} alt="Qiskit Fall Fest Winner" class="w-full h-48 object-cover" />
-            <Image src={gssocImg} alt="GSSoC Rank" class="w-full h-48 object-cover" />
-            <Image src={hfImg} alt="HuggingFace Downloads" class="w-full h-48 object-cover" />
-          </figure>
-          <div class="card-body text-center p-6">
-            <div class="flex justify-center mb-3">
-              <Award size={32} class="text-accent" />
+            <div class="stack-group">
+              <span class="t-mono stack-category">Systems</span>
+              <span class="t-mono stack-items">Python · FastAPI · Streamlit · Zoom OAuth · Whisper</span>
             </div>
-            <h3 class="card-title justify-center text-lg font-bold text-white mb-2">Recognition</h3>
-            <p class="text-sm text-white/80">Qiskit Fest Winner</p>
-            <p class="text-xs text-white/60 mt-1">GSSoC Top 10%</p>
-            <p class="text-xs text-accent mt-2">1K+ Dataset Downloads</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Divider Line -->
-      <div class="w-full h-px bg-white/30 mb-12"></div>
-
-      <!-- Professional Experience Timeline -->
-      <div class="max-w-4xl mx-auto mb-12">
-        <h2 class="text-white text-3xl sm:text-4xl font-extrabold text-center mb-8">Professional Experience</h2>
-        <div class="space-y-4">
-          {data.experience.map((exp, index) => (
-            <div class="card bg-black/40 backdrop-blur-md border border-white/20 shadow-md hover:border-primary/50 hover:shadow-xl transition-all">
-              <div class="card-body p-6">
-                <div class="flex items-start justify-between gap-4 mb-2">
-                  <div>
-                    <h3 class="text-lg font-bold text-white">{exp.role}</h3>
-                    <p class="text-sm text-primary">{exp.organization}</p>
-                  </div>
-                  <span class="badge badge-outline badge-sm text-white/60 whitespace-nowrap">{exp.period}</span>
-                </div>
-                <p class="text-sm text-white/80 leading-relaxed">{exp.description}</p>
-              </div>
+            <div class="stack-group">
+              <span class="t-mono stack-category">Engineering</span>
+              <span class="t-mono stack-items">CAD/CAM · FEA · Thermal Analysis · CNC Manufacturing</span>
             </div>
-          ))}
-        </div>
-      </div>
-
-      <!-- Divider Line -->
-      <div class="w-full h-px bg-white/30 mb-12"></div>
-
-      <!-- Platforms Section -->
-      <h2 class="text-white text-3xl sm:text-4xl lg:text-5xl font-extrabold text-center mb-4">
-        Expertise & Platforms
-      </h2>
-      
-      <p class="text-center text-base sm:text-lg text-white/90 mb-10 max-w-4xl mx-auto">
-        {data.overview}
-      </p>
-
-      <!-- Platform Cards Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-12">
-        {data.platforms.map(platform => (
-          <div class={`card bg-black/40 backdrop-blur-md border border-white/20 shadow-md hover:border-${platform.borderColor}/50 hover:shadow-xl transition-all hover:scale-105`}>
-            <figure class="px-6 pt-6">
-              {platform.image ? (
-                <img src={platform.image} alt={platform.title} loading="lazy" class="rounded-lg w-full h-32 object-cover" />
-              ) : (
-                <div class={`rounded-lg w-full h-32 bg-gradient-to-br from-${platform.borderColor}/20 to-primary/20 flex items-center justify-center`}>
-                  <span class="text-5xl">{platform.icon}</span>
-                </div>
-              )}
-            </figure>
-            <div class="card-body items-center text-center p-6">
-              <h3 class="card-title text-xl font-bold text-white mb-2">{platform.title}</h3>
-              <p class="text-sm text-white/80">
-                {platform.description}
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <!-- Achievements Section -->
-      <div class="max-w-4xl mx-auto mb-12">
-        <h2 class="text-white text-3xl font-bold text-center mb-6">Key Achievements</h2>
-        <div class="card bg-gradient-to-r from-primary/20 via-secondary/20 to-accent/20 backdrop-blur-md border border-white/20 shadow-xl">
-          <div class="card-body p-8">
-            <div class="space-y-3">
-              {data.achievements.map(achievement => (
-                <div class="flex items-start gap-3">
-                  <Award size={20} class="text-accent mt-1 flex-shrink-0" />
-                  <p class="text-white/90">{achievement}</p>
-                </div>
-              ))}
+            <div class="stack-group">
+              <span class="t-mono stack-category">Web</span>
+              <span class="t-mono stack-items">Astro · React · Tailwind · TypeScript</span>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Social Links Section -->
-      <div class="pt-8 border-t border-white/30 max-w-4xl mx-auto">
-        <h3 class="text-xl font-bold text-info mb-4 flex items-center gap-2 justify-center">
-          <span>🌐</span> Connect With Me
-        </h3>
-        <div class="flex flex-wrap gap-4 justify-center">
-          {data.socialLinks.map(link => {
-            const Icon = iconMap[link.type];
-            return (
-              <a
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class={`btn btn-outline btn-${link.color} gap-2`}
-              >
-                {Icon && <Icon size={20} />}
-                {link.label}
-              </a>
-            );
-          })}
+        <div class="manifest-block" style="margin-top: var(--sp-6)">
+          <span class="t-label manifest-heading">Recognition</span>
+          <ul class="recognition-list">
+            <li class="t-mono recognition-item">
+              <span class="rec-dot" aria-hidden="true"></span>
+              Winner — IIIT Hyderabad × IBM Qiskit Fall Fest 2025
+            </li>
+            <li class="t-mono recognition-item">
+              <span class="rec-dot" aria-hidden="true"></span>
+              Top 8.2% — GirlScript Summer of Code 2025 (Rank #245)
+            </li>
+            <li class="t-mono recognition-item">
+              <span class="rec-dot" aria-hidden="true"></span>
+              1,000+ Downloads — 4 AI Datasets on HuggingFace
+            </li>
+          </ul>
         </div>
       </div>
 
     </div>
   </div>
 </section>
+
+<style>
+  .section-header {
+    margin-bottom: var(--sp-8);
+  }
+
+  /* About grid */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: clamp(40px, 6vw, 96px);
+    align-items: start;
+  }
+
+  @media (max-width: 768px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: var(--sp-8);
+    }
+  }
+
+  /* Bio */
+  .about-statement {
+    font-size: clamp(1.05rem, 2vw, 1.2rem);
+    line-height: 1.65;
+    color: var(--c-text-secondary);
+    letter-spacing: -0.01em;
+  }
+
+  .about-statement em {
+    font-style: normal;
+    color: var(--c-text-primary);
+  }
+
+  /* Manifest */
+  .manifest-block {}
+
+  .manifest-heading {
+    display: block;
+    margin-bottom: var(--sp-3);
+    color: var(--c-text-faint);
+  }
+
+  /* Experience list */
+  .manifest-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+  }
+
+  .manifest-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: var(--sp-2);
+    align-items: baseline;
+    padding-bottom: var(--sp-3);
+    border-bottom: 1px solid var(--c-border-subtle);
+  }
+
+  .manifest-item:last-child {
+    border-bottom: none;
+  }
+
+  .item-role {
+    color: var(--c-text-secondary);
+    font-size: var(--fs-mono);
+    white-space: nowrap;
+  }
+
+  .item-org {
+    color: var(--c-text-faint);
+    font-size: var(--fs-mono);
+    text-align: center;
+  }
+
+  .item-period {
+    color: var(--c-text-faint);
+    font-size: 0.7rem;
+    white-space: nowrap;
+    text-align: right;
+  }
+
+  /* Stack */
+  .stack-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-2);
+  }
+
+  .stack-group {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: var(--sp-2);
+    align-items: baseline;
+  }
+
+  .stack-category {
+    color: var(--c-text-faint);
+    font-size: 0.7rem;
+  }
+
+  .stack-items {
+    color: var(--c-text-secondary);
+    font-size: var(--fs-mono);
+    line-height: 1.5;
+  }
+
+  /* Recognition */
+  .recognition-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-2);
+  }
+
+  .recognition-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--c-text-secondary);
+    font-size: var(--fs-mono);
+  }
+
+  .rec-dot {
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: var(--c-text-faint);
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 640px) {
+    .manifest-item {
+      grid-template-columns: 1fr;
+      gap: 4px;
+    }
+    .item-period { text-align: left; }
+    .item-org { text-align: left; }
+  }
+</style>

@@ -1,297 +1,412 @@
 ---
-import { Github, Linkedin, Rss, Package, ExternalLink, Globe, Book } from '@lucide/astro';
-import { Image } from 'astro:assets';
 import projects from "../data/projects.json";
-
-// Dynamic import for project images
-const projectImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/projects/*.{jpeg,jpg,png,gif}');
 
 type Link = { type: string; label: string; url: string };
 type Project = {
-    id: string;
-    title: string;
-    description: string;
-    image: string;
-    gallery?: string[];
-    tags: string[];
-    links?: Link[];
-    year?: number;
-    featured?: boolean;
-    period?: string;
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+  links?: Link[];
+  year?: number;
+  featured?: boolean;
+  period?: string;
 };
 
 const allProjects = (projects as Project[]);
-const allTags = Array.from(new Set(allProjects.flatMap(p => p.tags))).sort();
+// Featured first, then by year descending
+const sorted = [...allProjects].sort((a, b) => {
+  if (a.featured && !b.featured) return -1;
+  if (!a.featured && b.featured) return 1;
+  return (b.year ?? 0) - (a.year ?? 0);
+});
+
+// Separate featured (primary) from the rest (archive)
+const primary = sorted.filter(p => p.featured);
+const archive = sorted.filter(p => !p.featured);
+
+// Architecture logic: define what each featured project "did" as a system
+const architectureMap: Record<string, { objective: string; architecture: string; outcome: string }> = {
+  "market-trend-agents": {
+    objective: "Real-time market intelligence via coordinated agent networks.",
+    architecture: "Retriever → Planner → Reasoning agents with shared memory (LangGraph + Google ADK).",
+    outcome: "Adaptive trend forecasts from live market data streams."
+  },
+  "quantum-bb84-sim": {
+    objective: "Implement and validate a production-grade quantum key distribution system.",
+    architecture: "BB84 protocol → Qiskit simulation → Eavesdrop detection via no-cloning theorem.",
+    outcome: "25.1% key generation efficiency. Winner — Qiskit Fall Fest 2025."
+  },
+  "llm-dataset-suite": {
+    objective: "Build scalable fine-tuning corpora for domain-specific LLMs.",
+    architecture: "Web scraping → Structured metadata → Prompt-response pairs → Augmentation pipeline.",
+    outcome: "4 datasets published. 1,000+ downloads on HuggingFace."
+  },
+  "annam-ai-rag-scraper": {
+    objective: "Automated data pipeline for Retrieval-Augmented Generation systems.",
+    architecture: "Recursive crawler → Multi-format extraction → Structured RAG metadata export.",
+    outcome: "Base64 ZIP export with PDF text extraction for LLM training pipelines."
+  },
+  "ayurleaf-healthcare": {
+    objective: "Open-source AI health recommendation platform.",
+    architecture: "Full-stack bug fixes → UI modules → AI health logic optimization.",
+    outcome: "GSSoC 2025 contributions improving analytics dashboard performance."
+  },
+  "pustak-ghar": {
+    objective: "Accessible study resource platform for university students.",
+    architecture: "Responsive UI → Branch-wise content filters → Optimized navigation.",
+    outcome: "Reduced friction for PYQ access across engineering branches."
+  },
+};
 ---
 
-<section id="projects" class="carousel-item relative w-screen h-screen overflow-hidden">
-    <!-- Background Image -->
-    <div
-        class="absolute inset-0 bg-fixed bg-center bg-cover bg-no-repeat"
-        style="background-image: url('https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1920');"
-        aria-hidden="true"
-    ></div>
-    
-    <!-- Dark overlay -->
-    <div
-        class="absolute inset-0 bg-black/50 backdrop-blur-sm"
-        aria-hidden="true"
-    ></div>
+<section id="work" aria-label="Selected Work">
+  <div class="container">
 
-    <!-- Content wrapper -->
-    <div class="relative z-10 w-full h-full overflow-y-auto scroll-smooth">
-        <div class="px-6 py-12 max-w-7xl mx-auto">
-            <h1 class="text-white text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-center mb-2 pt-6">
-                Projects
-            </h1>
-            <p class="text-center text-base sm:text-lg text-white/80 mb-8">Browse selected work. Use search and tags to filter. Everything is static and loads instantly.</p>
-
-            <!-- Search and Filters -->
-            <div class="bg-black/30 backdrop-blur-md border border-white/10 rounded-xl p-4 mb-6">
-                <div class="flex flex-col gap-3">
-                    <div class="join w-full">
-                        <input id="project-search" class="input input-bordered join-item w-full bg-base-300/50 text-white" placeholder="Search by title, description, tags, or link labels" />
-                        <button id="clear-search" class="btn btn-ghost join-item">Clear</button>
-                    </div>
-
-                    <div class="flex flex-wrap gap-2 items-center">
-                        <span class="text-sm text-white/60">Filter tags:</span>
-                        {allTags.map(tag => (
-                            <button class="btn btn-xs md:btn-sm btn-outline tag-filter-btn" data-tag={tag}>{tag}</button>
-                        ))}
-                        <button class="btn btn-xs md:btn-sm" id="clear-tags">Reset</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Results meta -->
-            <div class="flex items-center justify-between text-white/70 text-sm mb-4">
-                <div><span id="results-count">{allProjects.length}</span> items</div>
-                <div class="flex items-center gap-2">
-                    <label class="label cursor-pointer gap-2 text-white/70">
-                        <span class="label-text">Featured first</span>
-                        <input type="checkbox" class="toggle toggle-primary toggle-sm" id="sort-featured" checked />
-                    </label>
-                </div>
-            </div>
-
-            <!-- Grid -->
-            <div id="projects-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-                {allProjects.map(p => (
-                    <article 
-                        class="project-card group relative bg-base-200/30 border border-white/10 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all cursor-pointer" 
-                        data-project-id={p.id} 
-                        data-tags={p.tags.join(",")} 
-                        data-title={p.title.toLowerCase()} 
-                        data-description={p.description.toLowerCase()}
-                        data-link-labels={(p.links || []).map(l => `${l.type} ${l.label}`.toLowerCase()).join(" ")}
-                        data-featured={p.featured ? "true" : "false"}
-                    >
-                        <!-- Image Container -->
-                        <div class="relative aspect-[4/3] bg-base-300 overflow-hidden">
-                            {p.image.startsWith('http') ? (
-                              <img src={p.image} alt={p.title} loading="lazy" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
-                            ) : (
-                              projectImages[`/src/assets/projects/${p.image}`] ? (
-                                <Image 
-                                  src={projectImages[`/src/assets/projects/${p.image}`]()} 
-                                  alt={p.title} 
-                                  class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" 
-                                />
-                              ) : (
-                                <img src={p.image} alt={p.title} class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
-                              )
-                            )}
-                            
-                            <!-- Overlay - Shows on hover -->
-                            <div class="absolute inset-0 bg-black/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-between overflow-y-auto">
-                                <!-- Top Section: Title + Period/Year -->
-                                <div>
-                                    <h3 class="text-xl font-bold text-white mb-2">{p.title}</h3>
-                                    {p.period && (
-                                        <p class="text-xs text-primary mb-3">{p.period}</p>
-                                    )}
-                                    {!p.period && p.year && (
-                                        <p class="text-xs text-primary mb-3">{p.year}</p>
-                                    )}
-                                    <p class="text-sm text-white/90 leading-relaxed">{p.description}</p>
-                                </div>
-
-                                <!-- Bottom Section: Links -->
-                                {p.links && p.links.length > 0 && (
-                                    <div class="mt-4 flex flex-wrap gap-2">
-                                        {p.links.map(link => (
-                                            <a 
-                                                href={link.url} 
-                                                target="_blank" 
-                                                rel="noopener noreferrer" 
-                                                class="btn btn-xs btn-outline btn-primary gap-1 hover:btn-primary"
-                                                onclick="event.stopPropagation()"
-                                            >
-                                                {link.type === 'github' && (<Github size={14} />)}
-                                                {link.type === 'linkedin' && (<Linkedin size={14} />)}
-                                                {link.type === 'medium' && (<Rss size={14} />)}
-                                                {link.type === 'huggingface' && (<Package size={14} />)}
-                                                {link.type === 'docs' && (<Book size={14} />)}
-                                                {link.type === 'demo' && (<Globe size={14} />)}
-                                                {link.type !== 'github' && link.type !== 'linkedin' && link.type !== 'medium' && link.type !== 'huggingface' && link.type !== 'docs' && link.type !== 'demo' && (<ExternalLink size={14} />)}
-                                                <span>{link.label}</span>
-                                            </a>
-                                        ))}
-                                    </div>
-                                )}
-                            </div>
-                        </div>
-
-                        <!-- Bottom Bar: Title + Tags (Always visible) -->
-                        <div class="p-4 bg-base-200/50 backdrop-blur-sm">
-                            <div class="flex items-start justify-between gap-2 mb-2">
-                                <h3 class="text-base font-semibold text-white/90 line-clamp-1">{p.title}</h3>
-                                {p.featured && <span class="badge badge-primary badge-sm flex-shrink-0">Featured</span>}
-                            </div>
-                            <div class="flex flex-wrap gap-2">
-                                {p.tags.slice(0, 3).map(t => <span class="badge badge-outline badge-xs">{t}</span>)}
-                                {p.tags.length > 3 && <span class="badge badge-outline badge-xs">+{p.tags.length - 3}</span>}
-                            </div>
-                        </div>
-                    </article>
-                ))}
-            </div>
-
-            <div id="no-results" class="hidden text-center text-white/70 py-12">
-                <div class="text-6xl mb-4">🔍</div>
-                <p class="text-xl">No projects match your filters.</p>
-            </div>
-        </div>
+    <!-- Section header -->
+    <div class="section-header reveal">
+      <span class="t-label">Selected Work</span>
+      <div class="divider" style="margin-top: var(--sp-3)"></div>
     </div>
 
-    <!-- Client-side filtering logic -->
-    <script>
-        // State management
-        const state = {
-            query: '',
-            tags: new Set<string>(),
-            featuredFirst: true,
-        };
+    <!-- Primary Projects -->
+    <div class="projects-list">
+      {primary.map((p, i) => {
+        const arch = architectureMap[p.id];
+        const year = p.period ?? p.year ?? '';
+        const primaryLink = p.links?.[0];
+        return (
+          <article class="project-entry reveal" data-index={i}>
+            <div class="project-entry-inner">
 
-        // DOM elements
-        const grid = document.getElementById('projects-grid');
-        const searchInput = document.getElementById('project-search') as HTMLInputElement;
-        const clearSearchBtn = document.getElementById('clear-search');
-        const resultsCount = document.getElementById('results-count');
-        const noResults = document.getElementById('no-results');
-        const sortFeaturedEl = document.getElementById('sort-featured') as HTMLInputElement;
-        const clearTagsBtn = document.getElementById('clear-tags');
-        const tagButtons = document.querySelectorAll('.tag-filter-btn');
+              <!-- Left: Index + year -->
+              <div class="project-meta-left">
+                <span class="t-mono project-index">{String(i + 1).padStart(2, '0')}</span>
+                <span class="t-mono project-year">{year}</span>
+              </div>
 
-        // Simple fuzzy search function
-        function fuzzyMatch(text: string, query: string): boolean {
-            if (!query) return true;
-            text = text.toLowerCase();
-            query = query.toLowerCase();
-            
-            // Exact substring match
-            if (text.includes(query)) return true;
-            
-            // Word-by-word match
-            const queryWords = query.split(/\s+/);
-            return queryWords.every(word => text.includes(word));
-        }
+              <!-- Center: Content -->
+              <div class="project-content">
+                <div class="project-top-row">
+                  <h3 class="project-title">{p.title}</h3>
+                  {primaryLink && (
+                    <a
+                      href={primaryLink.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="project-link t-mono"
+                      aria-label={`Open ${p.title}`}
+                    >
+                      ↗
+                    </a>
+                  )}
+                </div>
 
-        // Apply all filters
-        function applyFilters() {
-            const cards = Array.from(document.querySelectorAll('.project-card')) as HTMLElement[];
-            let visibleCount = 0;
+                <p class="project-description t-small">{p.description}</p>
 
-            cards.forEach(card => {
-                const title = card.getAttribute('data-title') || '';
-                const description = card.getAttribute('data-description') || '';
-                const tags = card.getAttribute('data-tags') || '';
-                const linkLabels = card.getAttribute('data-link-labels') || '';
-                const cardTags = tags.split(',').filter(t => t);
+                <!-- Architecture Manifest (system thinking layer) -->
+                {arch && (
+                  <div class="arch-manifest">
+                    <div class="arch-row">
+                      <span class="arch-key t-label">Objective</span>
+                      <span class="arch-val t-mono">{arch.objective}</span>
+                    </div>
+                    <div class="arch-row">
+                      <span class="arch-key t-label">Architecture</span>
+                      <span class="arch-val t-mono">{arch.architecture}</span>
+                    </div>
+                    <div class="arch-row">
+                      <span class="arch-key t-label">Outcome</span>
+                      <span class="arch-val t-mono">{arch.outcome}</span>
+                    </div>
+                  </div>
+                )}
 
-                // Search filter
-                const searchText = `${title} ${description} ${tags} ${linkLabels}`;
-                const matchesSearch = fuzzyMatch(searchText, state.query);
+                <!-- Tags -->
+                <div class="project-tags">
+                  {p.tags.map(tag => (
+                    <span class="tag t-label">{tag}</span>
+                  ))}
+                </div>
 
-                // Tag filter
-                const requiredTags = Array.from(state.tags);
-                const matchesTags = requiredTags.length === 0 || 
-                                   requiredTags.every(tag => cardTags.includes(tag));
+                <!-- All Links -->
+                {p.links && p.links.length > 0 && (
+                  <div class="project-links">
+                    {p.links.map(link => (
+                      <a
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="t-mono project-link-item"
+                      >
+                        {link.label} ↗
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+            <div class="divider" style="margin-top: var(--sp-6)"></div>
+          </article>
+        );
+      })}
+    </div>
 
-                // Show/hide card
-                const shouldShow = matchesSearch && matchesTags;
-                card.classList.toggle('hidden', !shouldShow);
-                if (shouldShow) visibleCount++;
-            });
+    <!-- Archive (non-featured) -->
+    {archive.length > 0 && (
+      <div class="archive-section reveal">
+        <div class="archive-header">
+          <span class="t-label">Archive</span>
+        </div>
+        <div class="archive-grid">
+          {archive.map((p) => {
+            const primaryLink = p.links?.[0];
+            return (
+              <div class="archive-item">
+                <div class="archive-top">
+                  <span class="t-mono archive-year">{p.year}</span>
+                  {primaryLink && (
+                    <a
+                      href={primaryLink.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="archive-link t-mono"
+                    >↗</a>
+                  )}
+                </div>
+                <h4 class="archive-title">{p.title}</h4>
+                <div class="project-tags" style="margin-top: var(--sp-2)">
+                  {p.tags.slice(0, 3).map(tag => (
+                    <span class="tag t-label">{tag}</span>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    )}
 
-            // Sort by featured
-            if (state.featuredFirst) {
-                const sortedCards = cards
-                    .filter(card => !card.classList.contains('hidden'))
-                    .sort((a, b) => {
-                        const aFeatured = a.getAttribute('data-featured') === 'true';
-                        const bFeatured = b.getAttribute('data-featured') === 'true';
-                        return (bFeatured ? 1 : 0) - (aFeatured ? 1 : 0);
-                    });
-                
-                sortedCards.forEach(card => grid?.appendChild(card));
-            }
-
-            // Update UI
-            if (resultsCount) resultsCount.textContent = String(visibleCount);
-            noResults?.classList.toggle('hidden', visibleCount > 0);
-        }
-
-        // Tag button interactions
-        tagButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const tag = btn.getAttribute('data-tag');
-                if (!tag) return;
-
-                if (state.tags.has(tag)) {
-                    state.tags.delete(tag);
-                    btn.classList.remove('btn-primary');
-                    btn.classList.add('btn-outline');
-                } else {
-                    state.tags.add(tag);
-                    btn.classList.add('btn-primary');
-                    btn.classList.remove('btn-outline');
-                }
-                applyFilters();
-            });
-        });
-
-        // Clear tags
-        clearTagsBtn?.addEventListener('click', () => {
-            state.tags.clear();
-            tagButtons.forEach(btn => {
-                btn.classList.add('btn-outline');
-                btn.classList.remove('btn-primary');
-            });
-            applyFilters();
-        });
-
-        // Search input
-        searchInput?.addEventListener('input', (e) => {
-            state.query = (e.target as HTMLInputElement).value || '';
-            applyFilters();
-        });
-
-        // Clear search
-        clearSearchBtn?.addEventListener('click', () => {
-            if (searchInput) searchInput.value = '';
-            state.query = '';
-            applyFilters();
-        });
-
-        // Sort toggle
-        sortFeaturedEl?.addEventListener('change', () => {
-            state.featuredFirst = sortFeaturedEl.checked;
-            applyFilters();
-        });
-
-        // Initial render
-        applyFilters();
-    </script>
+  </div>
 </section>
+
+<style>
+  /* Section header */
+  .section-header {
+    margin-bottom: var(--sp-8);
+  }
+
+  /* Project entry list */
+  .projects-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-entry {
+    padding-top: var(--sp-6);
+  }
+
+  .project-entry-inner {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: var(--sp-6);
+    align-items: start;
+  }
+
+  /* Left meta column */
+  .project-meta-left {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-1);
+    padding-top: 4px;
+  }
+
+  .project-index {
+    font-size: 0.7rem;
+    color: var(--c-text-faint);
+  }
+
+  .project-year {
+    font-size: 0.7rem;
+    color: var(--c-text-faint);
+  }
+
+  /* Content area */
+  .project-top-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--sp-3);
+    margin-bottom: var(--sp-3);
+  }
+
+  .project-title {
+    font-family: var(--font-sans);
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    line-height: 1.3;
+    color: var(--c-text-primary);
+    max-width: 600px;
+  }
+
+  .project-link {
+    flex-shrink: 0;
+    color: var(--c-text-faint);
+    font-size: 1rem;
+    text-decoration: none;
+    transition: color var(--dur-fast) var(--ease-in-out);
+    margin-top: 2px;
+  }
+
+  .project-link:hover {
+    color: var(--c-text-primary);
+  }
+
+  .project-description {
+    max-width: 640px;
+    margin-bottom: var(--sp-5);
+    line-height: 1.7;
+  }
+
+  /* Architecture Manifest */
+  .arch-manifest {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-2);
+    padding: var(--sp-3);
+    border: 1px solid var(--c-border);
+    border-radius: 4px;
+    background: var(--c-surface);
+    margin-bottom: var(--sp-4);
+    max-width: 640px;
+  }
+
+  .arch-row {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: var(--sp-3);
+    align-items: baseline;
+  }
+
+  .arch-key {
+    color: var(--c-text-faint);
+    flex-shrink: 0;
+  }
+
+  .arch-val {
+    color: var(--c-text-secondary);
+    line-height: 1.5;
+  }
+
+  /* Tags */
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-1);
+    margin-bottom: var(--sp-3);
+  }
+
+  .tag {
+    padding: 3px 8px;
+    border: 1px solid var(--c-border);
+    border-radius: 2px;
+    color: var(--c-text-mono);
+    font-size: 0.6rem;
+  }
+
+  /* Project links */
+  .project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-3);
+  }
+
+  .project-link-item {
+    color: var(--c-text-mono);
+    font-size: var(--fs-mono);
+    text-decoration: none;
+    transition: color var(--dur-fast) var(--ease-in-out);
+  }
+
+  .project-link-item:hover {
+    color: var(--c-text-secondary);
+  }
+
+  /* Archive */
+  .archive-section {
+    margin-top: var(--sp-12);
+    padding-top: var(--sp-6);
+    border-top: 1px solid var(--c-border);
+  }
+
+  .archive-header {
+    margin-bottom: var(--sp-5);
+  }
+
+  .archive-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: var(--sp-5) var(--sp-6);
+  }
+
+  .archive-item {
+    padding-bottom: var(--sp-4);
+    border-bottom: 1px solid var(--c-border-subtle);
+    transition: border-color var(--dur-base) var(--ease-in-out);
+  }
+
+  .archive-item:hover {
+    border-color: var(--c-border);
+  }
+
+  .archive-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--sp-2);
+  }
+
+  .archive-year {
+    font-size: 0.7rem;
+    color: var(--c-text-faint);
+  }
+
+  .archive-link {
+    color: var(--c-text-faint);
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: color var(--dur-fast) var(--ease-in-out);
+  }
+
+  .archive-link:hover {
+    color: var(--c-text-secondary);
+  }
+
+  .archive-title {
+    font-family: var(--font-sans);
+    font-size: var(--fs-small);
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--c-text-primary);
+    letter-spacing: -0.01em;
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .project-entry-inner {
+      grid-template-columns: 1fr;
+    }
+
+    .project-meta-left {
+      flex-direction: row;
+      gap: var(--sp-3);
+    }
+
+    .arch-row {
+      grid-template-columns: 1fr;
+      gap: 4px;
+    }
+  }
+</style>

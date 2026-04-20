@@ -1,346 +1,239 @@
-/* ═════════════════════════════════════════════════════════════════
-   DARK INK DESIGN SYSTEM
-   Srinivas Nampalli Portfolio Redesign
-   Inspired by StringTune scroll-driven visual language
-   ═════════════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════════════
+   OBSIDIAN PRECISION — Design System
+   Srinivas Nampalli Portfolio
+   Inspired by: Eric Cole, Linear, Vercel
+   ═══════════════════════════════════════════════════════════════════ */
 
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&display=swap');
+
+/* ─────────────────────────────────────────────────────────────────
+   TOKENS
+   ───────────────────────────────────────────────────────────────── */
 :root {
-  /* ─────────────────────────────────────────────────────────────
-     COLOR PALETTE — Dark Ink
-     ───────────────────────────────────────────────────────────── */
+  /* Surfaces */
+  --c-void:     #090909;
+  --c-base:     #0f0f0f;
+  --c-surface:  #141414;
+  --c-elevated: #1a1a1a;
 
-  /* Backgrounds & Surfaces */
-  --c-void: #0a0a0c;        /* deepest black — page backgrounds */
-  --c-ink: #141417;         /* charcoal — card surfaces */
-  --c-ash: #2a2a30;         /* dark grey — borders, dividers */
-  --c-smoke: #6b6b78;       /* mid grey — secondary text */
-  --c-mist: #c8c4cf;        /* light grey — body text */
-  --c-paper: #f0ece8;       /* warm off-white — headlines, highlights */
+  /* Borders */
+  --c-border:   #222222;
+  --c-border-subtle: #1a1a1a;
 
-  /* Accents */
-  --c-violet: #7c6fa8;      /* muted indigo — primary accent */
-  --c-brush: #4a3f6b;       /* deep indigo — hover, active states */
-  --c-gold: #c4a882;        /* warm gold — highlight, special accent */
+  /* Text */
+  --c-text-primary:   #ededed;
+  --c-text-secondary: #888888;
+  --c-text-mono:      #555555;
+  --c-text-faint:     #333333;
 
-  /* Semantic Aliases */
-  --color-bg: var(--c-void);
-  --color-surface: var(--c-ink);
-  --color-border: var(--c-ash);
-  --color-text-secondary: var(--c-smoke);
-  --color-text: var(--c-mist);
-  --color-text-heading: var(--c-paper);
-  --color-accent: var(--c-violet);
-  --color-accent-dark: var(--c-brush);
-  --color-accent-gold: var(--c-gold);
+  /* Accent */
+  --c-white: #ffffff;
 
-  /* ─────────────────────────────────────────────────────────────
-     TYPOGRAPHY
-     ───────────────────────────────────────────────────────────── */
+  /* Typography */
+  --font-sans: 'Geist', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Geist Mono', 'Menlo', 'Courier New', monospace;
 
-  /* Font Families */
-  --font-display: ui-serif, system-ui, -apple-system, "Segoe UI", serif;
-  --font-heading: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-  --font-body: ui-monospace, "Menlo", "Monaco", "Courier New", monospace;
-  --font-mono: ui-monospace, "Menlo", monospace;
+  /* Scale */
+  --fs-hero:   clamp(3.5rem, 9vw, 7.5rem);
+  --fs-h1:     clamp(2rem, 5vw, 3.5rem);
+  --fs-h2:     clamp(1.25rem, 2.5vw, 1.75rem);
+  --fs-body:   1rem;
+  --fs-small:  0.875rem;
+  --fs-mono:   0.8125rem;
+  --fs-label:  0.6875rem;
 
-  /* Display / Hero */
-  --fs-display: clamp(4rem, 12vw, 14rem);
-  --lh-display: 1.1;
-  --fw-display: 400;
-  --ls-display: -0.02em;
+  /* Line heights */
+  --lh-hero:    1.0;
+  --lh-heading: 1.15;
+  --lh-body:    1.65;
 
-  /* Headings */
-  --fs-h1: clamp(2.5rem, 6vw, 4rem);
-  --fs-h2: clamp(1.875rem, 4vw, 3rem);
-  --fs-h3: clamp(1.5rem, 3vw, 2.25rem);
-  --lh-heading: 1.2;
-  --fw-heading: 300;
-  --ls-heading: 0.02em;
+  /* Letter spacing */
+  --ls-hero:    -0.04em;
+  --ls-heading: -0.02em;
+  --ls-mono:    0.02em;
+  --ls-label:   0.08em;
 
-  /* Body Text */
-  --fs-body: 1rem;
-  --lh-body: 1.6;
-  --fw-body: 400;
+  /* Spacing (8px base grid) */
+  --sp-1:  8px;
+  --sp-2:  16px;
+  --sp-3:  24px;
+  --sp-4:  32px;
+  --sp-5:  40px;
+  --sp-6:  48px;
+  --sp-8:  64px;
+  --sp-10: 80px;
+  --sp-12: 96px;
+  --sp-16: 128px;
+  --sp-20: 160px;
 
-  /* Secondary / Small Text */
-  --fs-small: 0.875rem;
-  --lh-small: 1.5;
+  /* Layout */
+  --max-width: 1200px;
+  --col-pad:   clamp(24px, 5vw, 64px);
 
-  /* Accent Labels */
-  --fs-label: 0.65rem;
-  --lh-label: 1.4;
-  --fw-label: 500;
-  --ls-label: 0.08em;
-
-  /* ─────────────────────────────────────────────────────────────
-     SPACING & LAYOUT
-     ───────────────────────────────────────────────────────────── */
-
-  --space-xs: 0.5rem;
-  --space-sm: 1rem;
-  --space-md: 1.5rem;
-  --space-lg: 2rem;
-  --space-xl: 3rem;
-  --space-2xl: 4rem;
-  --space-3xl: 6rem;
-  --space-4xl: 8rem;
-
-  /* ─────────────────────────────────────────────────────────────
-     BORDERS & RADII
-     ───────────────────────────────────────────────────────────── */
-
-  --border-width: 1px;
-  --border-style: solid;
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 1rem;
-
-  /* ─────────────────────────────────────────────────────────────
-     TRANSITIONS & MOTION
-     ───────────────────────────────────────────────────────────── */
-
-  --duration-fast: 150ms;
-  --duration-base: 300ms;
-  --duration-slow: 500ms;
-  --ease-in: cubic-bezier(0.4, 0, 1, 1);
-  --ease-out: cubic-bezier(0, 0, 0.2, 1);
-  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
-
-  /* ─────────────────────────────────────────────────────────────
-     SCROLLBAR & UI
-     ───────────────────────────────────────────────────────────── */
-
-  color-scheme: dark;
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out:   cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast:  150ms;
+  --dur-base:  280ms;
+  --dur-slow:  500ms;
+  --dur-enter: 800ms;
 }
 
-/* ═════════════════════════════════════════════════════════════════
-   RESET & BASE STYLES
-   ═════════════════════════════════════════════════════════════════ */
-
-* {
+/* ─────────────────────────────────────────────────────────────────
+   RESET
+   ───────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 html {
-  scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: auto; /* Lenis handles this */
+  color-scheme: dark;
 }
 
 body {
   background-color: var(--c-void);
-  color: var(--c-mist);
-  font-family: var(--font-body);
+  color: var(--c-text-secondary);
+  font-family: var(--font-sans);
   font-size: var(--fs-body);
   line-height: var(--lh-body);
-  font-weight: var(--fw-body);
   overflow-x: hidden;
 }
 
-/* ─────────────────────────────────────────────────────────────
-   TYPOGRAPHY ELEMENTS
-   ───────────────────────────────────────────────────────────── */
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
-  line-height: var(--lh-heading);
-  font-weight: var(--fw-heading);
-  letter-spacing: var(--ls-heading);
-  color: var(--c-paper);
-}
-
-h1 {
-  font-size: var(--fs-h1);
-  margin-bottom: var(--space-lg);
-}
-
-h2 {
-  font-size: var(--fs-h2);
-  margin-bottom: var(--space-md);
-}
-
-h3 {
-  font-size: var(--fs-h3);
-  margin-bottom: var(--space-md);
-}
-
-p {
-  margin-bottom: var(--space-md);
-}
+img, video { display: block; max-width: 100%; }
 
 a {
-  color: var(--c-violet);
+  color: inherit;
   text-decoration: none;
-  transition: color var(--duration-base) var(--ease-in-out);
 }
 
-a:hover {
-  color: var(--c-gold);
+/* ─────────────────────────────────────────────────────────────────
+   LAYOUT
+   ───────────────────────────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--col-pad);
 }
 
-/* ─────────────────────────────────────────────────────────────
-   INK BRUSH TYPOGRAPHY (for display text)
-   ───────────────────────────────────────────────────────────── */
-
-.display {
-  font-family: var(--font-display);
-  font-size: var(--fs-display);
-  font-weight: var(--fw-display);
-  line-height: var(--lh-display);
-  letter-spacing: var(--ls-display);
-  color: var(--c-paper);
+section {
+  padding-block: var(--sp-20);
 }
 
-.accent-label {
+/* ─────────────────────────────────────────────────────────────────
+   TYPOGRAPHY UTILITIES
+   ───────────────────────────────────────────────────────────────── */
+.t-hero {
+  font-family: var(--font-sans);
+  font-size: var(--fs-hero);
+  font-weight: 500;
+  line-height: var(--lh-hero);
+  letter-spacing: var(--ls-hero);
+  color: var(--c-text-primary);
+}
+
+.t-h1 {
+  font-family: var(--font-sans);
+  font-size: var(--fs-h1);
+  font-weight: 500;
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-heading);
+  color: var(--c-text-primary);
+}
+
+.t-h2 {
+  font-family: var(--font-sans);
+  font-size: var(--fs-h2);
+  font-weight: 400;
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-heading);
+  color: var(--c-text-primary);
+}
+
+.t-body {
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--c-text-secondary);
+}
+
+.t-small {
+  font-size: var(--fs-small);
+  line-height: 1.5;
+  color: var(--c-text-secondary);
+}
+
+.t-mono {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  letter-spacing: var(--ls-mono);
+  color: var(--c-text-mono);
+}
+
+.t-label {
+  font-family: var(--font-mono);
   font-size: var(--fs-label);
-  font-weight: var(--fw-label);
   letter-spacing: var(--ls-label);
   text-transform: uppercase;
-  color: var(--c-violet);
+  color: var(--c-text-mono);
 }
 
-/* ─────────────────────────────────────────────────────────────
-   CONTAINERS & CARD SURFACES
-   ───────────────────────────────────────────────────────────── */
-
-.card {
-  background-color: var(--c-ink);
-  border: var(--border-width) var(--border-style) var(--c-ash);
-  border-radius: var(--radius-lg);
-  padding: var(--space-lg);
-  transition: all var(--duration-base) var(--ease-in-out);
+/* ─────────────────────────────────────────────────────────────────
+   DIVIDERS
+   ───────────────────────────────────────────────────────────────── */
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--c-border);
 }
 
-.card:hover {
-  border-color: var(--c-violet);
-  transform: translateY(-4px);
+/* ─────────────────────────────────────────────────────────────────
+   SCROLL PROGRESS BAR
+   ───────────────────────────────────────────────────────────────── */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 1px;
+  background-color: var(--c-text-faint);
+  z-index: 1000;
+  transition: width 0.1s linear;
 }
 
-.container {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 0 var(--space-lg);
-}
-
-@media (min-width: 1280px) {
-  .container {
-    max-width: 1280px;
-    padding: 0 var(--space-2xl);
-  }
-}
-
-/* ─────────────────────────────────────────────────────────────
-   MOTION PRINCIPLES
-   ───────────────────────────────────────────────────────────── */
-
-/* Ink Dissolve: Fade + Scale transition */
-.ink-dissolve {
+/* ─────────────────────────────────────────────────────────────────
+   ENTRY ANIMATION STATES
+   ───────────────────────────────────────────────────────────────── */
+.reveal {
   opacity: 0;
-  transform: scale(0.95);
-  transition: opacity var(--duration-slow) var(--ease-in-out),
-              transform var(--duration-slow) var(--ease-in-out);
+  transform: translateY(16px);
 }
 
-.ink-dissolve.active {
+.reveal.is-visible {
   opacity: 1;
-  transform: scale(1);
+  transform: translateY(0);
+  transition:
+    opacity var(--dur-enter) var(--ease-out-expo),
+    transform var(--dur-enter) var(--ease-out-expo);
 }
 
-/* Ink Stroke: Clip-path reveal (left to right) */
-.ink-stroke {
-  position: relative;
-  overflow: hidden;
-}
+/* ─────────────────────────────────────────────────────────────────
+   SCROLLBAR
+   ───────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--c-void); }
+::-webkit-scrollbar-thumb { background: var(--c-border); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--c-text-faint); }
 
-.ink-stroke::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: var(--c-void);
-  clip-path: inset(0 100% 0 0);
-  pointer-events: none;
-}
-
-.ink-stroke.active::before {
-  clip-path: inset(0 0% 0 0);
-  transition: clip-path var(--duration-slow) var(--ease-in-out);
-}
-
-/* Ink Ripple: Subtle stagger animation on children */
-.ink-ripple > * {
-  animation: ink-ripple-stagger var(--duration-slow) var(--ease-out) both;
-}
-
-@keyframes ink-ripple-stagger {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+/* ─────────────────────────────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  section {
+    padding-block: var(--sp-12);
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ─────────────────────────────────────────────────────────────
-   UTILITY CLASSES
-   ───────────────────────────────────────────────────────────── */
-
-.text-muted {
-  color: var(--c-smoke);
-}
-
-.text-accent {
-  color: var(--c-violet);
-}
-
-.text-gold {
-  color: var(--c-gold);
-}
-
-.bg-void {
-  background-color: var(--c-void);
-}
-
-.bg-ink {
-  background-color: var(--c-ink);
-}
-
-.border-ash {
-  border-color: var(--c-ash);
-}
-
-.grid-bento {
-  display: grid;
-  gap: var(--space-lg);
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-}
-
-@media (min-width: 768px) {
-  .grid-bento {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-/* ═════════════════════════════════════════════════════════════════
-   SCROLLBAR STYLING
-   ═════════════════════════════════════════════════════════════════ */
-
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--c-void);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--c-ash);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--c-smoke);
 }
