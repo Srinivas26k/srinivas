@@ -1,0 +1,295 @@
+---
+---
+<!-- SECTION: Services Accordion -->
+<section class="services-section" aria-label="Services">
+  <div class="watermark-wrap">
+    <svg class="fit-text watermark-svg" viewBox="0 0 1000 160" preserveAspectRatio="xMidYMid meet">
+      <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" class="watermark-text">SERVICES</text>
+    </svg>
+  </div>
+
+  <div class="container">
+    <div class="accordion" id="services-accordion">
+
+      <!-- 01 Brand Strategy -->
+      <div class="acc-item" data-index="0">
+        <button class="acc-btn" aria-expanded="false">
+          <span class="acc-num t-label">01</span>
+          <span class="acc-title t-h1">Brand Strategy</span>
+          <span class="acc-icon">+</span>
+        </button>
+        <div class="acc-panel" aria-hidden="true">
+          <div class="acc-inner">
+            <div class="acc-image-col">
+              <div class="acc-img-wrap">
+                <div class="cover-wipe-acc"></div>
+                <img src="/images/service_brand.jpg" alt="Brand Strategy" class="acc-img" />
+              </div>
+            </div>
+            <div class="acc-content-col">
+              <p class="t-body">We build foundational brand systems that establish market authority and make your audience feel something.</p>
+              <div class="acc-tags">
+                <span class="tag">Brand Positioning</span>
+                <span class="tag">Visual Identity</span>
+                <span class="tag">Guidelines</span>
+                <span class="tag">Naming</span>
+              </div>
+              <a href="/services" class="btn-text">Start this project →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 02 Intelligent Systems -->
+      <div class="acc-item" data-index="1">
+        <button class="acc-btn" aria-expanded="false">
+          <span class="acc-num t-label">02</span>
+          <span class="acc-title t-h1">Intelligent Systems</span>
+          <span class="acc-icon">+</span>
+        </button>
+        <div class="acc-panel" aria-hidden="true">
+          <div class="acc-inner">
+            <div class="acc-image-col">
+              <div class="acc-img-wrap">
+                <div class="cover-wipe-acc"></div>
+                <img src="/images/service_ai.jpg" alt="Intelligent Systems" class="acc-img" />
+              </div>
+            </div>
+            <div class="acc-content-col">
+              <p class="t-body">Interfaces and architectures for AI-driven platforms, quantum tools, and complex data environments.</p>
+              <div class="acc-tags">
+                <span class="tag">AI Interfaces</span>
+                <span class="tag">Dashboard Design</span>
+                <span class="tag">System Architecture</span>
+              </div>
+              <a href="/services" class="btn-text">Start this project →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 03 Motion & Interaction -->
+      <div class="acc-item" data-index="2">
+        <button class="acc-btn" aria-expanded="false">
+          <span class="acc-num t-label">03</span>
+          <span class="acc-title t-h1">Motion & Interaction</span>
+          <span class="acc-icon">+</span>
+        </button>
+        <div class="acc-panel" aria-hidden="true">
+          <div class="acc-inner">
+            <div class="acc-image-col">
+              <div class="acc-img-wrap">
+                <div class="cover-wipe-acc"></div>
+                <img src="/images/service_motion.jpg" alt="Motion & Interaction" class="acc-img" />
+              </div>
+            </div>
+            <div class="acc-content-col">
+              <p class="t-body">High-fidelity GSAP motion, WebGL, and fluid interaction design that elevates digital products beyond static UI.</p>
+              <div class="acc-tags">
+                <span class="tag">Micro-interactions</span>
+                <span class="tag">GSAP</span>
+                <span class="tag">3D WebGL</span>
+              </div>
+              <a href="/services" class="btn-text">Start this project →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 04 Pitch Decks -->
+      <div class="acc-item" data-index="3">
+        <button class="acc-btn" aria-expanded="false">
+          <span class="acc-num t-label">04</span>
+          <span class="acc-title t-h1">Pitch Decks</span>
+          <span class="acc-icon">+</span>
+        </button>
+        <div class="acc-panel" aria-hidden="true">
+          <div class="acc-inner">
+            <div class="acc-image-col">
+              <div class="acc-img-wrap">
+                <div class="cover-wipe-acc"></div>
+                <img src="/images/service_pitch.jpg" alt="Pitch Decks" class="acc-img" />
+              </div>
+            </div>
+            <div class="acc-content-col">
+              <p class="t-body">Investor-grade presentations that tell a story, visualise the market, and give founders the confidence to walk into any room.</p>
+              <div class="acc-tags">
+                <span class="tag">Investor Decks</span>
+                <span class="tag">Narrative Design</span>
+                <span class="tag">Data Visualisation</span>
+              </div>
+              <a href="/services" class="btn-text">Start this project →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-section {
+    background: var(--c-ink);
+    padding-block: var(--space-10);
+    overflow: hidden;
+  }
+
+  .watermark-wrap {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: var(--space-8);
+  }
+
+  .watermark-svg {
+    width: 110%;
+    margin-left: -5%;
+    height: auto;
+    fill: var(--c-stone);
+    opacity: 0.06;
+  }
+
+  .watermark-text {
+    font-family: var(--font-display);
+    font-size: 180px;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+  }
+
+  .accordion {
+    border-top: 1px solid var(--c-line);
+  }
+
+  .acc-item {
+    border-bottom: 1px solid var(--c-line);
+  }
+
+  .acc-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding-block: var(--space-5);
+    background: none;
+    border: none;
+    color: var(--c-off-white);
+    cursor: pointer;
+    text-align: left;
+    transition: color 0.3s ease;
+  }
+
+  .acc-btn:hover .acc-title {
+    color: var(--c-taupe);
+  }
+
+  .acc-num {
+    color: var(--c-stone);
+    width: 32px;
+    flex-shrink: 0;
+  }
+
+  .acc-title {
+    flex: 1;
+    transition: color 0.3s ease;
+  }
+
+  .acc-icon {
+    font-size: 24px;
+    font-family: var(--font-mono);
+    transition: transform 0.4s cubic-bezier(0.23, 0.87, 0.34, 1.01);
+    color: var(--c-stone);
+  }
+
+  .acc-item.open .acc-icon {
+    transform: rotate(45deg);
+  }
+
+  .acc-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s cubic-bezier(0.23, 0.87, 0.34, 1.01);
+  }
+
+  .acc-inner {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--space-6);
+    padding-bottom: var(--space-6);
+  }
+
+  .acc-img-wrap {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+  }
+
+  .cover-wipe-acc {
+    position: absolute;
+    inset: 0;
+    background: var(--c-ink);
+    z-index: 2;
+    transform-origin: top;
+  }
+
+  .acc-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: crosshair;
+  }
+
+  .acc-content-col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    justify-content: center;
+  }
+
+  .acc-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  @media (max-width: 768px) {
+    .acc-inner {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const items = document.querySelectorAll(".acc-item");
+
+    items.forEach(item => {
+      const btn = item.querySelector(".acc-btn") as HTMLElement;
+      const panel = item.querySelector(".acc-panel") as HTMLElement;
+      const wipe = item.querySelector(".cover-wipe-acc");
+
+      btn.addEventListener("click", () => {
+        const isOpen = item.classList.contains("open");
+
+        // Close all
+        items.forEach(i => {
+          i.classList.remove("open");
+          const p = i.querySelector(".acc-panel") as HTMLElement;
+          p.style.maxHeight = "0";
+          (i.querySelector(".acc-btn") as HTMLElement)?.setAttribute("aria-expanded", "false");
+          (i.querySelector(".acc-panel") as HTMLElement)?.setAttribute("aria-hidden", "true");
+        });
+
+        if (!isOpen) {
+          item.classList.add("open");
+          panel.style.maxHeight = panel.scrollHeight + "px";
+          btn.setAttribute("aria-expanded", "true");
+          panel.setAttribute("aria-hidden", "false");
+          // Cover wipe reveal
+          gsap.to(wipe, { scaleY: 0, duration: 1, ease: "expo.inOut", delay: 0.1 });
+        }
+      });
+    });
+  });
+</script>

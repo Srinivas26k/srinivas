@@ -1,0 +1,181 @@
+---
+---
+<!-- SECTION: FAQ -->
+<section class="faq-section" aria-label="Frequently Asked Questions">
+  <div class="watermark-wrap">
+    <svg class="fit-text watermark-svg" viewBox="0 0 1000 160" preserveAspectRatio="xMidYMid meet">
+      <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" class="watermark-text">QUESTIONS</text>
+    </svg>
+  </div>
+
+  <div class="container">
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-btn">
+          <span class="faq-num t-label">01</span>
+          <span class="t-h3 faq-question">What does a typical engagement look like?</span>
+          <span class="faq-arrow">↗</span>
+        </button>
+        <div class="faq-panel">
+          <p class="t-body faq-answer">We start with a discovery sprint — 2-3 calls to understand your goals, audience, and competitive landscape. From there we move into strategy, design, and delivery in focused 2-week sprints. Most projects land in 4-8 weeks.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn">
+          <span class="faq-num t-label">02</span>
+          <span class="t-h3 faq-question">Do you work with early-stage startups?</span>
+          <span class="faq-arrow">↗</span>
+        </button>
+        <div class="faq-panel">
+          <p class="t-body faq-answer">Yes. Some of our best work has been with pre-seed teams who needed a strong visual foundation before their first raise. We offer a focused Starter tier for exactly this scenario.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn">
+          <span class="faq-num t-label">03</span>
+          <span class="t-h3 faq-question">What is your revision process?</span>
+          <span class="faq-arrow">↗</span>
+        </button>
+        <div class="faq-panel">
+          <p class="t-body faq-answer">Every project includes two structured revision rounds per deliverable. We present work in async Loom walkthroughs, collect consolidated feedback, and iterate. No death-by-meeting.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn">
+          <span class="faq-num t-label">04</span>
+          <span class="t-h3 faq-question">Do you handle development as well?</span>
+          <span class="faq-arrow">↗</span>
+        </button>
+        <div class="faq-panel">
+          <p class="t-body faq-answer">Yes — we build in Astro, React, and Framer depending on the project. All our web deliverables are production-ready with GSAP animations and responsive layouts included.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn">
+          <span class="faq-num t-label">05</span>
+          <span class="t-h3 faq-question">How do we get started?</span>
+          <span class="faq-arrow">↗</span>
+        </button>
+        <div class="faq-panel">
+          <p class="t-body faq-answer">Fill in the contact form below or email srinivasvarma764@gmail.com directly. We respond within 24 hours and schedule a free 30-minute discovery call to see if we're a good fit.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-section {
+    background: var(--c-ink);
+    padding-block: var(--space-10);
+    overflow: hidden;
+  }
+
+  .watermark-wrap {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: var(--space-8);
+  }
+
+  .watermark-svg {
+    width: 110%;
+    margin-left: -5%;
+    height: auto;
+    fill: var(--c-stone);
+    opacity: 0.06;
+  }
+
+  .watermark-text {
+    font-family: var(--font-display);
+    font-size: 180px;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+  }
+
+  .faq-list {
+    border-top: 1px solid var(--c-line);
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--c-line);
+  }
+
+  .faq-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding-block: var(--space-5);
+    background: none;
+    border: none;
+    color: var(--c-off-white);
+    cursor: pointer;
+    text-align: left;
+  }
+
+  .faq-num {
+    color: var(--c-stone);
+    width: 28px;
+    flex-shrink: 0;
+  }
+
+  .faq-question {
+    flex: 1;
+  }
+
+  .faq-arrow {
+    font-size: 18px;
+    color: var(--c-stone);
+    transition: transform 0.4s cubic-bezier(0.23, 0.87, 0.34, 1.01), color 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .faq-item.open .faq-arrow {
+    transform: rotate(45deg);
+    color: var(--c-taupe);
+  }
+
+  .faq-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.23, 0.87, 0.34, 1.01);
+  }
+
+  .faq-answer {
+    color: var(--c-stone);
+    max-width: 720px;
+    padding-bottom: var(--space-5);
+    padding-left: calc(28px + var(--space-4));
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const items = document.querySelectorAll(".faq-item");
+
+    items.forEach(item => {
+      const btn = item.querySelector(".faq-btn");
+      const panel = item.querySelector(".faq-panel") as HTMLElement;
+
+      btn?.addEventListener("click", () => {
+        const isOpen = item.classList.contains("open");
+
+        items.forEach(i => {
+          i.classList.remove("open");
+          (i.querySelector(".faq-panel") as HTMLElement).style.maxHeight = "0";
+        });
+
+        if (!isOpen) {
+          item.classList.add("open");
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+      });
+    });
+  });
+</script>

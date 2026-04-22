@@ -5,14 +5,33 @@ import Header from "../components/Header.astro";
 import Main from "../components/Main.astro";
 import HomeIntro from "../components/HomeIntro.astro";
 import HomeWorks from "../components/HomeWorks.astro";
+import HomeTestimonials from "../components/HomeTestimonials.astro";
+import HomeServices from "../components/HomeServices.astro";
+import HomeCraft from "../components/HomeCraft.astro";
+import HomeBlog from "../components/HomeBlog.astro";
+import HomeFAQ from "../components/HomeFAQ.astro";
 import HomeFooter from "../components/HomeFooter.astro";
 ---
-<Layout>
+<Layout title="Srinivas Nampalli — Brand & Design Studio">
   <Header />
   <main>
+    <!-- 1. Hero -->
     <Main />
+    <!-- 2. Studio Intro + Metrics -->
     <HomeIntro />
+    <!-- 3. Selected Works -->
     <HomeWorks />
+    <!-- 4. Parallax Interlude + 5. Testimonials -->
+    <HomeTestimonials />
+    <!-- 6. Services Accordion -->
+    <HomeServices />
+    <!-- 7. Craft Cards -->
+    <HomeCraft />
+    <!-- 8. Blog / Journal -->
+    <HomeBlog />
+    <!-- 9. FAQ -->
+    <HomeFAQ />
+    <!-- 10. Closing CTA + 11. Footer -->
     <HomeFooter />
   </main>
 </Layout>

@@ -84,6 +84,39 @@ import HomeFooter from "../components/HomeFooter.astro";
       </div>
     </section>
 
+    <!-- Process Timeline -->
+    <section class="process-timeline-section" aria-label="Our Process">
+      <div class="container">
+        <p class="t-label proc-label">Our Process</p>
+        <div class="proc-steps">
+          <div class="proc-step">
+            <span class="proc-num t-mono">01</span>
+            <h3 class="t-h2 proc-title">Discovery</h3>
+            <p class="t-small proc-desc">Brand audit, competitive research, stakeholder interviews. We learn everything before we design anything.</p>
+          </div>
+          <div class="proc-connector"></div>
+          <div class="proc-step">
+            <span class="proc-num t-mono">02</span>
+            <h3 class="t-h2 proc-title">Strategy</h3>
+            <p class="t-small proc-desc">Positioning, visual direction, type and colour systems. The blueprint before the building.</p>
+          </div>
+          <div class="proc-connector"></div>
+          <div class="proc-step">
+            <span class="proc-num t-mono">03</span>
+            <h3 class="t-h2 proc-title">Design</h3>
+            <p class="t-small proc-desc">Iteration in focused sprints. Async Loom walkthroughs, consolidated feedback, no death-by-meeting.</p>
+          </div>
+          <div class="proc-connector"></div>
+          <div class="proc-step">
+            <span class="proc-num t-mono">04</span>
+            <h3 class="t-h2 proc-title">Deliver</h3>
+            <p class="t-small proc-desc">Production-ready files, developer handoff, motion specs. Done means done.</p>
+          </div>
+        </div>
+        <div class="proc-line"></div>
+      </div>
+    </section>
+
     <!-- Pricing Philosophy -->
     <section class="pricing-philosophy" aria-label="Engagement Models">
       <div class="container">
@@ -232,7 +265,7 @@ import HomeFooter from "../components/HomeFooter.astro";
 
   .price-card.popular {
     background: var(--c-dust);
-    border-color: var(--c-lime);
+    border-color: var(--c-taupe);
   }
 
   .price-card .t-h2 {
@@ -262,6 +295,58 @@ import HomeFooter from "../components/HomeFooter.astro";
     border-bottom: 1px solid rgba(255,255,255,0.1);
   }
 
+  /* Process Timeline */
+  .process-timeline-section {
+    background: var(--c-ink);
+    padding-block: var(--space-10);
+  }
+
+  .proc-label {
+    margin-bottom: var(--space-7);
+  }
+
+  .proc-steps {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+    gap: 0;
+    align-items: start;
+    position: relative;
+  }
+
+  .proc-step {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .proc-num {
+    color: var(--c-taupe);
+    display: block;
+    margin-bottom: var(--space-2);
+  }
+
+  .proc-title {
+    margin-bottom: var(--space-2);
+  }
+
+  .proc-desc {
+    color: var(--c-stone);
+  }
+
+  .proc-connector {
+    width: 40px;
+    height: 1px;
+    background: var(--c-line);
+    margin-top: 24px;
+  }
+
+  .proc-line {
+    height: 1px;
+    background: var(--c-line);
+    margin-top: var(--space-7);
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
   @media (max-width: 768px) {
     .panel-grid {
       grid-template-columns: 1fr;
@@ -269,6 +354,11 @@ import HomeFooter from "../components/HomeFooter.astro";
     .pricing-grid {
       grid-template-columns: 1fr;
     }
+    .proc-steps {
+      grid-template-columns: 1fr;
+      gap: var(--space-5);
+    }
+    .proc-connector { display: none; }
   }
 </style>
 
@@ -323,6 +413,23 @@ import HomeFooter from "../components/HomeFooter.astro";
         trigger: ".pricing-grid",
         start: "top 80%"
       }
+    });
+
+    // Process steps
+    gsap.to(".proc-step", {
+      y: 0,
+      opacity: 1,
+      duration: 0.8,
+      stagger: 0.15,
+      ease: "power2.out",
+      scrollTrigger: { trigger: ".proc-steps", start: "top 80%" }
+    });
+
+    gsap.to(".proc-line", {
+      scaleX: 1,
+      duration: 1.5,
+      ease: "power2.out",
+      scrollTrigger: { trigger: ".proc-steps", start: "top 80%" }
     });
   });
 </script>

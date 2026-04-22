@@ -1,0 +1,526 @@
+---
+import "../../styles/global.css";
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import HomeFooter from "../../components/HomeFooter.astro";
+
+// Hardcoded case study data — PLACEHOLDER
+// slug: quantum-key
+const project = {
+  slug: "quantum-key",
+  title: "Quantum Key Distribution",
+  category: "AI Systems",
+  year: "2025",
+  client: "QKD Labs",
+  duration: "8 weeks",
+  services: "Brand Identity · UI/UX Design · Motion Design",
+  heroImage: "/images/thumbnail_1.png",
+  challenge: "QKD Labs needed a visual identity and interface system that communicated the complexity of quantum cryptography without alienating non-technical enterprise buyers. The existing brand looked like a 2010 SaaS product.",
+  challengeQuote: "The hardest design problem is making the invisible feel trustworthy.",
+  processSteps: [
+    { num: "01", title: "Discovery", description: "We ran a 5-day brand audit and competitive analysis across 18 quantum tech companies. Key finding: everyone used blue and circuit-board imagery. We went the opposite direction.", image: "/images/process_1.png" },
+    { num: "02", title: "Strategy", description: "Positioned QKD Labs as the 'Rolls-Royce of cryptography' — premium, restrained, authoritative. The visual language borrowed from Swiss financial design rather than tech startups.", image: "/images/process_2.png" },
+    { num: "03", title: "Design", description: "Ink-and-cream palette, Instrument Serif for all display text, custom icon system built around geometric precision. The UI dashboard used progressive disclosure to surface only what enterprise admins needed.", image: "/images/process_3.png" },
+    { num: "04", title: "Deliver", description: "Full brand guidelines, Figma component library, Astro marketing site, and a GSAP-animated product demo reel. Handoff included Loom walkthroughs for every token and motion specification.", image: "/images/process_4.png" }
+  ],
+  results: [
+    { metric: "40%", label: "Increase in demo requests post-rebrand" },
+    { metric: "$2M", label: "Seed round closed 3 weeks after launch" },
+    { metric: "3×", label: "Reduction in sales cycle length" }
+  ],
+  testimonial: "The rebrand immediately changed how enterprise buyers perceived us. We went from being asked 'are you a startup?' to 'how long have you been in the market?'"
+};
+
+export function getStaticPaths() {
+  return [{ params: { slug: "quantum-key" } }];
+}
+
+const { slug } = Astro.params;
+---
+
+<Layout title={`${project.title} — Srinivas Nampalli`}>
+  <Header />
+  <main class="case-main">
+
+    <!-- 1. Hero -->
+    <section class="case-hero" aria-label="Project Hero">
+      <div class="case-hero-bg" style={`background-image: url('${project.heroImage}')`}></div>
+      <div class="hero-blur-layers">
+        {Array.from({ length: 8 }, (_, i) => (
+          <div class="blur-layer" style={`opacity: ${(i + 1) * 0.12}; backdrop-filter: blur(${(i + 1) * 3}px); -webkit-backdrop-filter: blur(${(i + 1) * 3}px); mask-image: linear-gradient(to top, black ${i * 12.5}%, transparent ${(i + 1) * 12.5}%); -webkit-mask-image: linear-gradient(to top, black ${i * 12.5}%, transparent ${(i + 1) * 12.5}%);`}></div>
+        ))}
+      </div>
+      <div class="case-hero-overlay"></div>
+
+      <div class="container case-hero-content">
+        <p class="t-label hero-breadcrumb"><a href="/work">Work</a> · {project.category}</p>
+        <h1 class="t-display-2 case-title">
+          {project.title.split("").map((char, i) => (
+            <span class="char-wrap"><span class="char" style={`transition-delay: ${i * 30}ms`}>{char === " " ? " " : char}</span></span>
+          ))}
+        </h1>
+        <div class="hero-tags">
+          <span class="tag">{project.category}</span>
+          <span class="tag">{project.year}</span>
+        </div>
+        <p class="t-label hero-scroll">Scroll to explore ↓</p>
+      </div>
+    </section>
+
+    <!-- 2. Meta Band -->
+    <section class="meta-band" aria-label="Project Details">
+      <div class="container meta-grid">
+        <div class="meta-item">
+          <p class="t-label meta-label">Client</p>
+          <p class="t-h3 meta-value">{project.client}</p>
+        </div>
+        <div class="meta-item">
+          <p class="t-label meta-label">Year</p>
+          <p class="t-h3 meta-value">{project.year}</p>
+        </div>
+        <div class="meta-item">
+          <p class="t-label meta-label">Services</p>
+          <p class="t-h3 meta-value">{project.services}</p>
+        </div>
+        <div class="meta-item">
+          <p class="t-label meta-label">Duration</p>
+          <p class="t-h3 meta-value">{project.duration}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Challenge -->
+    <section class="challenge-section" aria-label="The Challenge">
+      <div class="container challenge-grid">
+        <div class="challenge-label">
+          <p class="t-label">The Challenge</p>
+        </div>
+        <div class="challenge-content">
+          <p class="t-body-lg challenge-text">{project.challenge}</p>
+          <blockquote class="challenge-quote t-display-3">"{project.challengeQuote}"</blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Process -->
+    <section class="process-section" aria-label="Our Process">
+      <div class="container">
+        <p class="t-label section-label">Process</p>
+        <div class="process-panels">
+          {project.processSteps.map((step, i) => (
+            <div class={`process-panel ${i % 2 === 0 ? "panel-ltr" : "panel-rtl"}`}>
+              <div class="process-img-wrap">
+                <div class="cover-wipe-process"></div>
+                <img src={step.image} alt={step.title} class="process-img" />
+              </div>
+              <div class="process-text">
+                <span class="t-label process-num">{step.num}</span>
+                <h3 class="t-h1 process-title">{step.title}</h3>
+                <p class="t-body process-desc">{step.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Results -->
+    <section class="results-section" aria-label="Results">
+      <div class="container">
+        <p class="t-label section-label">Results</p>
+        <div class="metrics-grid">
+          {project.results.map(r => (
+            <div class="metric-card">
+              <p class="t-display-2 metric-number" data-target={r.metric}>{r.metric}</p>
+              <p class="t-body metric-label">{r.label}</p>
+            </div>
+          ))}
+        </div>
+        <blockquote class="result-quote t-display-3">
+          "{project.testimonial}"
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- 6. Next Project -->
+    <section class="next-project" aria-label="Next Project">
+      <div class="next-bg" style="background-image: url('/images/thumbnail_2.png')"></div>
+      <div class="next-overlay"></div>
+      <div class="container next-content">
+        <p class="t-label">Next Project</p>
+        <a href="/work/neobrutalism" class="t-display-2 next-title">Neobrutalism System →</a>
+      </div>
+    </section>
+
+    <HomeFooter />
+  </main>
+</Layout>
+
+<style>
+  .case-main {
+    background: var(--c-ink);
+  }
+
+  /* Hero */
+  .case-hero {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .case-hero-bg {
+    position: absolute;
+    inset: -10%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5;
+    transform: scale(1.15);
+    will-change: transform;
+  }
+
+  .hero-blur-layers {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .blur-layer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+  }
+
+  .case-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--c-overlay);
+    z-index: 1;
+    opacity: 0.5;
+  }
+
+  .case-hero-content {
+    position: relative;
+    z-index: 3;
+    padding-bottom: var(--space-8);
+    padding-top: 120px;
+  }
+
+  .hero-breadcrumb {
+    margin-bottom: var(--space-3);
+  }
+
+  .hero-breadcrumb a {
+    color: var(--c-stone);
+    text-decoration: none;
+  }
+
+  .case-title {
+    margin-bottom: var(--space-4);
+  }
+
+  .char-wrap {
+    display: inline-block;
+    overflow: hidden;
+  }
+
+  .char {
+    display: inline-block;
+    transform: translateY(100%);
+    opacity: 0;
+    will-change: transform, opacity;
+  }
+
+  .hero-tags {
+    display: flex;
+    gap: var(--space-2);
+    margin-bottom: var(--space-8);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: var(--space-6);
+    right: var(--col-pad);
+  }
+
+  /* Meta Band */
+  .meta-band {
+    background: var(--c-cream);
+    padding-block: var(--space-6);
+  }
+
+  .meta-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-4);
+  }
+
+  .meta-label {
+    color: var(--c-bone);
+    margin-bottom: var(--space-1);
+  }
+
+  .meta-value {
+    color: var(--c-black);
+    font-size: var(--fs-h3);
+  }
+
+  /* Challenge */
+  .challenge-section {
+    background: var(--c-ink);
+  }
+
+  .challenge-grid {
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    gap: var(--space-8);
+    align-items: start;
+  }
+
+  .challenge-text {
+    color: var(--c-stone);
+    margin-bottom: var(--space-6);
+  }
+
+  .challenge-quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--c-off-white);
+    border-left: 2px solid var(--c-taupe);
+    padding-left: var(--space-4);
+    font-size: clamp(24px, 3vw, 48px);
+  }
+
+  /* Process */
+  .process-section {
+    background: var(--c-ink);
+  }
+
+  .section-label {
+    margin-bottom: var(--space-6);
+  }
+
+  .process-panels {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+
+  .process-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+    align-items: center;
+  }
+
+  .panel-rtl {
+    direction: rtl;
+  }
+
+  .panel-rtl > * {
+    direction: ltr;
+  }
+
+  .process-img-wrap {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+  }
+
+  .cover-wipe-process {
+    position: absolute;
+    inset: 0;
+    background: var(--c-ink);
+    z-index: 2;
+    transform-origin: top;
+  }
+
+  .process-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: crosshair;
+  }
+
+  .process-num {
+    color: var(--c-taupe);
+    margin-bottom: var(--space-2);
+  }
+
+  .process-title {
+    margin-bottom: var(--space-3);
+  }
+
+  .process-desc {
+    color: var(--c-stone);
+  }
+
+  /* Results */
+  .results-section {
+    background: var(--c-cream);
+  }
+
+  .results-section .section-label,
+  .results-section .metric-label {
+    color: var(--c-bone);
+  }
+
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+    margin-bottom: var(--space-8);
+  }
+
+  .metric-card {
+    padding: var(--space-5);
+    border: 1px solid rgba(17,17,17,0.08);
+    border-radius: var(--radius-card);
+  }
+
+  .metric-number {
+    color: var(--c-black);
+    font-size: clamp(48px, 6vw, 96px);
+    margin-bottom: var(--space-2);
+  }
+
+  .result-quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--c-black);
+    font-size: clamp(22px, 3vw, 48px);
+    max-width: 800px;
+    border-left: 2px solid var(--c-taupe);
+    padding-left: var(--space-4);
+  }
+
+  /* Next Project */
+  .next-project {
+    position: relative;
+    height: 60vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+
+  .next-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.4;
+  }
+
+  .next-overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--c-overlay);
+  }
+
+  .next-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .next-title {
+    display: block;
+    margin-top: var(--space-3);
+    text-decoration: none;
+    color: var(--c-off-white);
+    transition: color 0.3s ease;
+  }
+
+  .next-title:hover {
+    color: var(--c-taupe);
+  }
+
+  @media (max-width: 768px) {
+    .meta-grid { grid-template-columns: repeat(2, 1fr); }
+    .challenge-grid { grid-template-columns: 1fr; }
+    .process-panel { grid-template-columns: 1fr; direction: ltr; }
+    .panel-rtl { direction: ltr; }
+    .metrics-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // 1. Hero parallax
+    gsap.to(".case-hero-bg", {
+      yPercent: 25,
+      ease: "none",
+      scrollTrigger: { trigger: ".case-hero", start: "top top", end: "bottom top", scrub: true }
+    });
+
+    // 2. Char reveal
+    gsap.to(".char", {
+      y: 0,
+      opacity: 1,
+      duration: 1.2,
+      stagger: 0.03,
+      ease: "power4.out",
+      delay: 0.3
+    });
+
+    // 3. Meta band stagger
+    gsap.from(".meta-item", {
+      y: 30,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.1,
+      ease: "power2.out",
+      scrollTrigger: { trigger: ".meta-band", start: "top 85%" }
+    });
+
+    // 4. Challenge reveal
+    gsap.from(".challenge-text", {
+      y: 40,
+      opacity: 0,
+      duration: 1,
+      ease: "power2.out",
+      scrollTrigger: { trigger: ".challenge-grid", start: "top 80%" }
+    });
+
+    // 5. Process cover wipes
+    gsap.utils.toArray(".process-img-wrap").forEach(wrap => {
+      const wipe = (wrap as HTMLElement).querySelector(".cover-wipe-process");
+      gsap.to(wipe, {
+        scaleY: 0,
+        duration: 1.2,
+        ease: "expo.inOut",
+        scrollTrigger: { trigger: wrap as Element, start: "top 85%" }
+      });
+    });
+
+    // 6. Process text panels
+    gsap.utils.toArray(".process-panel").forEach((panel, i) => {
+      const text = (panel as HTMLElement).querySelector(".process-text");
+      gsap.from(text, {
+        x: i % 2 === 0 ? 60 : -60,
+        opacity: 0,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: { trigger: panel as Element, start: "top 80%" }
+      });
+    });
+
+    // 7. Metrics
+    gsap.from(".metric-card", {
+      y: 40,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.15,
+      ease: "power2.out",
+      scrollTrigger: { trigger: ".metrics-grid", start: "top 80%" }
+    });
+  });
+</script>

@@ -56,6 +56,20 @@ import HomeFooter from "../components/HomeFooter.astro";
               <input type="email" id="email" name="email" required placeholder="john@company.com">
             </div>
             <div class="input-group">
+              <label for="company" class="t-label">Company</label>
+              <input type="text" id="company" name="company" placeholder="Your Company">
+            </div>
+            <div class="input-group">
+              <label for="budget" class="t-label">Budget Range</label>
+              <select id="budget" name="budget">
+                <option value="">Select a range</option>
+                <option value="under5k">Under $5,000</option>
+                <option value="5k-15k">$5,000 – $15,000</option>
+                <option value="15k-50k">$15,000 – $50,000</option>
+                <option value="50k+">$50,000+</option>
+              </select>
+            </div>
+            <div class="input-group">
               <label for="type" class="t-label">Project Type</label>
               <select id="type" name="type">
                 <option value="branding">Brand Identity</option>
@@ -67,6 +81,17 @@ import HomeFooter from "../components/HomeFooter.astro";
             <div class="input-group">
               <label for="message" class="t-label">Project Details</label>
               <textarea id="message" name="message" required placeholder="Tell us about your goals..."></textarea>
+            </div>
+            <div class="input-group">
+              <label for="source" class="t-label">How did you hear about us?</label>
+              <select id="source" name="source">
+                <option value="">Select one</option>
+                <option value="social">Social Media</option>
+                <option value="referral">Referral</option>
+                <option value="search">Search</option>
+                <option value="behance">Behance / Dribbble</option>
+                <option value="other">Other</option>
+              </select>
             </div>
             <button type="submit" class="btn-primary form-submit">Send Message →</button>
           </form>
@@ -167,7 +192,7 @@ import HomeFooter from "../components/HomeFooter.astro";
   }
 
   .link-hover:hover {
-    color: var(--c-lime);
+    color: var(--c-taupe);
   }
 
   .social-links {
@@ -231,8 +256,8 @@ import HomeFooter from "../components/HomeFooter.astro";
     width: 64px;
     height: 64px;
     border-radius: 50%;
-    background: var(--c-lime);
-    color: var(--c-ink);
+    background: var(--c-taupe);
+    color: var(--c-off-white);
     display: flex;
     align-items: center;
     justify-content: center;

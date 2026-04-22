@@ -48,6 +48,103 @@ import HomeFooter from "../components/HomeFooter.astro"; // We reuse the footer
       </div>
     </section>
 
+    <!-- Values Section -->
+    <section class="values-section" aria-label="Studio Values">
+      <div class="watermark-wrap-v">
+        <svg class="fit-text watermark-svg-v" viewBox="0 0 1000 160" preserveAspectRatio="xMidYMid meet">
+          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" class="watermark-text-v">VALUES</text>
+        </svg>
+      </div>
+      <div class="container">
+        <div class="values-grid">
+          <div class="value-card">
+            <span class="value-icon">◎</span>
+            <h3 class="t-h3 value-name">Intent</h3>
+            <p class="t-small value-desc">Every decision has a reason. We design with purpose, not decoration.</p>
+          </div>
+          <div class="value-card">
+            <span class="value-icon">◇</span>
+            <h3 class="t-h3 value-name">Craft</h3>
+            <p class="t-small value-desc">Quality is non-negotiable. We sweat the details others ignore.</p>
+          </div>
+          <div class="value-card">
+            <span class="value-icon">△</span>
+            <h3 class="t-h3 value-name">Clarity</h3>
+            <p class="t-small value-desc">Complex ideas, simple expression. We strip away everything unnecessary.</p>
+          </div>
+          <div class="value-card">
+            <span class="value-icon">□</span>
+            <h3 class="t-h3 value-name">Boldness</h3>
+            <p class="t-small value-desc">Safe design is invisible. We make choices that take a position.</p>
+          </div>
+          <div class="value-card">
+            <span class="value-icon">○</span>
+            <h3 class="t-h3 value-name">Honesty</h3>
+            <p class="t-small value-desc">We tell clients what they need to hear, not what they want to hear.</p>
+          </div>
+          <div class="value-card">
+            <span class="value-icon">✦</span>
+            <h3 class="t-h3 value-name">Global Thinking</h3>
+            <p class="t-small value-desc">Based in Hyderabad, working worldwide. Context is everything.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Credentials Timeline -->
+    <section class="timeline-section" aria-label="Credentials">
+      <div class="container">
+        <p class="t-label timeline-label">Credentials</p>
+        <div class="timeline">
+          <div class="timeline-item">
+            <span class="t-mono timeline-year">2026</span>
+            <div class="timeline-dot"></div>
+            <p class="t-body timeline-milestone">Launched VOIR-level portfolio redesign. 5 parallel design streams executed simultaneously.</p>
+          </div>
+          <div class="timeline-item">
+            <span class="t-mono timeline-year">2025</span>
+            <div class="timeline-dot"></div>
+            <p class="t-body timeline-milestone">Delivered brand identity + AI dashboard for Quantum Key Distribution startup. Raised $2M seed.</p>
+          </div>
+          <div class="timeline-item">
+            <span class="t-mono timeline-year">2024</span>
+            <div class="timeline-dot"></div>
+            <p class="t-body timeline-milestone">Designed Aether Hypercar UI concept — featured in 3 design publications. 40K+ impressions.</p>
+          </div>
+          <div class="timeline-item">
+            <span class="t-mono timeline-year">2023</span>
+            <div class="timeline-dot"></div>
+            <p class="t-body timeline-milestone">Built LLM dataset generator used by 200+ researchers. First AI-native design tool in portfolio.</p>
+          </div>
+          <div class="timeline-item">
+            <span class="t-mono timeline-year">2022</span>
+            <div class="timeline-dot"></div>
+            <p class="t-body timeline-milestone">Graduated from design programme. Immediately freelancing for international clients.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Clients Logo Strip — PLACEHOLDER -->
+    <section class="clients-section" aria-label="Clients">
+      <div class="container">
+        <p class="t-label clients-label">Trusted By</p>
+        <div class="clients-strip">
+          <span class="client-name">Quantum Systems</span>
+          <span class="client-sep">·</span>
+          <span class="client-name">Aether Labs</span>
+          <span class="client-sep">·</span>
+          <span class="client-name">Nova Ventures</span>
+          <span class="client-sep">·</span>
+          <span class="client-name">Neobrutalism Co.</span>
+          <span class="client-sep">·</span>
+          <span class="client-name">KineticAI</span>
+          <span class="client-sep">·</span>
+          <span class="client-name">Orbis Design</span>
+        </div>
+      </div>
+    </section>
+
     <HomeFooter />
   </main>
 </Layout>
@@ -154,7 +251,7 @@ import HomeFooter from "../components/HomeFooter.astro"; // We reuse the footer
 
   .story-content .t-label {
     margin-bottom: var(--space-4);
-    color: var(--c-lime);
+    color: var(--c-taupe);
   }
 
   @media (max-width: 768px) {
@@ -165,6 +262,149 @@ import HomeFooter from "../components/HomeFooter.astro"; // We reuse the footer
     .story-content {
       padding-left: 0;
     }
+  }
+
+  /* Values */
+  .values-section {
+    background: var(--c-cream);
+    padding-block: var(--space-10);
+    overflow: hidden;
+  }
+
+  .watermark-wrap-v {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: var(--space-8);
+  }
+
+  .watermark-svg-v {
+    width: 110%;
+    margin-left: -5%;
+    height: auto;
+    fill: var(--c-bone);
+    opacity: 0.06;
+  }
+
+  .watermark-text-v {
+    font-family: var(--font-display);
+    font-size: 180px;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+  }
+
+  .value-card {
+    background: #ffffff;
+    border: 1px solid rgba(17,17,17,0.08);
+    border-radius: var(--radius-card);
+    padding: var(--space-5);
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .value-icon {
+    font-size: 24px;
+    color: var(--c-taupe);
+    display: block;
+    margin-bottom: var(--space-3);
+  }
+
+  .value-name {
+    color: var(--c-black);
+    margin-bottom: var(--space-2);
+  }
+
+  .value-desc {
+    color: var(--c-bone);
+  }
+
+  /* Timeline */
+  .timeline-section {
+    background: var(--c-ink);
+    padding-block: var(--space-10);
+  }
+
+  .timeline-label {
+    margin-bottom: var(--space-6);
+  }
+
+  .timeline {
+    position: relative;
+    padding-left: 120px;
+    border-left: 1px solid var(--c-line);
+  }
+
+  .timeline-item {
+    position: relative;
+    padding-bottom: var(--space-6);
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .timeline-year {
+    position: absolute;
+    left: -120px;
+    color: var(--c-stone);
+    font-size: 13px;
+    top: 2px;
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: -5px;
+    top: 6px;
+    width: 9px;
+    height: 9px;
+    background: var(--c-taupe);
+    border-radius: 50%;
+    transform: scaleX(0);
+  }
+
+  .timeline-milestone {
+    color: var(--c-stone);
+    max-width: 600px;
+  }
+
+  /* Clients */
+  .clients-section {
+    background: var(--c-cream);
+    padding-block: var(--space-7);
+  }
+
+  .clients-label {
+    color: var(--c-bone);
+    margin-bottom: var(--space-4);
+  }
+
+  .clients-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    align-items: center;
+  }
+
+  .client-name {
+    font-family: var(--font-sans);
+    font-size: var(--fs-h3);
+    color: var(--c-black);
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  .client-sep {
+    color: var(--c-bone);
+    font-size: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .values-grid { grid-template-columns: repeat(2, 1fr); }
+    .timeline { padding-left: 80px; }
+    .timeline-year { left: -80px; }
   }
 </style>
 
@@ -205,6 +445,45 @@ import HomeFooter from "../components/HomeFooter.astro"; // We reuse the footer
       duration: 1.2,
       ease: "expo.inOut",
       scrollTrigger: { trigger: ".story-image-wrap", start: "top 80%" }
+    });
+
+    // Values cards stagger
+    gsap.to(".value-card", {
+      y: 0,
+      opacity: 1,
+      duration: 0.8,
+      stagger: 0.1,
+      ease: "power2.out",
+      scrollTrigger: { trigger: ".values-grid", start: "top 80%" }
+    });
+
+    // Timeline items
+    gsap.to(".timeline-item", {
+      y: 0,
+      opacity: 1,
+      duration: 0.7,
+      stagger: 0.15,
+      ease: "power2.out",
+      scrollTrigger: { trigger: ".timeline", start: "top 80%" }
+    });
+
+    // Timeline dots draw
+    gsap.to(".timeline-dot", {
+      scaleX: 1,
+      duration: 0.4,
+      stagger: 0.15,
+      ease: "power2.out",
+      scrollTrigger: { trigger: ".timeline", start: "top 80%" }
+    });
+
+    // Client names stagger
+    gsap.to(".client-name", {
+      y: 0,
+      opacity: 1,
+      duration: 0.6,
+      stagger: 0.08,
+      ease: "power2.out",
+      scrollTrigger: { trigger: ".clients-strip", start: "top 90%" }
     });
   });
 </script>

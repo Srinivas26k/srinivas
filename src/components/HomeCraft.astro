@@ -1,0 +1,119 @@
+---
+---
+<!-- SECTION: Craft / Info Cards -->
+<section class="craft-section" aria-label="Studio Capabilities">
+  <div class="container craft-grid">
+
+    <div class="craft-card" style="--offset: 0px">
+      <h3 class="t-label craft-card-title">PROCESS</h3>
+      <ul class="craft-list">
+        <li class="craft-tag">Discovery Sprint</li>
+        <li class="craft-tag">Brand Audit</li>
+        <li class="craft-tag">Strategy Workshop</li>
+        <li class="craft-tag">Concept Development</li>
+        <li class="craft-tag">Design Iteration</li>
+        <li class="craft-tag">Motion Prototyping</li>
+        <li class="craft-tag">Handoff & Documentation</li>
+      </ul>
+    </div>
+
+    <div class="craft-card" style="--offset: 80px">
+      <h3 class="t-label craft-card-title">INDUSTRIES</h3>
+      <ul class="craft-list">
+        <li class="craft-tag">Deep Tech & AI</li>
+        <li class="craft-tag">Quantum Computing</li>
+        <li class="craft-tag">FinTech</li>
+        <li class="craft-tag">Creative Studios</li>
+        <li class="craft-tag">SaaS</li>
+        <li class="craft-tag">Healthcare</li>
+        <li class="craft-tag">Mobility & EV</li>
+      </ul>
+    </div>
+
+    <div class="craft-card" style="--offset: 160px">
+      <h3 class="t-label craft-card-title">CAPABILITIES</h3>
+      <ul class="craft-list">
+        <li class="craft-tag">Brand Identity</li>
+        <li class="craft-tag">UI/UX Design</li>
+        <li class="craft-tag">GSAP Animation</li>
+        <li class="craft-tag">Web Development</li>
+        <li class="craft-tag">3D & WebGL</li>
+        <li class="craft-tag">Pitch Decks</li>
+        <li class="craft-tag">Design Systems</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .craft-section {
+    background: var(--c-cream);
+    padding-block: var(--space-10);
+    overflow: hidden;
+  }
+
+  .craft-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+    align-items: start;
+  }
+
+  .craft-card {
+    background: #ffffff;
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    border-radius: var(--radius-card);
+    padding: var(--space-5);
+    margin-top: var(--offset);
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  .craft-card-title {
+    color: var(--c-bone);
+    margin-bottom: var(--space-4);
+  }
+
+  .craft-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .craft-tag {
+    font-family: var(--font-sans);
+    font-size: var(--fs-body-sm);
+    color: var(--c-black);
+    padding: 8px 12px;
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    border-radius: var(--radius-btn);
+  }
+
+  @media (max-width: 768px) {
+    .craft-grid {
+      grid-template-columns: 1fr;
+    }
+    .craft-card {
+      margin-top: 0 !important;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    gsap.to(".craft-card", {
+      y: 0,
+      opacity: 1,
+      duration: 0.9,
+      stagger: 0.15,
+      ease: "power3.out",
+      scrollTrigger: { trigger: ".craft-grid", start: "top 80%" }
+    });
+  });
+</script>

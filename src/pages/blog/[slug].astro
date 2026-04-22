@@ -1,0 +1,418 @@
+---
+import "../../styles/global.css";
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import HomeFooter from "../../components/HomeFooter.astro";
+
+// PLACEHOLDER — hardcoded single post
+const post = {
+  slug: "first-post",
+  title: "Why Editorial Design Wins in the Age of AI",
+  category: "Design Thinking",
+  date: "April 10, 2026",
+  readTime: "5 min read",
+  author: "Srinivas Nampalli",
+  authorTitle: "Brand & Design Studio",
+  authorBio: "Srinivas builds editorial-quality digital experiences for AI-native companies and ambitious founders.",
+  image: "/images/blog_1.jpg",
+  content: `
+    <p>Editorial design is not nostalgia. It is signal in a world of noise.</p>
+    <p>When every landing page looks the same — gradient mesh, Inter font, three-column grid — the studio that reaches for Instrument Serif and a 180px display headline becomes the outlier. Outliers get remembered.</p>
+    <h2>Craft as Competitive Advantage</h2>
+    <p>AI can generate a wireframe in seconds. It cannot replicate the editorial instinct that says <em>this headline needs to be 20% bigger</em>, or <em>this image works better in grayscale</em>. That instinct is built over years of looking at good work.</p>
+    <blockquote>"The studios winning in 2026 are the ones who treat every pixel as a publishing decision."</blockquote>
+    <h2>The Metric That Matters</h2>
+    <p>Conversion is a lagging indicator. Brand authority is leading. When a prospect lands on your portfolio and immediately knows what you stand for, the sales cycle collapses.</p>
+    <p>Build for authority first. Everything else follows.</p>
+  `
+};
+
+export function getStaticPaths() {
+  return [
+    { params: { slug: "first-post" } },
+    { params: { slug: "gsap-scroll-patterns" } },
+    { params: { slug: "designing-ai-interfaces" } },
+  ];
+}
+---
+
+<Layout title={`${post.title} — Srinivas Nampalli`}>
+  <Header />
+  <main class="post-main">
+
+    <!-- Hero -->
+    <section class="post-hero" aria-label="Article Header">
+      <div class="container post-hero-content">
+        <p class="t-label post-category">{post.category}</p>
+        <h1 class="t-display-2 post-title">
+          {post.title}
+        </h1>
+        <div class="post-byline">
+          <span class="t-mono">{post.author}</span>
+          <span class="byline-sep">·</span>
+          <span class="t-mono">{post.date}</span>
+          <span class="byline-sep">·</span>
+          <span class="t-mono">{post.readTime}</span>
+        </div>
+      </div>
+      <div class="post-hero-img-wrap">
+        <div class="cover-wipe-hero"></div>
+        <img src={post.image} alt={post.title} class="post-hero-img" />
+      </div>
+    </section>
+
+    <!-- Content -->
+    <div class="post-layout">
+      <!-- TOC Sidebar -->
+      <aside class="toc-sidebar" aria-label="Table of Contents">
+        <p class="t-label toc-label">Contents</p>
+        <nav class="toc-nav" id="toc-nav">
+          <a href="#craft" class="toc-link">Craft as Competitive Advantage</a>
+          <a href="#metric" class="toc-link">The Metric That Matters</a>
+        </nav>
+      </aside>
+
+      <!-- Article Body -->
+      <article class="post-body" set:html={post.content} />
+    </div>
+
+    <!-- Author Bio -->
+    <section class="author-bio" aria-label="Author">
+      <div class="container author-inner">
+        <div class="author-portrait-wrap">
+          <img src="/images/studio_portrait.png" alt={post.author} class="author-portrait" />
+        </div>
+        <div class="author-info">
+          <p class="t-h3 author-name">{post.author}</p>
+          <p class="t-label author-title">{post.authorTitle}</p>
+          <p class="t-body author-bio-text">{post.authorBio}</p>
+          <div class="author-socials">
+            <a href="https://in.linkedin.com/in/srinivas-nampalli" class="btn-text" target="_blank">LinkedIn →</a>
+            <a href="https://github.com/Srinivas26k" class="btn-text" target="_blank">GitHub →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Posts — PLACEHOLDER -->
+    <section class="related-posts" aria-label="Related Articles">
+      <div class="container">
+        <p class="t-label related-label">Related Articles</p>
+        <div class="related-grid">
+          <a href="/blog/gsap-scroll-patterns" class="related-card">
+            <div class="related-img-wrap">
+              <img src="/images/blog_2.jpg" alt="GSAP Patterns" class="related-img" />
+            </div>
+            <span class="t-label related-cat">Motion Design</span>
+            <h3 class="t-h3 related-title">GSAP ScrollTrigger Patterns That Actually Work</h3>
+          </a>
+          <a href="/blog/designing-ai-interfaces" class="related-card">
+            <div class="related-img-wrap">
+              <img src="/images/blog_3.jpg" alt="AI Interfaces" class="related-img" />
+            </div>
+            <span class="t-label related-cat">AI Design</span>
+            <h3 class="t-h3 related-title">Designing Interfaces for Probabilistic Systems</h3>
+          </a>
+          <a href="/blog/first-post" class="related-card">
+            <div class="related-img-wrap">
+              <img src="/images/blog_1.jpg" alt="Editorial Design" class="related-img" />
+            </div>
+            <span class="t-label related-cat">Design Thinking</span>
+            <h3 class="t-h3 related-title">Why Editorial Design Wins in the Age of AI</h3>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <HomeFooter />
+  </main>
+</Layout>
+
+<style>
+  .post-main {
+    background: var(--c-ink);
+  }
+
+  .post-hero {
+    padding-top: 140px;
+    padding-bottom: 0;
+  }
+
+  .post-category {
+    color: var(--c-taupe);
+    margin-bottom: var(--space-3);
+  }
+
+  .post-title {
+    max-width: 900px;
+    margin-bottom: var(--space-4);
+  }
+
+  .post-byline {
+    display: flex;
+    gap: var(--space-3);
+    align-items: center;
+    margin-bottom: var(--space-6);
+    color: var(--c-stone);
+  }
+
+  .byline-sep {
+    color: var(--c-stone);
+  }
+
+  .post-hero-img-wrap {
+    position: relative;
+    width: 100%;
+    max-height: 70vh;
+    overflow: hidden;
+    cursor: crosshair;
+  }
+
+  .cover-wipe-hero {
+    position: absolute;
+    inset: 0;
+    background: var(--c-ink);
+    z-index: 2;
+    transform-origin: top;
+  }
+
+  .post-hero-img {
+    width: 100%;
+    max-height: 70vh;
+    object-fit: cover;
+  }
+
+  /* Layout */
+  .post-layout {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: var(--space-8);
+    max-width: 1000px;
+    margin-inline: auto;
+    padding-inline: var(--col-pad);
+    padding-block: var(--space-8);
+  }
+
+  /* TOC */
+  .toc-sidebar {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+  }
+
+  .toc-label {
+    margin-bottom: var(--space-3);
+  }
+
+  .toc-nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .toc-link {
+    font-size: var(--fs-body-sm);
+    color: var(--c-stone);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    padding-left: var(--space-2);
+    border-left: 2px solid transparent;
+  }
+
+  .toc-link:hover,
+  .toc-link.active {
+    color: var(--c-taupe);
+    border-left-color: var(--c-taupe);
+  }
+
+  /* Body */
+  .post-body {
+    color: var(--c-stone);
+    font-size: var(--fs-body-lg);
+    line-height: 1.8;
+  }
+
+  .post-body :global(h2) {
+    font-family: var(--font-display);
+    font-size: var(--fs-h1);
+    color: var(--c-off-white);
+    margin-top: var(--space-7);
+    margin-bottom: var(--space-4);
+  }
+
+  .post-body :global(h3) {
+    font-family: var(--font-sans);
+    font-size: var(--fs-h2);
+    color: var(--c-off-white);
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-3);
+  }
+
+  .post-body :global(p) {
+    margin-bottom: var(--space-4);
+  }
+
+  .post-body :global(blockquote) {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(22px, 2.5vw, 36px);
+    color: var(--c-off-white);
+    border-left: 2px solid var(--c-taupe);
+    padding-left: var(--space-4);
+    margin-block: var(--space-6);
+  }
+
+  .post-body :global(em) {
+    color: var(--c-off-white);
+  }
+
+  /* Author */
+  .author-bio {
+    background: var(--c-cream);
+    padding-block: var(--space-8);
+  }
+
+  .author-inner {
+    display: flex;
+    gap: var(--space-5);
+    align-items: flex-start;
+    max-width: 760px;
+  }
+
+  .author-portrait-wrap {
+    width: 80px;
+    height: 100px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .author-portrait {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(40%);
+  }
+
+  .author-name {
+    color: var(--c-black);
+    margin-bottom: 4px;
+  }
+
+  .author-title {
+    color: var(--c-bone);
+    margin-bottom: var(--space-3);
+  }
+
+  .author-bio-text {
+    color: var(--c-bone);
+    margin-bottom: var(--space-3);
+  }
+
+  .author-socials {
+    display: flex;
+    gap: var(--space-4);
+  }
+
+  /* Related */
+  .related-posts {
+    background: var(--c-ink);
+    padding-block: var(--space-8);
+  }
+
+  .related-label {
+    margin-bottom: var(--space-5);
+  }
+
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+  }
+
+  .related-card {
+    display: block;
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .related-img-wrap {
+    overflow: hidden;
+    aspect-ratio: 3/2;
+    margin-bottom: var(--space-3);
+    cursor: crosshair;
+  }
+
+  .related-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s var(--ease-out);
+  }
+
+  .related-card:hover .related-img {
+    transform: scale(1.04);
+  }
+
+  .related-cat {
+    color: var(--c-taupe);
+    margin-bottom: var(--space-2);
+    display: block;
+  }
+
+  .related-title {
+    color: var(--c-off-white);
+  }
+
+  @media (max-width: 768px) {
+    .post-layout { grid-template-columns: 1fr; }
+    .toc-sidebar { display: none; }
+    .related-grid { grid-template-columns: 1fr; }
+    .author-inner { flex-direction: column; }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // Hero cover wipe
+    gsap.to(".cover-wipe-hero", {
+      scaleY: 0,
+      duration: 1.4,
+      ease: "expo.inOut",
+      delay: 0.2
+    });
+
+    // Related cards
+    gsap.to(".related-card", {
+      y: 0,
+      opacity: 1,
+      duration: 0.7,
+      stagger: 0.08,
+      ease: "power2.out",
+      scrollTrigger: { trigger: ".related-grid", start: "top 85%" }
+    });
+
+    // TOC highlight on scroll
+    const sections = document.querySelectorAll(".post-body h2, .post-body h3");
+    const tocLinks = document.querySelectorAll(".toc-link");
+
+    ScrollTrigger.create({
+      trigger: ".post-body",
+      start: "top 60%",
+      end: "bottom 60%",
+      onUpdate: (self) => {
+        sections.forEach((section, i) => {
+          const rect = section.getBoundingClientRect();
+          if (rect.top < window.innerHeight * 0.5) {
+            tocLinks.forEach(l => l.classList.remove("active"));
+            tocLinks[i]?.classList.add("active");
+          }
+        });
+      }
+    });
+  });
+</script>

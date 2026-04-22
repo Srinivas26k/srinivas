@@ -1,0 +1,412 @@
+---
+import "../../styles/global.css";
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import HomeFooter from "../../components/HomeFooter.astro";
+
+// PLACEHOLDER data
+const posts = [
+  { slug: "first-post", title: "Why Editorial Design Wins in the Age of AI", excerpt: "As AI floods the web, studios that survive double down on craft, restraint, and editorial authority.", category: "Design Thinking", date: "Apr 10, 2026", image: "/images/blog_1.jpg" },
+  { slug: "gsap-scroll-patterns", title: "GSAP ScrollTrigger Patterns That Actually Work", excerpt: "Five animation patterns implemented cleanly with zero layout shift.", category: "Motion Design", date: "Mar 28, 2026", image: "/images/blog_2.jpg" },
+  { slug: "designing-ai-interfaces", title: "Designing Interfaces for Probabilistic Systems", excerpt: "AI outputs are never certain. Here is how to design UI that communicates confidence without confusing the user.", category: "AI Design", date: "Mar 15, 2026", image: "/images/blog_3.jpg" },
+];
+
+const featured = posts[0];
+const remaining = posts.slice(1);
+---
+
+<Layout title="The Journal — Srinivas Nampalli">
+  <Header />
+  <main class="blog-main">
+
+    <!-- Hero -->
+    <section class="blog-hero" aria-label="Journal Header">
+      <div class="watermark-wrap">
+        <svg class="fit-text watermark-svg" viewBox="0 0 1000 160" preserveAspectRatio="xMidYMid meet">
+          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" class="watermark-text">THE JOURNAL</text>
+        </svg>
+      </div>
+      <div class="container blog-hero-content">
+        <div class="hero-meta">
+          <span class="t-label">{posts.length} Articles</span>
+          <span class="t-label cat-pill">Design Thinking</span>
+          <span class="t-label cat-pill">Motion Design</span>
+          <span class="t-label cat-pill">AI Design</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Post -->
+    <section class="featured-post-section" aria-label="Featured Article">
+      <div class="container">
+        <a href={`/blog/${featured.slug}`} class="featured-card">
+          <div class="featured-img-wrap">
+            <div class="cover-wipe-f"></div>
+            <img src={featured.image} alt={featured.title} class="featured-img" />
+          </div>
+          <div class="featured-content">
+            <span class="t-label featured-category">{featured.category}</span>
+            <h2 class="t-display-2 featured-title">{featured.title}</h2>
+            <p class="t-body-lg featured-excerpt">{featured.excerpt}</p>
+            <span class="t-mono featured-date">{featured.date}</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Category Filter -->
+    <div class="cat-filter sticky">
+      <div class="container">
+        <ul class="cat-list">
+          <li><button class="cat-btn active" data-cat="all">All</button></li>
+          <li><button class="cat-btn" data-cat="design">Design Thinking</button></li>
+          <li><button class="cat-btn" data-cat="motion">Motion Design</button></li>
+          <li><button class="cat-btn" data-cat="ai">AI Design</button></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Posts Grid -->
+    <section class="posts-grid-section" aria-label="All Articles">
+      <div class="container posts-grid">
+        {remaining.map((post, i) => (
+          <a href={`/blog/${post.slug}`} class="post-card" style={`transition-delay: ${i * 80}ms`}>
+            <div class="post-img-wrap">
+              <div class="cover-wipe-p"></div>
+              <img src={post.image} alt={post.title} class="post-img" />
+            </div>
+            <div class="post-meta">
+              <span class="t-label post-category">{post.category}</span>
+              <h3 class="t-h2 post-title">{post.title}</h3>
+              <span class="t-mono post-date">{post.date}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Newsletter Band -->
+    <section class="newsletter-band" aria-label="Newsletter">
+      <div class="container newsletter-inner">
+        <div class="newsletter-text">
+          <h3 class="t-h1">Stay in the loop.</h3>
+          <p class="t-body newsletter-sub">New essays on design, motion, and AI systems — monthly, no spam.</p>
+        </div>
+        <form class="newsletter-form" id="newsletter-form">
+          <input type="email" placeholder="your@email.com" required class="newsletter-input" />
+          <button type="submit" class="btn-primary">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+    <HomeFooter />
+  </main>
+</Layout>
+
+<style>
+  .blog-main {
+    background: var(--c-ink);
+  }
+
+  .blog-hero {
+    padding-top: 120px;
+    padding-bottom: var(--space-4);
+    overflow: hidden;
+  }
+
+  .watermark-wrap {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: var(--space-4);
+  }
+
+  .watermark-svg {
+    width: 110%;
+    margin-left: -5%;
+    height: auto;
+    fill: var(--c-stone);
+    opacity: 0.06;
+  }
+
+  .watermark-text {
+    font-family: var(--font-display);
+    font-size: 180px;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: var(--space-4);
+    align-items: center;
+    flex-wrap: wrap;
+    padding-bottom: var(--space-4);
+  }
+
+  .cat-pill {
+    background: rgba(249,248,247,0.06);
+    padding: 4px 10px;
+    border-radius: var(--radius-btn);
+    border: 1px solid var(--c-line);
+  }
+
+  .featured-post-section {
+    padding-block: var(--space-7);
+  }
+
+  .featured-card {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: var(--space-6);
+    text-decoration: none;
+    align-items: center;
+  }
+
+  .featured-img-wrap {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16/9;
+    cursor: crosshair;
+  }
+
+  .cover-wipe-f {
+    position: absolute;
+    inset: 0;
+    background: var(--c-ink);
+    z-index: 2;
+    transform-origin: top;
+  }
+
+  .featured-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s var(--ease-out);
+  }
+
+  .featured-card:hover .featured-img {
+    transform: scale(1.04);
+  }
+
+  .featured-category {
+    color: var(--c-taupe);
+    margin-bottom: var(--space-3);
+    display: block;
+  }
+
+  .featured-title {
+    color: var(--c-off-white);
+    margin-bottom: var(--space-4);
+  }
+
+  .featured-excerpt {
+    color: var(--c-stone);
+    margin-bottom: var(--space-4);
+  }
+
+  .featured-date {
+    color: var(--c-stone);
+  }
+
+  /* Filter */
+  .cat-filter {
+    position: sticky;
+    top: 72px;
+    z-index: 50;
+    background: rgba(17,17,17,0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--c-line);
+    padding-block: var(--space-3);
+  }
+
+  .cat-list {
+    display: flex;
+    gap: var(--space-4);
+    list-style: none;
+  }
+
+  .cat-btn {
+    background: none;
+    border: none;
+    color: var(--c-stone);
+    font-family: var(--font-sans);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    padding-bottom: 4px;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+
+  .cat-btn.active,
+  .cat-btn:hover {
+    color: var(--c-off-white);
+  }
+
+  .cat-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--c-taupe);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s var(--ease-out);
+  }
+
+  .cat-btn.active::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  /* Posts Grid */
+  .posts-grid-section {
+    padding-block: var(--space-8);
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-5);
+  }
+
+  .post-card {
+    display: block;
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .post-img-wrap {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 3/2;
+    margin-bottom: var(--space-3);
+    cursor: crosshair;
+  }
+
+  .cover-wipe-p {
+    position: absolute;
+    inset: 0;
+    background: var(--c-ink);
+    z-index: 2;
+    transform-origin: top;
+  }
+
+  .post-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s var(--ease-out);
+  }
+
+  .post-card:hover .post-img {
+    transform: scale(1.04);
+  }
+
+  .post-meta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .post-category {
+    color: var(--c-taupe);
+  }
+
+  .post-title {
+    color: var(--c-off-white);
+    font-size: clamp(18px, 2vw, 26px);
+  }
+
+  .post-date {
+    color: var(--c-stone);
+  }
+
+  /* Newsletter */
+  .newsletter-band {
+    background: var(--c-cream);
+    padding-block: var(--space-8);
+  }
+
+  .newsletter-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+  }
+
+  .newsletter-text .t-h1 {
+    color: var(--c-black);
+    margin-bottom: var(--space-2);
+  }
+
+  .newsletter-sub {
+    color: var(--c-bone);
+  }
+
+  .newsletter-form {
+    display: flex;
+    gap: var(--space-3);
+    flex-shrink: 0;
+  }
+
+  .newsletter-input {
+    width: 280px;
+    background: #ffffff;
+    border: 1px solid rgba(17,17,17,0.15);
+    color: var(--c-black);
+  }
+
+  .newsletter-input::placeholder {
+    color: var(--c-bone);
+  }
+
+  @media (max-width: 768px) {
+    .featured-card { grid-template-columns: 1fr; }
+    .posts-grid { grid-template-columns: 1fr; }
+    .newsletter-inner { flex-direction: column; }
+    .newsletter-form { flex-direction: column; width: 100%; }
+    .newsletter-input { width: 100%; }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // Featured cover wipe
+    gsap.to(".cover-wipe-f", {
+      scaleY: 0,
+      duration: 1.2,
+      ease: "expo.inOut",
+      scrollTrigger: { trigger: ".featured-card", start: "top 85%" }
+    });
+
+    // Post cards stagger
+    gsap.to(".post-card", {
+      y: 0,
+      opacity: 1,
+      duration: 0.8,
+      stagger: 0.1,
+      ease: "power2.out",
+      scrollTrigger: { trigger: ".posts-grid", start: "top 80%" }
+    });
+
+    // Post cover wipes
+    gsap.utils.toArray(".post-img-wrap").forEach(wrap => {
+      const wipe = (wrap as HTMLElement).querySelector(".cover-wipe-p");
+      gsap.to(wipe, {
+        scaleY: 0,
+        duration: 1,
+        ease: "expo.inOut",
+        scrollTrigger: { trigger: wrap as Element, start: "top 90%" }
+      });
+    });
+  });
+</script>

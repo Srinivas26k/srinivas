@@ -1,0 +1,244 @@
+---
+---
+<!-- SECTION: Testimonials -->
+<section class="testimonials-section" aria-label="Client Testimonials">
+  <!-- Fit-text watermark -->
+  <div class="watermark-wrap">
+    <svg class="fit-text watermark-svg" viewBox="0 0 1000 160" preserveAspectRatio="xMidYMid meet">
+      <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" class="watermark-text">TESTIMONIALS</text>
+    </svg>
+  </div>
+
+  <div class="container testimonials-inner">
+    <!-- Carousel -->
+    <div class="carousel" id="testimonials-carousel">
+      <!-- Slide 01 — PLACEHOLDER -->
+      <div class="slide active" data-index="0">
+        <blockquote class="quote-text t-display-3">
+          "Working with Srinivas transformed our brand from a startup into a category-defining company. The attention to craft is unmatched."
+        </blockquote>
+        <div class="client-row">
+          <div class="client-portrait-wrap">
+            <div class="cover-wipe-t"></div>
+            <img src="/images/testimonial_1.jpg" alt="Alex Chen" class="client-portrait" />
+          </div>
+          <div class="client-info">
+            <p class="t-h3 client-name">Alex Chen</p>
+            <p class="t-label client-title">Founder & CEO · Quantum Systems · San Francisco</p>
+          </div>
+          <span class="slide-counter t-mono">01/03</span>
+        </div>
+      </div>
+
+      <!-- Slide 02 — PLACEHOLDER -->
+      <div class="slide" data-index="1">
+        <blockquote class="quote-text t-display-3">
+          "The intelligent interface Srinivas designed for our AI platform reduced onboarding time by 40%. Design and systems thinking in perfect balance."
+        </blockquote>
+        <div class="client-row">
+          <div class="client-portrait-wrap">
+            <div class="cover-wipe-t"></div>
+            <img src="/images/testimonial_2.jpg" alt="Priya Mehta" class="client-portrait" />
+          </div>
+          <div class="client-info">
+            <p class="t-h3 client-name">Priya Mehta</p>
+            <p class="t-label client-title">Head of Product · Aether Labs · London</p>
+          </div>
+          <span class="slide-counter t-mono">02/03</span>
+        </div>
+      </div>
+
+      <!-- Slide 03 — PLACEHOLDER -->
+      <div class="slide" data-index="2">
+        <blockquote class="quote-text t-display-3">
+          "Our pitch deck closed a $2M seed round. Clean, bold, and confident — exactly the signal investors needed to see."
+        </blockquote>
+        <div class="client-row">
+          <div class="client-portrait-wrap">
+            <div class="cover-wipe-t"></div>
+            <img src="/images/testimonial_3.jpg" alt="Marcus Obi" class="client-portrait" />
+          </div>
+          <div class="client-info">
+            <p class="t-h3 client-name">Marcus Obi</p>
+            <p class="t-label client-title">Co-Founder · Nova Ventures · Lagos</p>
+          </div>
+          <span class="slide-counter t-mono">03/03</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Prev/Next -->
+    <div class="carousel-controls">
+      <button class="ctrl-btn" id="prev-testimonial" aria-label="Previous">←</button>
+      <button class="ctrl-btn" id="next-testimonial" aria-label="Next">→</button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials-section {
+    background: var(--c-ink);
+    padding-block: var(--space-10);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .watermark-wrap {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: var(--space-8);
+  }
+
+  .watermark-svg {
+    width: 110%;
+    margin-left: -5%;
+    height: auto;
+    fill: var(--c-stone);
+    opacity: 0.06;
+  }
+
+  .watermark-text {
+    font-family: var(--font-display);
+    font-size: 180px;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+  }
+
+  .testimonials-inner {
+    position: relative;
+  }
+
+  .carousel {
+    position: relative;
+  }
+
+  .slide {
+    display: none;
+    opacity: 0;
+  }
+
+  .slide.active {
+    display: block;
+    opacity: 1;
+  }
+
+  .quote-text {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--c-off-white);
+    max-width: 900px;
+    margin-bottom: var(--space-8);
+    line-height: 1.05;
+  }
+
+  .client-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .client-portrait-wrap {
+    position: relative;
+    width: 64px;
+    height: 80px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .cover-wipe-t {
+    position: absolute;
+    inset: 0;
+    background: var(--c-ink);
+    z-index: 2;
+    transform-origin: top;
+  }
+
+  .client-portrait {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(60%);
+    cursor: crosshair;
+  }
+
+  .client-info {
+    flex: 1;
+  }
+
+  .client-name {
+    color: var(--c-off-white);
+    margin-bottom: 4px;
+  }
+
+  .client-title {
+    color: var(--c-stone);
+  }
+
+  .slide-counter {
+    color: var(--c-stone);
+    font-size: 13px;
+  }
+
+  .carousel-controls {
+    display: flex;
+    gap: var(--space-3);
+    margin-top: var(--space-6);
+  }
+
+  .ctrl-btn {
+    width: 48px;
+    height: 48px;
+    border: 1px solid var(--c-line);
+    background: none;
+    color: var(--c-off-white);
+    font-size: 20px;
+    cursor: pointer;
+    transition: border-color 0.3s ease, color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ctrl-btn:hover {
+    border-color: var(--c-taupe);
+    color: var(--c-taupe);
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const slides = document.querySelectorAll(".slide");
+    let current = 0;
+
+    function goTo(index: number) {
+      const prev = slides[current];
+      current = (index + slides.length) % slides.length;
+      const next = slides[current];
+
+      gsap.to(prev, { opacity: 0, y: -20, duration: 0.4, onComplete: () => {
+        (prev as HTMLElement).classList.remove("active");
+        (next as HTMLElement).classList.add("active");
+        gsap.fromTo(next, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" });
+
+        // Cover wipe portrait
+        const wipe = next.querySelector(".cover-wipe-t");
+        gsap.to(wipe, { scaleY: 0, duration: 0.8, ease: "expo.inOut" });
+      }});
+    }
+
+    document.getElementById("prev-testimonial")?.addEventListener("click", () => goTo(current - 1));
+    document.getElementById("next-testimonial")?.addEventListener("click", () => goTo(current + 1));
+
+    // Initial wipe on first slide
+    gsap.to(".slide.active .cover-wipe-t", {
+      scaleY: 0,
+      duration: 1,
+      ease: "expo.inOut",
+      scrollTrigger: { trigger: ".testimonials-section", start: "top 80%" }
+    });
+  });
+</script>

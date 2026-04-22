@@ -24,8 +24,10 @@
   --c-bone:       rgba(17, 17, 17, 0.64);      /* Secondary text on light   */
 
   /* ── Accent ─────────────────────────────────────────────────────── */
-  --c-lime:    #c8ff00;   /* Signal Lime — one focal element per view  */
-  --c-lime-hover: #deff4a; /* Hovered lime buttons                     */
+  --c-taupe:       #9d8d7a;   /* Warm editorial accent — sole accent   */
+  --c-taupe-hover: #b3a48f;   /* Hovered taupe state                   */
+  --c-cream:       #f9f8f7;   /* Light surface alias                   */
+  --c-overlay:     rgba(17, 17, 17, 0.80);  /* Dark overlay on images  */
 
   /* ── Semantic ────────────────────────────────────────────────── */
   --c-success: #4ADE80;
@@ -285,13 +287,13 @@ section {
    BUTTONS
    ───────────────────────────────────────────────────────────────── */
 
-/* 1. Primary CTA — Signal Lime Fill */
+/* 1. Primary CTA — Taupe Fill */
 .btn-primary {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: var(--c-lime);
-  color: var(--c-ink);
+  background: var(--c-taupe);
+  color: var(--c-off-white);
   border: none;
   border-radius: var(--radius-btn);
   padding: 14px 28px;
@@ -307,7 +309,7 @@ section {
 }
 
 .btn-primary:hover {
-  background: var(--c-lime-hover);
+  background: var(--c-taupe-hover);
   transform: scale(1.02);
 }
 
@@ -367,7 +369,7 @@ section {
   left: 0;
   width: 100%;
   height: 2px;
-  background: var(--c-lime);
+  background: var(--c-taupe);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s var(--ease-out);
@@ -474,7 +476,7 @@ section {
   left: 0;
   width: 0%;
   height: 1px;
-  background-color: var(--c-lime);
+  background-color: var(--c-taupe);
   z-index: 10000;
   transition: width 0.1s linear;
 }
@@ -529,8 +531,8 @@ input::placeholder, textarea::placeholder {
 }
 
 input:focus, textarea:focus, select:focus {
-  border-color: rgba(200, 255, 0, 0.50);
-  box-shadow: 0 0 0 3px rgba(200, 255, 0, 0.08);
+  border-color: rgba(157, 141, 122, 0.60);
+  box-shadow: 0 0 0 3px rgba(157, 141, 122, 0.10);
 }
 
 textarea {
