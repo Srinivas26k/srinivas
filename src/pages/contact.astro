@@ -1,0 +1,384 @@
+---
+import "../styles/global.css";
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import HomeFooter from "../components/HomeFooter.astro";
+---
+<Layout title="Contact — Srinivas Nampalli">
+  <Header />
+  <main class="page-main">
+    
+    <!-- Hero -->
+    <section class="contact-hero" aria-label="Contact Header">
+      <div class="container contact-hero-content">
+        <h1 class="t-display-2 contact-title">
+          <span class="word">Let's</span> <span class="word">build</span> <span class="word">something.</span>
+        </h1>
+        <p class="t-body-lg contact-tagline">
+          We typically respond within 24 hours. Located in Hyderabad, working globally.
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact Form & Details -->
+    <section class="contact-form-section">
+      <div class="container form-grid">
+        
+        <!-- Direct Contact -->
+        <div class="contact-details">
+          <div class="detail-block">
+            <h3 class="t-label">EMAIL</h3>
+            <a href="mailto:srinivasvarma764@gmail.com" class="t-h3 link-hover">srinivasvarma764@gmail.com</a>
+          </div>
+          <div class="detail-block">
+            <h3 class="t-label">WHATSAPP</h3>
+            <a href="#" class="t-h3 link-hover">+91 123 456 7890</a>
+          </div>
+          <div class="detail-block">
+            <h3 class="t-label">SOCIAL</h3>
+            <div class="social-links">
+              <a href="#" class="t-body link-hover">LinkedIn</a>
+              <a href="#" class="t-body link-hover">GitHub</a>
+              <a href="#" class="t-body link-hover">Twitter</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <div class="contact-form-wrap">
+          <form class="contact-form" id="contact-form">
+            <div class="input-group">
+              <label for="name" class="t-label">Name</label>
+              <input type="text" id="name" name="name" required placeholder="John Doe">
+            </div>
+            <div class="input-group">
+              <label for="email" class="t-label">Email</label>
+              <input type="email" id="email" name="email" required placeholder="john@company.com">
+            </div>
+            <div class="input-group">
+              <label for="type" class="t-label">Project Type</label>
+              <select id="type" name="type">
+                <option value="branding">Brand Identity</option>
+                <option value="system">Intelligent System / UI</option>
+                <option value="web">Web Experience</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label for="message" class="t-label">Project Details</label>
+              <textarea id="message" name="message" required placeholder="Tell us about your goals..."></textarea>
+            </div>
+            <button type="submit" class="btn-primary form-submit">Send Message →</button>
+          </form>
+          
+          <div class="success-state" id="success-state">
+            <div class="check-circle">✓</div>
+            <h3 class="t-h2">Message Received</h3>
+            <p class="t-body">We'll be in touch shortly.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Mini FAQ -->
+    <section class="mini-faq">
+      <div class="container">
+        <h2 class="t-display-3 faq-title">Frequent Questions</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-btn">
+              <span class="t-h3">What is your typical project timeline?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-content">
+              <p class="t-body">Most projects span 4-8 weeks depending on complexity. Full brand systems take closer to 8 weeks, while targeted UI sprints can be completed in 3-4 weeks.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-btn">
+              <span class="t-h3">Do you work with international clients?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-content">
+              <p class="t-body">Yes. We work async and have experience delivering projects for clients across the US, Europe, and Asia.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <HomeFooter />
+  </main>
+</Layout>
+
+<style>
+  .page-main {
+    background: var(--c-ink);
+  }
+
+  /* Hero */
+  .contact-hero {
+    padding-top: 200px;
+    padding-bottom: var(--space-8);
+  }
+
+  .contact-title {
+    margin-bottom: var(--space-4);
+  }
+
+  .contact-title .word {
+    display: inline-block;
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  .contact-tagline {
+    color: var(--c-stone);
+    opacity: 0;
+  }
+
+  /* Form Section */
+  .contact-form-section {
+    padding-block: var(--space-6);
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 3fr 7fr;
+    gap: var(--space-8);
+  }
+
+  .detail-block {
+    margin-bottom: var(--space-6);
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .detail-block .t-label {
+    color: var(--c-stone);
+    margin-bottom: var(--space-2);
+  }
+
+  .link-hover {
+    color: var(--c-off-white);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .link-hover:hover {
+    color: var(--c-lime);
+  }
+
+  .social-links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .contact-form-wrap {
+    background: var(--c-ash);
+    padding: var(--space-6);
+    border-radius: var(--radius-card);
+    position: relative;
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .input-group .t-label {
+    color: var(--c-black);
+  }
+
+  .form-submit {
+    margin-top: var(--space-2);
+    width: 100%;
+    justify-content: center;
+    padding-block: 16px;
+  }
+
+  /* Success State */
+  .success-state {
+    position: absolute;
+    inset: 0;
+    background: var(--c-ash);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: var(--radius-card);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .success-state .t-h2, .success-state .t-body {
+    color: var(--c-black);
+  }
+
+  .check-circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--c-lime);
+    color: var(--c-ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    margin-bottom: var(--space-4);
+  }
+
+  /* FAQ */
+  .mini-faq {
+    padding-block: var(--space-10);
+    background: var(--c-ink);
+  }
+
+  .faq-title {
+    margin-bottom: var(--space-6);
+  }
+
+  .faq-list {
+    border-top: 1px solid var(--c-line);
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--c-line);
+  }
+
+  .faq-btn {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: var(--space-4);
+    background: none;
+    border: none;
+    color: var(--c-off-white);
+    cursor: pointer;
+    text-align: left;
+  }
+
+  .faq-icon {
+    font-size: 24px;
+    font-family: var(--font-mono);
+    transition: transform 0.4s var(--ease-out);
+  }
+
+  .faq-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s var(--ease-out);
+  }
+
+  .faq-content p {
+    padding-bottom: var(--space-4);
+    color: var(--c-stone);
+    max-width: 800px;
+  }
+
+  .faq-item.active .faq-icon {
+    transform: rotate(45deg);
+  }
+
+  @media (max-width: 768px) {
+    .form-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const tl = gsap.timeline();
+
+    // 1. Hero Reveal
+    tl.to(".contact-title .word", {
+      y: 0,
+      opacity: 1,
+      duration: 1.2,
+      stagger: 0.1,
+      ease: "power4.out"
+    });
+
+    tl.to(".contact-tagline", {
+      opacity: 1,
+      duration: 1,
+      ease: "power2.out"
+    }, "-=0.8");
+
+    // 2. Form & Details stagger
+    gsap.to(".detail-block", {
+      y: 0,
+      opacity: 1,
+      duration: 0.8,
+      stagger: 0.1,
+      ease: "power2.out",
+      scrollTrigger: { trigger: ".form-grid", start: "top 80%" }
+    });
+
+    gsap.to(".contact-form-wrap", {
+      y: 0,
+      opacity: 1,
+      duration: 1,
+      ease: "power3.out",
+      scrollTrigger: { trigger: ".form-grid", start: "top 80%" }
+    });
+
+    // FAQ Accordion
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+      const btn = item.querySelector('.faq-btn');
+      const content = item.querySelector('.faq-content') as HTMLElement;
+      
+      btn?.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        
+        // Close all
+        faqItems.forEach(i => {
+          i.classList.remove('active');
+          (i.querySelector('.faq-content') as HTMLElement).style.maxHeight = '0px';
+        });
+
+        if (!isActive) {
+          item.classList.add('active');
+          content.style.maxHeight = content.scrollHeight + "px";
+        }
+      });
+    });
+
+    // Form Submission Simulation
+    const form = document.getElementById('contact-form');
+    const success = document.getElementById('success-state');
+    
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      gsap.to(form, { opacity: 0, duration: 0.4 });
+      gsap.to(success, { 
+        opacity: 1, 
+        pointerEvents: "all", 
+        duration: 0.6, 
+        delay: 0.2,
+        ease: "power2.out"
+      });
+    });
+  });
+</script>

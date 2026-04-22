@@ -11,9 +11,10 @@
     <!-- Nav links — center -->
     <nav aria-label="Primary navigation">
       <ul class="nav-links" role="list">
-        <li><a href="#work">Work</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="/work">Work</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
       </ul>
     </nav>
 
@@ -42,9 +43,11 @@
   <button class="drawer-close" id="drawer-close" aria-label="Close navigation">×</button>
   <nav aria-label="Mobile navigation">
     <ul class="drawer-links" role="list">
-      <li><a href="#work" class="drawer-link">Work</a></li>
-      <li><a href="#about" class="drawer-link">About</a></li>
-      <li><a href="#contact" class="drawer-link">Contact</a></li>
+      <li><a href="/" class="drawer-link">Home</a></li>
+      <li><a href="/work" class="drawer-link">Work</a></li>
+      <li><a href="/services" class="drawer-link">Services</a></li>
+      <li><a href="/about" class="drawer-link">About</a></li>
+      <li><a href="/contact" class="drawer-link">Contact</a></li>
     </ul>
   </nav>
   <div class="drawer-footer">
@@ -85,27 +88,20 @@
     link.addEventListener('click', closeDrawer);
   });
 
-  // Active nav underline
-  const sections = document.querySelectorAll('section[id]');
+  // Active nav underline based on current path
   const navLinks = document.querySelectorAll('.nav-links a');
-
-  function updateActive() {
-    let current = '';
-    sections.forEach(section => {
-      const top = (section as HTMLElement).offsetTop - 100;
-      if (window.scrollY >= top) current = section.id;
-    });
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) {
-        link.classList.add('active');
-      }
-    });
-  }
-
-  window.addEventListener('scroll', updateActive, { passive: true });
-  updateActive();
+  const currentPath = window.location.pathname;
+  
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    const href = link.getAttribute('href');
+    if (href === currentPath || (href !== '/' && currentPath.startsWith(href))) {
+      link.classList.add('active');
+    }
+  });
 </script>
+
+
 
 <style>
   header {

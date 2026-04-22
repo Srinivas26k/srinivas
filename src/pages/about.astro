@@ -1,0 +1,210 @@
+---
+import "../styles/global.css";
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import HomeFooter from "../components/HomeFooter.astro"; // We reuse the footer
+---
+<Layout title="About — Srinivas Nampalli">
+  <Header />
+  <main class="page-main">
+    
+    <!-- Hero -->
+    <section class="about-hero" aria-label="About Hero">
+      <div class="about-bg-wrapper">
+        <div class="about-bg-image" style="background-image: url('/images/hero_background.png');"></div>
+      </div>
+      <div class="container about-hero-content">
+        <h1 class="t-display-2 about-title">We are<br/>Srinivas.</h1>
+      </div>
+    </section>
+
+    <!-- Mission Statement -->
+    <section class="mission-statement" aria-label="Mission Statement">
+      <div class="container">
+        <h2 class="t-display-3 mission-quote">
+          <span class="word-blur">Design</span> <span class="word-blur">is</span> <span class="word-blur">not</span> <span class="word-blur">just</span> <span class="word-blur">what</span> <span class="word-blur">it</span> <span class="word-blur">looks</span> <span class="word-blur">like.</span> <br/>
+          <span class="word-blur">Design</span> <span class="word-blur">is</span> <span class="word-blur">how</span> <span class="word-blur">it</span> <span class="word-blur">works.</span>
+        </h2>
+      </div>
+    </section>
+
+    <!-- Founder Story -->
+    <section class="founder-story" aria-label="Founder Story">
+      <div class="container story-grid">
+        <div class="story-image-wrap">
+          <div class="cover-wipe-story"></div>
+          <img src="/images/studio_portrait.png" alt="Srinivas Nampalli" class="story-image" />
+        </div>
+        <div class="story-content">
+          <h3 class="t-label">THE FOUNDER</h3>
+          <p class="t-body-lg">
+            Srinivas Nampalli is an engineer and creative director specializing in the intersection of artificial intelligence, quantum computing, and high-fidelity design systems.
+          </p>
+          <br/>
+          <p class="t-body-lg">
+            With a background at IIT Madras and experience across global enterprises, the studio brings technical rigor to creative endeavors, ensuring every pixel is mathematically precise and aesthetically absolute.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <HomeFooter />
+  </main>
+</Layout>
+
+<style>
+  .page-main {
+    background: var(--c-ink);
+  }
+
+  /* About Hero */
+  .about-hero {
+    position: relative;
+    height: 70vh;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: var(--space-8);
+    overflow: hidden;
+  }
+
+  .about-bg-wrapper {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .about-bg-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.4;
+    transform: scale(1.15);
+    will-change: transform;
+  }
+
+  .about-hero-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .about-title {
+    color: var(--c-off-white);
+  }
+
+  /* Mission Statement */
+  .mission-statement {
+    background: var(--c-ash);
+    padding-block: var(--space-10);
+    text-align: center;
+  }
+
+  .mission-quote {
+    color: var(--c-black);
+    max-width: 900px;
+    margin-inline: auto;
+  }
+
+  .mission-quote .word-blur {
+    display: inline-block;
+    filter: blur(10px);
+    opacity: 0;
+    transform: translateY(20px);
+    will-change: filter, transform, opacity;
+  }
+
+  /* Founder Story */
+  .founder-story {
+    padding-block: var(--space-10);
+    background: var(--c-ink);
+  }
+
+  .story-grid {
+    display: grid;
+    grid-template-columns: 4fr 6fr;
+    gap: var(--space-8);
+    align-items: center;
+  }
+
+  .story-image-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+  }
+
+  .cover-wipe-story {
+    position: absolute;
+    inset: 0;
+    background: var(--c-ink);
+    z-index: 2;
+    transform-origin: top;
+  }
+
+  .story-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+  }
+
+  .story-content {
+    padding-left: var(--space-6);
+  }
+
+  .story-content .t-label {
+    margin-bottom: var(--space-4);
+    color: var(--c-lime);
+  }
+
+  @media (max-width: 768px) {
+    .story-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+    .story-content {
+      padding-left: 0;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // 1. Hero Parallax
+    gsap.to(".about-bg-image", {
+      scale: 1,
+      yPercent: 15,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".about-hero",
+        start: "top top",
+        end: "bottom top",
+        scrub: true
+      }
+    });
+
+    // 2. Mission word-blur reveal
+    gsap.to(".mission-quote .word-blur", {
+      filter: "blur(0px)",
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      stagger: 0.05,
+      ease: "power2.out",
+      scrollTrigger: { trigger: ".mission-statement", start: "top 80%" }
+    });
+
+    // 3. Cover wipe image reveal
+    gsap.to(".cover-wipe-story", {
+      scaleY: 0,
+      duration: 1.2,
+      ease: "expo.inOut",
+      scrollTrigger: { trigger: ".story-image-wrap", start: "top 80%" }
+    });
+  });
+</script>

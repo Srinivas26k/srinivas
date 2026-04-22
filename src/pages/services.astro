@@ -1,0 +1,328 @@
+---
+import "../styles/global.css";
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import HomeFooter from "../components/HomeFooter.astro";
+---
+<Layout title="Services — Srinivas Nampalli">
+  <Header />
+  <main class="page-main">
+    
+    <!-- Hero -->
+    <section class="services-hero" aria-label="Services Header">
+      <div class="container services-hero-content">
+        <h1 class="t-display-2 services-title">
+          <span class="char-wrap"><span class="char">S</span></span>
+          <span class="char-wrap"><span class="char">e</span></span>
+          <span class="char-wrap"><span class="char">r</span></span>
+          <span class="char-wrap"><span class="char">v</span></span>
+          <span class="char-wrap"><span class="char">i</span></span>
+          <span class="char-wrap"><span class="char">c</span></span>
+          <span class="char-wrap"><span class="char">e</span></span>
+          <span class="char-wrap"><span class="char">s</span></span>
+        </h1>
+        <p class="t-body-lg services-tagline">
+          From brand identity to intelligent systems. We build digital experiences that perform.
+        </p>
+      </div>
+    </section>
+
+    <!-- Services Detail -->
+    <section class="services-detail" aria-label="Services List">
+      <!-- Service 01 -->
+      <div class="service-panel panel-dark">
+        <div class="container panel-grid">
+          <div class="panel-left">
+            <span class="t-display-1 huge-number">01</span>
+          </div>
+          <div class="panel-right">
+            <h2 class="t-h1">Brand Strategy & Identity</h2>
+            <p class="t-body">We create foundational brand systems that establish market authority and resonate with your audience.</p>
+            <div class="tags-row">
+              <span class="tag">Brand Positioning</span>
+              <span class="tag">Visual Identity</span>
+              <span class="tag">Guidelines</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Service 02 -->
+      <div class="service-panel panel-light">
+        <div class="container panel-grid">
+          <div class="panel-left">
+            <span class="t-display-1 huge-number">02</span>
+          </div>
+          <div class="panel-right">
+            <h2 class="t-h1">Intelligent Systems</h2>
+            <p class="t-body">Designing interfaces and architectures for AI-driven platforms, quantum tools, and complex data environments.</p>
+            <div class="tags-row">
+              <span class="tag">AI Interfaces</span>
+              <span class="tag">Dashboard Design</span>
+              <span class="tag">System Architecture</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 03 -->
+      <div class="service-panel panel-dark">
+        <div class="container panel-grid">
+          <div class="panel-left">
+            <span class="t-display-1 huge-number">03</span>
+          </div>
+          <div class="panel-right">
+            <h2 class="t-h1">Motion & Interaction</h2>
+            <p class="t-body">Elevating digital products with high-fidelity GSAP motion, WebGL, and fluid interaction design.</p>
+            <div class="tags-row">
+              <span class="tag">Micro-interactions</span>
+              <span class="tag">GSAP Animation</span>
+              <span class="tag">3D WebGL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Philosophy -->
+    <section class="pricing-philosophy" aria-label="Engagement Models">
+      <div class="container">
+        <h3 class="t-display-3 pricing-title">Engagement Models</h3>
+        <div class="pricing-grid">
+          <div class="price-card">
+            <h4 class="t-h2">Starter</h4>
+            <p class="t-small">For early-stage startups needing a strong foundation.</p>
+            <ul class="feature-list">
+              <li>Visual Identity Base</li>
+              <li>Landing Page Design</li>
+              <li>Basic Guidelines</li>
+            </ul>
+          </div>
+          <div class="price-card popular">
+            <h4 class="t-h2">Studio</h4>
+            <p class="t-small">Comprehensive system design for growing brands.</p>
+            <ul class="feature-list">
+              <li>Full Brand Identity</li>
+              <li>Web Application UI/UX</li>
+              <li>Motion Design System</li>
+              <li>Component Library</li>
+            </ul>
+          </div>
+          <div class="price-card">
+            <h4 class="t-h2">Enterprise</h4>
+            <p class="t-small">Continuous partnership and technical direction.</p>
+            <ul class="feature-list">
+              <li>Retainer Model</li>
+              <li>Dedicated Engineering</li>
+              <li>AI Integration</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <HomeFooter />
+  </main>
+</Layout>
+
+<style>
+  .page-main {
+    background: var(--c-ink);
+  }
+
+  /* Hero */
+  .services-hero {
+    padding-top: 200px;
+    padding-bottom: var(--space-10);
+    text-align: center;
+  }
+
+  .services-title {
+    margin-bottom: var(--space-4);
+  }
+
+  .char-wrap {
+    display: inline-block;
+    overflow: hidden;
+  }
+
+  .services-title .char {
+    display: inline-block;
+    transform: translateY(100%);
+    opacity: 0;
+    will-change: transform, opacity;
+  }
+
+  .services-tagline {
+    max-width: 600px;
+    margin-inline: auto;
+    color: var(--c-stone);
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  /* Services Panels */
+  .service-panel {
+    padding-block: var(--space-9);
+  }
+
+  .panel-dark {
+    background: var(--c-ink);
+  }
+
+  .panel-light {
+    background: var(--c-ash);
+    color: var(--c-black);
+  }
+
+  .panel-light .t-h1, .panel-light .t-body {
+    color: var(--c-black);
+  }
+  
+  .panel-light .huge-number {
+    color: var(--c-bone);
+  }
+
+  .panel-grid {
+    display: grid;
+    grid-template-columns: 3fr 7fr;
+    gap: var(--space-6);
+    align-items: center;
+  }
+
+  .huge-number {
+    font-size: clamp(120px, 15vw, 240px);
+    line-height: 0.8;
+    color: rgba(249,248,247, 0.05);
+    font-family: var(--font-display);
+  }
+
+  .tags-row {
+    margin-top: var(--space-4);
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
+
+  /* Pricing */
+  .pricing-philosophy {
+    padding-block: var(--space-10);
+    background: var(--c-ink);
+  }
+
+  .pricing-title {
+    text-align: center;
+    margin-bottom: var(--space-8);
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+  }
+
+  .price-card {
+    background: var(--c-ash);
+    padding: var(--space-6);
+    border-radius: var(--radius-card);
+    border: 1px solid var(--c-line);
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .price-card.popular {
+    background: var(--c-dust);
+    border-color: var(--c-lime);
+  }
+
+  .price-card .t-h2 {
+    color: var(--c-black);
+    margin-bottom: var(--space-2);
+  }
+
+  .popular .t-h2, .popular .t-small, .popular li {
+    color: var(--c-off-white);
+  }
+
+  .feature-list {
+    margin-top: var(--space-4);
+    list-style: none;
+    padding: 0;
+  }
+
+  .feature-list li {
+    font-size: var(--fs-body-sm);
+    color: var(--c-bone);
+    padding-block: var(--space-2);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+
+  .popular .feature-list li {
+    color: rgba(255,255,255,0.7);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  @media (max-width: 768px) {
+    .panel-grid {
+      grid-template-columns: 1fr;
+    }
+    .pricing-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const tl = gsap.timeline();
+
+    // 1. Letter reveal
+    tl.to(".services-title .char", {
+      y: 0,
+      opacity: 1,
+      duration: 1.2,
+      stagger: 0.05,
+      ease: "power4.out"
+    });
+
+    // 2. Tagline fade up
+    tl.to(".services-tagline", {
+      y: 0,
+      opacity: 1,
+      duration: 1,
+      ease: "power2.out"
+    }, "-=0.8");
+
+    // 3. Service panels fade
+    gsap.utils.toArray(".service-panel").forEach((panel) => {
+      gsap.from((panel as HTMLElement).querySelector(".panel-right"), {
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: panel as Element,
+          start: "top 80%"
+        }
+      });
+    });
+
+    // 4. Pricing Cards Stagger
+    gsap.to(".price-card", {
+      y: 0,
+      opacity: 1,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".pricing-grid",
+        start: "top 80%"
+      }
+    });
+  });
+</script>

@@ -1,0 +1,376 @@
+---
+import "../../styles/global.css";
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import HomeFooter from "../../components/HomeFooter.astro";
+---
+<Layout title="Works — Srinivas Nampalli">
+  <Header />
+  <main class="page-main">
+    
+    <!-- Page Header -->
+    <section class="work-header" aria-label="Works Header">
+      <div class="watermark-container-work">
+        <svg class="fit-text watermark-work" viewBox="0 0 1000 200" preserveAspectRatio="xMidYMid meet">
+          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" class="watermark-text-work">
+            WORKS
+          </text>
+        </svg>
+      </div>
+      <div class="container">
+        <p class="t-display-3 work-tagline">
+          A selection of intelligent systems, visual identities, and computational design work.
+        </p>
+      </div>
+    </section>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar sticky">
+      <div class="container">
+        <ul class="filter-list">
+          <li><button class="filter-btn active" data-filter="all">All</button></li>
+          <li><button class="filter-btn" data-filter="ai">AI Systems</button></li>
+          <li><button class="filter-btn" data-filter="quantum">Quantum</button></li>
+          <li><button class="filter-btn" data-filter="design">Visual Design</button></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Project Grid -->
+    <section class="work-grid-section">
+      <div class="container works-grid">
+        <!-- Project 1 -->
+        <a href="/work/quantum-key" class="work-card item-1" data-category="quantum">
+          <div class="work-image-wrap">
+            <div class="cover-wipe-work"></div>
+            <img src="/images/thumbnail_1.png" alt="Project 1" class="work-image" />
+          </div>
+          <div class="work-meta">
+            <h3 class="t-h2 work-title">Quantum Key Distribution</h3>
+            <span class="t-mono work-year">2025</span>
+          </div>
+        </a>
+
+        <!-- Project 2 -->
+        <a href="/work/neobrutalism" class="work-card item-2" data-category="design">
+          <div class="work-image-wrap">
+            <div class="cover-wipe-work"></div>
+            <img src="/images/thumbnail_2.png" alt="Project 2" class="work-image" />
+          </div>
+          <div class="work-meta">
+            <h3 class="t-h2 work-title">Neobrutalism System</h3>
+            <span class="t-mono work-year">2024</span>
+          </div>
+        </a>
+
+        <!-- Project 3 -->
+        <a href="/work/aether" class="work-card item-3" data-category="design">
+          <div class="work-image-wrap">
+            <div class="cover-wipe-work"></div>
+            <img src="/images/thumbnail_3.png" alt="Project 3" class="work-image" />
+          </div>
+          <div class="work-meta">
+            <h3 class="t-h2 work-title">Aether Hypercar UI</h3>
+            <span class="t-mono work-year">2024</span>
+          </div>
+        </a>
+        
+        <!-- Project 4 -->
+        <a href="/work/llm-dataset" class="work-card item-4" data-category="ai">
+          <div class="work-image-wrap">
+            <div class="cover-wipe-work"></div>
+            <img src="/images/thumbnail_4.png" alt="Project 4" class="work-image" />
+          </div>
+          <div class="work-meta">
+            <h3 class="t-h2 work-title">LLM Dataset Generator</h3>
+            <span class="t-mono work-year">2023</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <HomeFooter />
+  </main>
+</Layout>
+
+<style>
+  .page-main {
+    background: var(--c-ink);
+  }
+
+  .work-header {
+    padding-top: 150px;
+    padding-bottom: var(--space-8);
+  }
+
+  .watermark-container-work {
+    width: 100%;
+    margin-bottom: var(--space-6);
+    overflow: hidden;
+  }
+
+  .watermark-work {
+    width: 100%;
+    height: auto;
+    fill: var(--c-stone); 
+    opacity: 0.1;
+  }
+
+  .watermark-text-work {
+    font-family: var(--font-display);
+    font-size: 220px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  .work-tagline {
+    max-width: 800px;
+    color: var(--c-off-white);
+  }
+
+  .filter-bar {
+    border-bottom: 1px solid var(--c-line);
+    background: rgba(17, 17, 17, 0.9);
+    backdrop-filter: blur(10px);
+    z-index: 50;
+    padding-block: var(--space-4);
+  }
+
+  .filter-bar.sticky {
+    position: sticky;
+    top: 72px; /* Height of header */
+  }
+
+  .filter-list {
+    display: flex;
+    gap: var(--space-4);
+    list-style: none;
+    overflow-x: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  .filter-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-btn {
+    background: none;
+    border: none;
+    color: var(--c-stone);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    padding-bottom: 4px;
+    position: relative;
+    white-space: nowrap;
+    transition: color 0.3s ease;
+  }
+
+  .filter-btn:hover {
+    color: var(--c-off-white);
+  }
+
+  .filter-btn.active {
+    color: var(--c-off-white);
+  }
+
+  .filter-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--c-lime);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s var(--ease-out);
+  }
+
+  .filter-btn.active::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  .work-grid-section {
+    padding-block: var(--space-10);
+  }
+
+  .works-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--space-4);
+    align-items: start;
+  }
+
+  .work-card {
+    display: block;
+    position: relative;
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(40px);
+    will-change: transform, opacity;
+  }
+
+  /* Masonry offset pattern */
+  .item-1 { grid-column: 1 / 8; margin-top: 0; }
+  .item-2 { grid-column: 8 / 13; margin-top: 120px; }
+  .item-3 { grid-column: 2 / 7; margin-top: 80px; }
+  .item-4 { grid-column: 7 / 12; margin-top: 40px; }
+
+  .work-image-wrap {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: var(--space-3);
+    cursor: crosshair;
+  }
+
+  .cover-wipe-work {
+    position: absolute;
+    inset: 0;
+    background-color: var(--c-ink);
+    z-index: 2;
+    transform-origin: top;
+  }
+
+  .work-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    transition: transform 0.6s var(--ease-out);
+  }
+
+  .work-card:hover .work-image {
+    transform: scale(1.05);
+  }
+
+  .work-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    overflow: hidden;
+    padding-top: 8px;
+  }
+
+  .work-title {
+    color: var(--c-off-white);
+    transform: translateY(100%);
+    transition: transform 0.4s var(--ease-out);
+  }
+
+  .work-year {
+    color: var(--c-stone);
+    transform: translateY(100%);
+    transition: transform 0.4s var(--ease-out) 0.05s;
+  }
+
+  .work-card:hover .work-title,
+  .work-card:hover .work-year {
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    .works-grid {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+    
+    .item-1, .item-2, .item-3, .item-4 {
+      margin-top: 0;
+    }
+
+    .work-title, .work-year {
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // 1. Fit-text letter reveal
+    gsap.to(".watermark-text-work", {
+      y: 0,
+      opacity: 1,
+      duration: 1.5,
+      ease: "power4.out",
+      delay: 0.2
+    });
+
+    // 2. Card stagger fade-up
+    gsap.to(".work-card", {
+      y: 0,
+      opacity: 1,
+      duration: 0.8,
+      stagger: 0.15,
+      ease: "power2.out",
+      scrollTrigger: { trigger: ".works-grid", start: "top 80%" }
+    });
+
+    // 3. Cover wipe image reveal
+    gsap.utils.toArray(".work-image-wrap").forEach((wrap) => {
+      const wipe = (wrap as HTMLElement).querySelector(".cover-wipe-work");
+      gsap.to(wipe, {
+        scaleY: 0,
+        duration: 1.2,
+        ease: "expo.inOut",
+        scrollTrigger: { trigger: wrap as Element, start: "top 85%" }
+      });
+    });
+
+    // 4. Filter Logic
+    const filterBtns = document.querySelectorAll(".filter-btn");
+    const workCards = document.querySelectorAll(".work-card");
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        // Update active class
+        filterBtns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        const filterValue = btn.getAttribute("data-filter");
+
+        // Animate out
+        gsap.to(workCards, {
+          opacity: 0,
+          y: 20,
+          duration: 0.3,
+          onComplete: () => {
+            // Reorder / display logic
+            workCards.forEach(card => {
+              if (filterValue === "all" || card.getAttribute("data-category") === filterValue) {
+                (card as HTMLElement).style.display = "block";
+              } else {
+                (card as HTMLElement).style.display = "none";
+              }
+            });
+
+            // Refresh scroll trigger
+            ScrollTrigger.refresh();
+
+            // Animate in
+            gsap.to(workCards, {
+              opacity: 1,
+              y: 0,
+              duration: 0.5,
+              stagger: 0.05,
+              ease: "power2.out"
+            });
+          }
+        });
+      });
+    });
+  });
+</script>
