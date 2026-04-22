@@ -1,452 +1,206 @@
 ---
-import projects from "../data/projects.json";
-
-type Link = { type: string; label: string; url: string };
-type Project = {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  tags: string[];
-  links?: Link[];
-  year?: number;
-  featured?: boolean;
-  period?: string;
-};
-
-const allProjects = (projects as Project[]);
-const sorted = [...allProjects].sort((a, b) => {
-  if (a.featured && !b.featured) return -1;
-  if (!a.featured && b.featured) return 1;
-  return (b.year ?? 0) - (a.year ?? 0);
-});
-
-const primary = sorted.filter(p => p.featured);
-const archive = sorted.filter(p => !p.featured);
-
-const architectureMap: Record<string, { objective: string; architecture: string; outcome: string }> = {
-  "market-trend-agents": {
-    objective: "Real-time market intelligence via coordinated agent networks.",
-    architecture: "Retriever → Planner → Reasoning agents with shared memory (LangGraph + Google ADK).",
-    outcome: "Adaptive trend forecasts from live market data streams."
-  },
-  "quantum-bb84-sim": {
-    objective: "Implement and validate a production-grade quantum key distribution system.",
-    architecture: "BB84 protocol → Qiskit simulation → Eavesdrop detection via no-cloning theorem.",
-    outcome: "25.1% key generation efficiency. Winner — Qiskit Fall Fest 2025."
-  },
-  "llm-dataset-suite": {
-    objective: "Build scalable fine-tuning corpora for domain-specific LLMs.",
-    architecture: "Web scraping → Structured metadata → Prompt-response pairs → Augmentation pipeline.",
-    outcome: "4 datasets published. 1,000+ downloads on HuggingFace."
-  },
-  "annam-ai-rag-scraper": {
-    objective: "Automated data pipeline for Retrieval-Augmented Generation systems.",
-    architecture: "Recursive crawler → Multi-format extraction → Structured RAG metadata export.",
-    outcome: "Base64 ZIP export with PDF text extraction for LLM training pipelines."
-  },
-  "ayurleaf-healthcare": {
-    objective: "Open-source AI health recommendation platform.",
-    architecture: "Full-stack bug fixes → UI modules → AI health logic optimization.",
-    outcome: "GSSoC 2025 contributions improving analytics dashboard performance."
-  },
-  "pustak-ghar": {
-    objective: "Accessible study resource platform for university students.",
-    architecture: "Responsive UI → Branch-wise content filters → Optimized navigation.",
-    outcome: "Reduced friction for PYQ access across engineering branches."
-  },
-};
 ---
-
-<!-- Ticker band 1 — design.md §9.1 Section 2 -->
-<div class="ticker-band" aria-hidden="true">
-  <div class="ticker-inner">
-    <span class="ticker-text">AI Systems · Quantum Computing · Multi-Agent Architectures · LangChain · Qiskit · Open Source · IIT Madras · Ford · GE Aerospace · DRDO · AI Systems · Quantum Computing · Multi-Agent Architectures · LangChain · Qiskit · Open Source · IIT Madras · Ford · GE Aerospace · DRDO ·&nbsp;</span>
-    <span class="ticker-text" aria-hidden="true">AI Systems · Quantum Computing · Multi-Agent Architectures · LangChain · Qiskit · Open Source · IIT Madras · Ford · GE Aerospace · DRDO · AI Systems · Quantum Computing · Multi-Agent Architectures · LangChain · Qiskit · Open Source · IIT Madras · Ford · GE Aerospace · DRDO ·&nbsp;</span>
+<section id="work" class="selected-works" aria-label="Selected Works">
+  <div class="watermark-container">
+    <svg class="fit-text watermark" viewBox="0 0 1000 200" preserveAspectRatio="xMidYMid meet">
+      <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" class="watermark-text">
+        SELECTED WORKS
+      </text>
+    </svg>
   </div>
-</div>
 
-<section id="work" aria-label="Selected Work">
-  <div class="container">
-
-    <!-- Section header — design.md §5 Section Marker Label spec -->
-    <div class="work-header reveal">
-      <span class="section-marker">Selected Work</span>
-      <h2 class="t-display-2 work-title">
-        Systems I've<br/>built.
-      </h2>
-    </div>
-
-    <!-- Primary projects — horizontal list with dividers -->
-    <div class="projects-list">
-      {primary.map((p, i) => {
-        const arch = architectureMap[p.id];
-        const year = p.period ?? p.year ?? '';
-        const primaryLink = p.links?.[0];
-        return (
-          <article class="project-entry" data-index={i}>
-            <div class="project-entry-inner">
-
-              <!-- Left meta column — index + year -->
-              <div class="project-meta-col">
-                <span class="t-mono project-index">{String(i + 1).padStart(2, '0')}</span>
-                <span class="t-mono project-year">{year}</span>
-              </div>
-
-              <!-- Center: Content -->
-              <div class="project-content">
-                <div class="project-top-row">
-                  <h3 class="t-h2 project-title">{p.title}</h3>
-                  {primaryLink && (
-                    <a
-                      href={primaryLink.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="project-ext-link t-mono"
-                      aria-label={`Open ${p.title}`}
-                    >
-                      ↗
-                    </a>
-                  )}
-                </div>
-
-                <p class="project-description t-body">{p.description}</p>
-
-                <!-- Architecture manifest — design.md system-thinking layer -->
-                {arch && (
-                  <div class="arch-manifest">
-                    <div class="arch-row">
-                      <span class="t-label arch-key">Objective</span>
-                      <span class="t-mono arch-val">{arch.objective}</span>
-                    </div>
-                    <div class="arch-row">
-                      <span class="t-label arch-key">Architecture</span>
-                      <span class="t-mono arch-val">{arch.architecture}</span>
-                    </div>
-                    <div class="arch-row">
-                      <span class="t-label arch-key">Outcome</span>
-                      <span class="t-mono arch-val outcome-val">{arch.outcome}</span>
-                    </div>
-                  </div>
-                )}
-
-                <!-- Tags — inline pill design.md §4 -->
-                <div class="project-tags">
-                  {p.tags.map(tag => (
-                    <span class="tag">{tag}</span>
-                  ))}
-                </div>
-
-                <!-- External links -->
-                {p.links && p.links.length > 0 && (
-                  <div class="project-links">
-                    {p.links.map(link => (
-                      <a
-                        href={link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="btn-text project-link-item"
-                      >
-                        {link.label} ↗
-                      </a>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-            </div>
-            <!-- Divider — Line token per design.md -->
-            <div class="divider project-divider"></div>
-          </article>
-        );
-      })}
-    </div>
-
-    <!-- Archive section -->
-    {archive.length > 0 && (
-      <div class="archive-section reveal">
-        <div class="archive-header">
-          <span class="section-marker">Archive</span>
-        </div>
-        <div class="archive-grid">
-          {archive.map((p) => {
-            const primaryLink = p.links?.[0];
-            return (
-              <div class="archive-item">
-                <div class="archive-top">
-                  <span class="t-mono archive-year">{p.year}</span>
-                  {primaryLink && (
-                    <a
-                      href={primaryLink.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="archive-ext t-mono"
-                    >↗</a>
-                  )}
-                </div>
-                <h4 class="t-h3 archive-title">{p.title}</h4>
-                <div class="project-tags" style="margin-top: var(--space-3)">
-                  {p.tags.slice(0, 3).map(tag => (
-                    <span class="tag">{tag}</span>
-                  ))}
-                </div>
-              </div>
-            );
-          })}
-        </div>
+  <div class="container works-grid">
+    <!-- Project 1 -->
+    <a href="/work/1" class="work-card item-1">
+      <div class="work-image-wrap">
+        <div class="cover-wipe-work"></div>
+        <img src="/images/thumbnail_1.png" alt="Project 1" class="work-image" />
       </div>
-    )}
+      <div class="work-meta">
+        <h3 class="t-h2 work-title">Quantum Key Distribution</h3>
+        <span class="t-mono work-year">2025</span>
+      </div>
+    </a>
 
-    <!-- Ghost CTA -->
-    <div class="work-cta reveal">
-      <a href="https://github.com/Srinivas26k" target="_blank" rel="noopener noreferrer" class="btn-ghost" id="work-view-all-cta">
-        View All Projects ↗
-      </a>
-    </div>
+    <!-- Project 2 -->
+    <a href="/work/2" class="work-card item-2">
+      <div class="work-image-wrap">
+        <div class="cover-wipe-work"></div>
+        <img src="/images/thumbnail_2.png" alt="Project 2" class="work-image" />
+      </div>
+      <div class="work-meta">
+        <h3 class="t-h2 work-title">Neobrutalism System</h3>
+        <span class="t-mono work-year">2024</span>
+      </div>
+    </a>
 
+    <!-- Project 3 -->
+    <a href="/work/3" class="work-card item-3">
+      <div class="work-image-wrap">
+        <div class="cover-wipe-work"></div>
+        <img src="/images/thumbnail_3.png" alt="Project 3" class="work-image" />
+      </div>
+      <div class="work-meta">
+        <h3 class="t-h2 work-title">Aether Hypercar UI</h3>
+        <span class="t-mono work-year">2024</span>
+      </div>
+    </a>
   </div>
 </section>
 
 <style>
-  /* ── Section Header ─────────────────────────────────────────── */
-  .work-header {
+  .selected-works {
+    position: relative;
+    background-color: var(--c-ink);
+    padding-top: var(--space-10);
+    padding-bottom: var(--space-10);
+    overflow: hidden;
+  }
+
+  .watermark-container {
+    width: 100%;
     margin-bottom: var(--space-8);
   }
 
-  .work-title {
-    margin-top: var(--space-3);
+  .watermark {
+    width: 100%;
+    height: auto;
+    fill: var(--c-stone); 
+    opacity: 0.05;
   }
 
-  /* ── Projects List ────────────────────────────────────────────── */
-  .projects-list {
-    display: flex;
-    flex-direction: column;
+  .watermark-text {
+    font-family: var(--font-display);
+    font-size: 180px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
   }
 
-  .project-entry {
-    padding-top: var(--space-5);
-  }
-
-  .project-entry-inner {
+  .works-grid {
     display: grid;
-    grid-template-columns: 72px 1fr;
-    gap: var(--space-6);
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--space-4);
     align-items: start;
-    padding: var(--space-5);
-    border: 1px solid transparent;
-    border-radius: var(--radius-card);
-    /* No gradient — design.md §8 Don't */
-    background: var(--c-ash);
-    transition:
-      transform var(--dur-medium) var(--ease-out),
-      border-color var(--dur-medium) var(--ease-in-out),
-      box-shadow var(--dur-medium) var(--ease-out);
   }
 
-  .project-entry:hover .project-entry-inner {
-    transform: translateY(-4px);
-    border-color: var(--c-line);
-    box-shadow: var(--shadow-hover);
+  .work-card {
+    display: block;
+    position: relative;
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(40px);
+    will-change: transform, opacity;
   }
 
-  .project-divider {
-    margin-top: var(--space-6);
-  }
+  .item-1 { grid-column: 1 / 8; margin-top: 0; }
+  .item-2 { grid-column: 8 / 13; margin-top: 120px; }
+  .item-3 { grid-column: 3 / 10; margin-top: 80px; }
 
-  /* ── Left meta column ────────────────────────────────────────── */
-  .project-meta-col {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
-    padding-top: 4px;
-  }
-
-  .project-index {
-    color: var(--c-stone);
-    font-size: 12px;
-  }
-
-  .project-year {
-    color: var(--c-stone);
-    font-size: 11px;
-  }
-
-  /* ── Content ─────────────────────────────────────────────────── */
-  .project-top-row {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: var(--space-4);
+  .work-image-wrap {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
     margin-bottom: var(--space-3);
+    cursor: crosshair;
   }
 
-  .project-title {
-    max-width: 600px;
+  .cover-wipe-work {
+    position: absolute;
+    inset: 0;
+    background-color: var(--c-ink);
+    z-index: 2;
+    transform-origin: top;
   }
 
-  .project-ext-link {
-    flex-shrink: 0;
-    color: var(--c-stone);
-    font-size: 1rem;
-    text-decoration: none;
-    margin-top: 2px;
-    transition: color var(--dur-fast) var(--ease-in-out);
+  .work-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    transition: transform 0.6s var(--ease-out);
   }
 
-  .project-ext-link:hover {
-    color: var(--c-lime);
+  .work-card:hover .work-image {
+    transform: scale(1.05);
   }
 
-  .project-description {
-    max-width: 640px;
-    margin-bottom: var(--space-5);
-    line-height: 1.75;
-    color: var(--c-off-white);
-    font-weight: 300;
-  }
-
-  /* ── Architecture Manifest ───────────────────────────────────── */
-  .arch-manifest {
+  .work-meta {
     display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-    padding: var(--space-4);
-    border: 1px solid var(--c-line);
-    border-radius: var(--radius-card);
-    background: rgba(240, 238, 233, 0.03);
-    margin-bottom: var(--space-5);
-    max-width: 640px;
-  }
-
-  .arch-row {
-    display: grid;
-    grid-template-columns: 88px 1fr;
-    gap: var(--space-3);
-    align-items: baseline;
-  }
-
-  .arch-key {
-    color: var(--c-stone);
-    flex-shrink: 0;
-    font-size: 10px;
-    letter-spacing: 0.14em;
-  }
-
-  .arch-val {
-    color: var(--c-stone);
-    line-height: 1.5;
-  }
-
-  /* Signal Lime for the outcome — one accent per group */
-  .outcome-val {
-    color: var(--c-off-white);
-  }
-
-  /* ── Tags ────────────────────────────────────────────────────── */
-  .project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-    margin-bottom: var(--space-4);
-  }
-
-  /* ── Project links ─────────────────────────────────────────── */
-  .project-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-4);
-  }
-
-  .project-link-item {
-    font-size: 12px;
-  }
-
-  /* ── Archive ──────────────────────────────────────────────── */
-  .archive-section {
-    margin-top: var(--space-10);
-    padding-top: var(--space-6);
-    border-top: 1px solid var(--c-line);
-  }
-
-  .archive-header {
-    margin-bottom: var(--space-6);
-  }
-
-  .archive-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: var(--space-6) var(--space-7);
-  }
-
-  .archive-item {
-    padding-bottom: var(--space-5);
-    border-bottom: 1px solid var(--c-line);
-    transition: border-color var(--dur-medium) var(--ease-in-out), transform var(--dur-medium) var(--ease-out);
-  }
-
-  .archive-item:hover {
-    border-color: var(--c-line-strong);
-    transform: translateY(-2px);
-  }
-
-  .archive-top {
-    display: flex;
-    align-items: center;
     justify-content: space-between;
-    margin-bottom: var(--space-2);
+    align-items: baseline;
+    overflow: hidden; /* For slide-up effect */
+    padding-top: 8px;
   }
 
-  .archive-year {
-    font-size: 11px;
-    color: var(--c-stone);
-  }
-
-  .archive-ext {
-    color: var(--c-stone);
-    font-size: 14px;
-    text-decoration: none;
-    transition: color var(--dur-fast) var(--ease-in-out);
-  }
-
-  .archive-ext:hover {
-    color: var(--c-lime);
-  }
-
-  .archive-title {
-    font-size: var(--fs-body-sm);
-    font-weight: 400;
+  .work-title {
     color: var(--c-off-white);
-    letter-spacing: -0.01em;
-    line-height: 1.4;
+    transform: translateY(100%);
+    transition: transform 0.4s var(--ease-out);
   }
 
-  /* ── Work CTA ────────────────────────────────────────────────── */
-  .work-cta {
-    margin-top: var(--space-8);
-    padding-top: var(--space-7);
-    border-top: 1px solid var(--c-line);
-    display: flex;
-    justify-content: center;
+  .work-year {
+    color: var(--c-stone);
+    transform: translateY(100%);
+    transition: transform 0.4s var(--ease-out) 0.05s;
   }
 
-  /* ── Responsive ──────────────────────────────────────────────── */
-  @media (max-width: 640px) {
-    .project-entry-inner {
-      grid-template-columns: 1fr;
+  .work-card:hover .work-title,
+  .work-card:hover .work-year {
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    .works-grid {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+    
+    .item-1, .item-2, .item-3 {
+      margin-top: 0;
     }
 
-    .project-meta-col {
-      flex-direction: row;
-      gap: var(--space-4);
-    }
-
-    .arch-row {
-      grid-template-columns: 1fr;
-      gap: 4px;
-    }
-
-    .arch-key {
-      margin-bottom: 2px;
+    .work-title, .work-year {
+      transform: translateY(0);
     }
   }
 </style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // 1. Watermark slide-in
+    gsap.fromTo(".selected-works .watermark-text", 
+      { x: 100, opacity: 0 },
+      {
+        x: 0, opacity: 1, duration: 1.5, ease: "power3.out",
+        scrollTrigger: { trigger: ".selected-works", start: "top 80%" }
+      }
+    );
+
+    // 2. Card stagger fade-up
+    gsap.to(".work-card", {
+      y: 0,
+      opacity: 1,
+      duration: 0.8,
+      stagger: 0.15,
+      ease: "power2.out",
+      scrollTrigger: { trigger: ".works-grid", start: "top 75%" }
+    });
+
+    // 3. Cover wipe image reveal
+    gsap.utils.toArray(".work-image-wrap").forEach((wrap) => {
+      const wipe = (wrap as HTMLElement).querySelector(".cover-wipe-work");
+      gsap.to(wipe, {
+        scaleY: 0,
+        duration: 1.2,
+        ease: "expo.inOut",
+        scrollTrigger: { trigger: wrap as Element, start: "top 85%" }
+      });
+    });
+  });
+</script>

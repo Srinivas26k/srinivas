@@ -1,336 +1,194 @@
 ---
 ---
-<section id="about" aria-label="About Srinivas Nampalli">
-  <div class="container">
+<section id="about" class="studio-intro" aria-label="About the Studio">
+  <div class="watermark-container">
+    <svg class="fit-text watermark" viewBox="0 0 1000 200" preserveAspectRatio="xMidYMid meet">
+      <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" class="watermark-text">
+        INSIDE SRINIVAS
+      </text>
+    </svg>
+  </div>
 
-    <!-- Section header -->
-    <div class="about-header reveal">
-      <span class="section-marker">About</span>
-      <h2 class="t-display-2 about-title">
-        More than<br/>a developer.
+  <div class="container intro-grid">
+    <div class="intro-content">
+      <h2 class="t-display-3 intro-headline">
+        <span class="word-blur">We</span> <span class="word-blur">are</span> <span class="word-blur">a</span> <span class="word-blur">design</span> <span class="word-blur">studio</span> <br/>
+        <span class="word-blur">focused</span> <span class="word-blur">on</span> <span class="word-blur">creating</span> <br/>
+        <span class="word-blur">intelligent</span> <span class="word-blur">systems.</span>
       </h2>
+      
+      <div class="metrics-row">
+        <div class="metric">
+          <div class="t-display-2 metric-number" data-target="5">0</div>
+          <div class="t-label metric-label">Years Creating</div>
+        </div>
+        <div class="metric">
+          <div class="t-display-2 metric-number" data-target="42">0</div>
+          <div class="t-label metric-label">Projects Delivered</div>
+        </div>
+        <div class="metric">
+          <div class="t-display-2 metric-number" data-target="15">0</div>
+          <div class="t-label metric-label">Clients Worldwide</div>
+        </div>
+      </div>
+
+      <a href="/about" class="btn-text">About Us →</a>
     </div>
 
-    <!-- Two-column layout — 60/40 per design.md §5 Asymmetric -->
-    <div class="about-grid">
-
-      <!-- Left: Bio statement — design.md body-large -->
-      <div class="about-bio reveal">
-        <p class="t-body-lg about-statement">
-          I build systems that think. From quantum key distribution
-          protocols to multi-agent AI architectures, my work sits at
-          the boundary of <em>engineering discipline</em> and
-          <em>computational intelligence</em>.
-        </p>
-        <p class="t-body about-para">
-          Currently pursuing B.S. in Data Science &amp; AI Applications at
-          IIT Madras, with a completed Minor in Artificial Intelligence
-          from IIT Ropar.
-        </p>
-
-        <!-- Metric callouts — design.md §4 Metric/Stat Card style -->
-        <div class="stats-row">
-          <div class="stat-item">
-            <span class="stat-number t-display-3" data-countup="5" data-suffix="+">5+</span>
-            <span class="t-label stat-label">Industry<br/>Internships</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number t-display-3" data-countup="1000" data-suffix="+">1000+</span>
-            <span class="t-label stat-label">HuggingFace<br/>Downloads</span>
-          </div>
-          <div class="stat-item stat-item--lime">
-            <span class="stat-number t-display-3 stat-lime" data-countup="1" data-suffix="×">1×</span>
-            <span class="t-label stat-label">Qiskit Fall<br/>Fest Winner</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Right: System Manifest — Ash card per design.md §4 -->
-      <div class="about-manifest surface-card reveal">
-
-        <!-- Experience list -->
-        <div class="manifest-block">
-          <span class="t-label manifest-heading">Experience</span>
-          <ul class="manifest-list">
-            <li class="manifest-item">
-              <span class="t-mono item-role">Project Intern</span>
-              <span class="t-mono item-org">Ford Motor Company (EV Engineering)</span>
-              <span class="t-mono item-period">Apr – May 2024</span>
-            </li>
-            <li class="manifest-item">
-              <span class="t-mono item-role">Aerospace Engineering Intern</span>
-              <span class="t-mono item-org">GE Aerospace</span>
-              <span class="t-mono item-period">Oct – Nov 2023</span>
-            </li>
-            <li class="manifest-item">
-              <span class="t-mono item-role">Defense Technology Intern</span>
-              <span class="t-mono item-org">DRDO (DRDL)</span>
-              <span class="t-mono item-period">Jun – Nov 2022</span>
-            </li>
-            <li class="manifest-item">
-              <span class="t-mono item-role">Executive Assistant</span>
-              <span class="t-mono item-org">Lab of Education Design, IIT Ropar</span>
-              <span class="t-mono item-period">Mar – May 2025</span>
-            </li>
-            <li class="manifest-item manifest-item--last">
-              <span class="t-mono item-role">Freelance Consultant</span>
-              <span class="t-mono item-org">Self-Employed</span>
-              <span class="t-mono item-period">Jan 2024 – Present</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="manifest-divider divider"></div>
-
-        <!-- Stack -->
-        <div class="manifest-block">
-          <span class="t-label manifest-heading">Stack</span>
-          <div class="stack-grid">
-            <div class="stack-group">
-              <span class="t-label stack-category">AI / ML</span>
-              <span class="t-mono stack-items">LangChain · LangGraph · Google ADK · Qiskit · TensorFlow</span>
-            </div>
-            <div class="stack-group">
-              <span class="t-label stack-category">Systems</span>
-              <span class="t-mono stack-items">Python · FastAPI · Streamlit · Zoom OAuth · Whisper</span>
-            </div>
-            <div class="stack-group">
-              <span class="t-label stack-category">Engineering</span>
-              <span class="t-mono stack-items">CAD/CAM · FEA · Thermal Analysis · CNC Manufacturing</span>
-            </div>
-            <div class="stack-group">
-              <span class="t-label stack-category">Web</span>
-              <span class="t-mono stack-items">Astro · React · TypeScript</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="manifest-divider divider"></div>
-
-        <!-- Recognition — Signal Lime dots -->
-        <div class="manifest-block">
-          <span class="t-label manifest-heading">Recognition</span>
-          <ul class="recognition-list">
-            <li class="t-mono recognition-item">
-              <span class="rec-dot" aria-hidden="true"></span>
-              Winner — IIIT Hyderabad × IBM Qiskit Fall Fest 2025
-            </li>
-            <li class="t-mono recognition-item">
-              <span class="rec-dot" aria-hidden="true"></span>
-              Top 8.2% — GirlScript Summer of Code 2025 (Rank #245)
-            </li>
-            <li class="t-mono recognition-item">
-              <span class="rec-dot" aria-hidden="true"></span>
-              1,000+ Downloads — 4 AI Datasets on HuggingFace
-            </li>
-          </ul>
-        </div>
-
-      </div>
-
+    <div class="intro-image-wrap">
+      <div class="cover-wipe"></div>
+      <img src="/images/studio_portrait.png" alt="Studio Portrait" class="intro-image" />
     </div>
   </div>
 </section>
 
 <style>
-  /* ── Header ─────────────────────────────────────────────────── */
-  .about-header {
+  .studio-intro {
+    position: relative;
+    background-color: var(--c-ash);
+    color: var(--c-black);
+    padding-top: var(--space-10);
+    padding-bottom: var(--space-10);
+    overflow: hidden;
+  }
+
+  .watermark-container {
+    width: 100%;
     margin-bottom: var(--space-8);
   }
 
-  .about-title {
-    margin-top: var(--space-3);
+  .watermark {
+    width: 100%;
+    height: auto;
+    fill: var(--c-bone); 
+    opacity: 0.15;
   }
 
-  /* ── 60/40 Grid ──────────────────────────────────────────────── */
-  .about-grid {
+  .watermark-text {
+    font-family: var(--font-display);
+    font-size: 180px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+
+  .intro-grid {
     display: grid;
-    grid-template-columns: 1fr 1.35fr;
-    gap: clamp(40px, 6vw, 96px);
-    align-items: start;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+    align-items: center;
   }
 
-  @media (max-width: 1023px) {
-    .about-grid {
-      grid-template-columns: 1fr;
-      gap: var(--space-8);
-    }
+  .intro-headline {
+    color: var(--c-black);
+    margin-bottom: var(--space-8);
   }
 
-  /* ── Bio ─────────────────────────────────────────────────────── */
-  .about-statement {
-    max-width: 520px;
-    margin-bottom: var(--space-5);
+  .intro-headline .word-blur {
+    display: inline-block;
+    filter: blur(10px);
+    opacity: 0;
+    transform: translateY(20px);
+    will-change: filter, transform, opacity;
   }
 
-  .about-statement em {
-    font-style: normal;
-    color: var(--c-white);
-  }
-
-  .about-para {
-    color: var(--c-stone);
-    max-width: 460px;
-    margin-bottom: var(--space-7);
-  }
-
-  /* ── Stats Row — metric callouts ─────────────────────────────── */
-  .stats-row {
+  .metrics-row {
     display: flex;
     gap: var(--space-6);
-    flex-wrap: wrap;
+    margin-bottom: var(--space-8);
   }
 
-  .stat-item {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
+  .metric-number {
+    color: var(--c-black);
+    margin-bottom: var(--space-2);
   }
 
-  .stat-number {
-    font-variant-numeric: tabular-nums;
-    color: var(--c-white);
+  .metric-label {
+    color: rgba(17, 17, 17, 0.64);
   }
 
-  /* Signal Lime for the hero stat — one per group per design.md */
-  .stat-lime {
-    color: var(--c-lime);
+  .btn-text {
+    color: var(--c-black);
+  }
+  
+  .btn-text::after {
+    background: var(--c-black);
   }
 
-  .stat-label {
-    color: var(--c-stone);
-    line-height: 1.4;
+  .intro-image-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
   }
 
-  /* ── Manifest Card ───────────────────────────────────────────── */
-  .about-manifest {
-    padding: clamp(20px, 3vw, 32px);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-5);
+  .cover-wipe {
+    position: absolute;
+    inset: 0;
+    background-color: var(--c-ash);
+    z-index: 2;
+    transform-origin: top;
   }
 
-  .manifest-divider {
-    opacity: 1;
+  .intro-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(1.2);
   }
 
-  .manifest-block {}
-
-  .manifest-heading {
-    display: block;
-    margin-bottom: var(--space-3);
-    color: var(--c-stone);
-  }
-
-  /* Experience list */
-  .manifest-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .manifest-item {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    gap: var(--space-3);
-    align-items: baseline;
-    padding-block: var(--space-3);
-    border-bottom: 1px solid var(--c-line);
-  }
-
-  .manifest-item--last {
-    border-bottom: none;
-    padding-bottom: 0;
-  }
-
-  .item-role {
-    color: var(--c-off-white);
-    font-size: var(--fs-mono);
-    white-space: nowrap;
-  }
-
-  .item-org {
-    color: var(--c-stone);
-    font-size: var(--fs-mono);
-    text-align: center;
-  }
-
-  .item-period {
-    color: var(--c-stone);
-    font-size: 11px;
-    white-space: nowrap;
-    text-align: right;
-  }
-
-  /* Stack */
-  .stack-grid {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-  }
-
-  .stack-group {
-    display: grid;
-    grid-template-columns: 76px 1fr;
-    gap: var(--space-3);
-    align-items: baseline;
-  }
-
-  .stack-category {
-    color: var(--c-stone);
-    font-size: 10px;
-    letter-spacing: 0.14em;
-  }
-
-  .stack-items {
-    color: var(--c-off-white);
-    font-size: var(--fs-mono);
-    line-height: 1.5;
-  }
-
-  /* Recognition */
-  .recognition-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-  }
-
-  .recognition-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--c-off-white);
-    font-size: var(--fs-mono);
-    line-height: 1.5;
-  }
-
-  .rec-dot {
-    display: inline-block;
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background-color: var(--c-lime);
-    flex-shrink: 0;
-  }
-
-  /* ── Responsive ──────────────────────────────────────────────── */
-  @media (max-width: 640px) {
-    .manifest-item {
+  @media (max-width: 1024px) {
+    .intro-grid {
       grid-template-columns: 1fr;
-      gap: 3px;
-    }
-    .item-period { text-align: left; }
-    .item-org { text-align: left; }
-
-    .stack-group {
-      grid-template-columns: 1fr;
-      gap: 3px;
-    }
-
-    .stats-row {
-      gap: var(--space-5);
+      gap: var(--space-6);
     }
   }
 </style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    gsap.fromTo(".watermark-text", 
+      { x: -100, opacity: 0 },
+      {
+        x: 0, opacity: 1, duration: 1.5, ease: "power3.out",
+        scrollTrigger: { trigger: ".studio-intro", start: "top 80%" }
+      }
+    );
+
+    gsap.to(".word-blur", {
+      filter: "blur(0px)",
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      stagger: 0.05,
+      ease: "power2.out",
+      scrollTrigger: { trigger: ".intro-headline", start: "top 85%" }
+    });
+
+    const metrics = document.querySelectorAll(".metric-number");
+    metrics.forEach(metric => {
+      const target = parseInt(metric.getAttribute("data-target") || "0", 10);
+      gsap.to(metric, {
+        innerHTML: target,
+        duration: 2,
+        snap: { innerHTML: 1 },
+        ease: "power1.inOut",
+        scrollTrigger: { trigger: ".metrics-row", start: "top 85%" },
+        onUpdate: function() {
+          metric.innerHTML = Math.ceil(this.targets()[0].innerHTML) + "+";
+        }
+      });
+    });
+
+    gsap.to(".cover-wipe", {
+      scaleY: 0,
+      duration: 1.2,
+      ease: "expo.inOut",
+      scrollTrigger: { trigger: ".intro-image-wrap", start: "top 75%" }
+    });
+  });
+</script>

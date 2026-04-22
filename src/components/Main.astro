@@ -3,7 +3,7 @@
 <section id="hero-voir" aria-label="Hero">
   <!-- Parallax Background Image -->
   <div class="hero-bg-wrapper">
-    <div class="hero-bg-image" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop');"></div>
+    <div class="hero-bg-image" style="background-image: url('/images/hero_background.png');"></div>
   </div>
 
   <!-- Progressive Blur Overlay (8 layers) -->
@@ -40,10 +40,10 @@
     <!-- Bottom elements -->
     <div class="hero-bottom">
       <div class="hero-thumbnails">
-        <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=600&auto=format&fit=crop');"></div>
-        <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=600&auto=format&fit=crop');"></div>
-        <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop');"></div>
-        <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop');"></div>
+        <div class="thumb" style="background-image: url('/images/thumbnail_1.png');"></div>
+        <div class="thumb" style="background-image: url('/images/thumbnail_2.png');"></div>
+        <div class="thumb" style="background-image: url('/images/thumbnail_3.png');"></div>
+        <div class="thumb" style="background-image: url('/images/thumbnail_4.png');"></div>
       </div>
       
       <div class="hero-scroll">
@@ -220,13 +220,16 @@
 
 <script>
   import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  
+  gsap.registerPlugin(ScrollTrigger);
   
   document.addEventListener("DOMContentLoaded", () => {
     const tl = gsap.timeline();
 
-    // 1. Background parallax spring
+    // 1. Initial Load Entry Animation
     tl.to(".hero-bg-image", {
-      scale: 1,
+      scale: 1.05, // Slightly scaled so we can parallax it
       duration: 2.4,
       ease: "power4.out"
     }, 0);
@@ -247,5 +250,31 @@
       duration: 1,
       ease: "power2.out"
     }, 1.0);
+
+    // --- SCROLL PARALLAX EFFECT ---
+    // The image shifts downwards subtly as you scroll down
+    gsap.to(".hero-bg-image", {
+      yPercent: 15, // Move image 15% down within its container
+      ease: "none",
+      scrollTrigger: {
+        trigger: "#hero-voir",
+        start: "top top",
+        end: "bottom top",
+        scrub: 1.5, // Smooth scrubbing
+      }
+    });
+
+    // Content also shifts slightly for depth
+    gsap.to(".hero-content", {
+      yPercent: 10,
+      opacity: 0.3,
+      ease: "none",
+      scrollTrigger: {
+        trigger: "#hero-voir",
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+      }
+    });
   });
 </script>
