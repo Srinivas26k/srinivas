@@ -4,26 +4,28 @@
    Based on: design.md v1.0 — Portfolio + Agency
    ═══════════════════════════════════════════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&family=Lora:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap');
 
 /* ─────────────────────────────────────────────────────────────────
    TOKENS — Single Source of Truth
    ───────────────────────────────────────────────────────────────── */
 :root {
   /* ── Surfaces ─────────────────────────────────────────────────── */
-  --c-ink:     #0A0A0A;   /* Primary canvas — unconditional base      */
-  --c-ash:     #1A1A1A;   /* Raised surface — cards, feature bands    */
-  --c-dust:    #2C2C2C;   /* Hover card state, input bg               */
+  --c-ink:     #111111;   /* Primary canvas — unconditional base      */
+  --c-ash:     #f9f8f7;   /* Light surface / alternating sections     */
+  --c-gold:    #9d8d7a;   /* Accent color / sand                      */
+  --c-dust:    #222222;   /* Hover card state, input bg               */
 
   /* ── Text ─────────────────────────────────────────────────────── */
-  --c-off-white:  #F0EEE9;   /* Primary text on dark — warm, never cold   */
-  --c-white:      #FFFFFF;   /* Max-contrast: CTA text, metric numbers    */
-  --c-stone:      #888680;   /* Secondary / metadata text                 */
-  --c-bone:       #D4D2CB;   /* Tertiary — footnotes, placeholders        */
+  --c-off-white:  #f9f8f7;   /* Primary text on dark                  */
+  --c-white:      #ffffff;   /* Max-contrast                          */
+  --c-black:      #111111;   /* Primary text on light                 */
+  --c-stone:      rgba(249, 248, 247, 0.64);   /* Secondary text on dark    */
+  --c-bone:       rgba(17, 17, 17, 0.64);      /* Secondary text on light   */
 
   /* ── Accent ─────────────────────────────────────────────────────── */
-  --c-lime:    #C8FF00;   /* Signal Lime — one focal element per view  */
-  --c-lime-hover: #DEFF4A; /* Hovered lime buttons                     */
+  --c-lime:    #c8ff00;   /* Signal Lime — one focal element per view  */
+  --c-lime-hover: #deff4a; /* Hovered lime buttons                     */
 
   /* ── Semantic ────────────────────────────────────────────────── */
   --c-success: #4ADE80;
@@ -31,14 +33,14 @@
   --c-warn:    #FBBF24;
 
   /* ── Borders ─────────────────────────────────────────────────── */
-  --c-line:        rgba(240, 238, 233, 0.10);  /* Hairline dividers         */
-  --c-line-strong: rgba(240, 238, 233, 0.20);  /* Focused inputs            */
+  --c-line:        rgba(249, 248, 247, 0.10);  /* Hairline dividers         */
+  --c-line-strong: rgba(249, 248, 247, 0.20);  /* Focused inputs            */
 
   /* ── Typography ──────────────────────────────────────────────── */
-  --font-display: 'Outfit', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --font-sans:    'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-display: 'Instrument Serif', 'Georgia', serif;
+  --font-sans:    'Instrument Sans', 'Helvetica Neue', Arial, sans-serif;
   --font-mono:    'JetBrains Mono', 'Courier New', monospace;
-  --font-serif:   'Lora', 'Georgia', serif;
+  --font-serif:   'Instrument Serif', 'Georgia', serif;
 
   /* ── Type Scale (clamp fluid) ────────────────────────────────── */
   --fs-display-1: clamp(72px, 12vw, 180px);   /* Hero overflow headline    */
@@ -54,23 +56,23 @@
   --fs-mono:      13px;                        /* Code, version strings     */
 
   /* ── Line Heights ────────────────────────────────────────────── */
-  --lh-display:  0.92;
+  --lh-display:  0.90;
   --lh-display2: 0.95;
   --lh-display3: 1.05;
   --lh-h1:       1.15;
   --lh-h2:       1.20;
   --lh-h3:       1.30;
-  --lh-body-lg:  1.65;
-  --lh-body:     1.70;
+  --lh-body-lg:  1.60;
+  --lh-body:     1.65;
 
   /* ── Letter Spacing ──────────────────────────────────────────── */
-  --ls-display:  -0.04em;
-  --ls-display2: -0.03em;
-  --ls-display3: -0.02em;
-  --ls-h1:       -0.02em;
-  --ls-h2:       -0.01em;
-  --ls-label:     0.12em;
-  --ls-label-lg:  0.14em;
+  --ls-display:  -0.02em;
+  --ls-display2: -0.01em;
+  --ls-display3: 0em;
+  --ls-h1:       -0.01em;
+  --ls-h2:       -0.03em;
+  --ls-label:     0.08em;
+  --ls-label-lg:  0.10em;
 
   /* ── Spacing Scale (8px base) ────────────────────────────────── */
   --space-1:   4px;
@@ -141,7 +143,7 @@ body::before {
   inset: 0;
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.04;
+  opacity: 0.09; /* Matches VOIR 0.09 opacity */
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 200px 200px;

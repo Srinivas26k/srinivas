@@ -1,182 +1,251 @@
 ---
 ---
-<section id="home" aria-label="Hero — Srinivas Nampalli">
-
-  <!-- Section label -->
-  <p class="t-label hero-label" data-hero="label" style="opacity:0">
-    Srinivas Nampalli · IIT Madras · AI + Quantum
-  </p>
-
-  <!-- Display headline — overflow clipped at container edge per design.md -->
-  <div class="hero-headline-wrap">
-    <h1 class="t-display-1 hero-name" data-hero="name" style="opacity:0">
-      Systems<br/>Engineer.
-    </h1>
+<section id="hero-voir" aria-label="Hero">
+  <!-- Parallax Background Image -->
+  <div class="hero-bg-wrapper">
+    <div class="hero-bg-image" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop');"></div>
   </div>
 
-  <!-- Sub-copy — --body-large, weight 300, max 440px -->
-  <p class="t-body-lg hero-role" data-hero="role" style="opacity:0">
-    Designing intelligent systems at the intersection of<br class="br-md"/>
-    AI, Quantum Computing, and Mechanical Engineering.
-  </p>
-
-  <!-- Metadata row -->
-  <div class="hero-meta" data-hero="meta" style="opacity:0">
-    <span class="hero-meta-item">
-      <span class="meta-dot" aria-hidden="true"></span>
-      <span class="t-mono">Qiskit Fall Fest 2025 Winner</span>
-    </span>
-    <span class="meta-sep t-mono" aria-hidden="true">·</span>
-    <span class="t-mono hero-meta-item">5+ Industry Internships</span>
-    <span class="meta-sep t-mono" aria-hidden="true">·</span>
-    <span class="t-mono hero-meta-item">1k+ HuggingFace Downloads</span>
+  <!-- Progressive Blur Overlay (8 layers) -->
+  <div class="progressive-blur">
+    <div class="blur-layer layer-1"></div>
+    <div class="blur-layer layer-2"></div>
+    <div class="blur-layer layer-3"></div>
+    <div class="blur-layer layer-4"></div>
+    <div class="blur-layer layer-5"></div>
+    <div class="blur-layer layer-6"></div>
+    <div class="blur-layer layer-7"></div>
+    <div class="blur-layer layer-8"></div>
   </div>
 
-  <!-- CTAs — Primary Lime + Ghost per design.md -->
-  <div class="hero-actions" data-hero="actions" style="opacity:0">
-    <a href="#work" class="btn-primary" id="hero-cta-primary">
-      View Work ↓
-    </a>
-    <a
-      href="https://in.linkedin.com/in/srinivas-nampalli"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="btn-ghost"
-      id="hero-cta-secondary"
-    >
-      LinkedIn ↗
-    </a>
-  </div>
+  <div class="hero-content container">
+    <div class="hero-center">
+      <!-- Large Serif Name -->
+      <h1 class="hero-title t-display-1" aria-label="Srinivas Nampalli">
+        <span class="word">
+          <span class="char">S</span><span class="char">r</span><span class="char">i</span><span class="char">n</span><span class="char">i</span><span class="char">v</span><span class="char">a</span><span class="char">s</span>
+        </span>
+        <br />
+        <span class="word">
+          <span class="char">N</span><span class="char">a</span><span class="char">m</span><span class="char">p</span><span class="char">a</span><span class="char">l</span><span class="char">l</span><span class="char">i</span>
+        </span>
+      </h1>
+      
+      <!-- Sub-label -->
+      <p class="hero-sublabel t-body">
+        Brand & Design Studio — Hyderabad / Worldwide
+      </p>
+    </div>
 
-  <!-- Scroll indicator — Signal Lime bouncing arrow per design.md -->
-  <div class="scroll-indicator" aria-hidden="true">
-    <span class="scroll-arrow">↓</span>
+    <!-- Bottom elements -->
+    <div class="hero-bottom">
+      <div class="hero-thumbnails">
+        <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=600&auto=format&fit=crop');"></div>
+        <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=600&auto=format&fit=crop');"></div>
+        <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop');"></div>
+        <div class="thumb" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop');"></div>
+      </div>
+      
+      <div class="hero-scroll">
+        <div class="scroll-line"></div>
+        <span class="t-label">SCROLL</span>
+      </div>
+    </div>
   </div>
-
 </section>
 
 <style>
-  #home {
+  #hero-voir {
     position: relative;
-    min-height: 100vh;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    background: var(--c-ink);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .hero-bg-wrapper {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .hero-bg-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.15); /* Start scale for parallax spring */
+    will-change: transform;
+    opacity: 0.5; /* Dark overlay */
+    background-color: var(--c-ink);
+  }
+
+  /* Progressive Blur */
+  .progressive-blur {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40vh;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .blur-layer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* 8 layers of blur matching VOIR's gradient mask technique */
+  /* Fallback to simple gradient if masks aren't supported, but webkit mask is widely supported */
+  .layer-1 { backdrop-filter: blur(1px); -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 12.5%); mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 12.5%); }
+  .layer-2 { backdrop-filter: blur(2px); -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 12.5%, rgba(0,0,0,0) 25%); mask-image: linear-gradient(to top, rgba(0,0,0,1) 12.5%, rgba(0,0,0,0) 25%); }
+  .layer-3 { backdrop-filter: blur(3px); -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 25%, rgba(0,0,0,0) 37.5%); mask-image: linear-gradient(to top, rgba(0,0,0,1) 25%, rgba(0,0,0,0) 37.5%); }
+  .layer-4 { backdrop-filter: blur(4px); -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 37.5%, rgba(0,0,0,0) 50%); mask-image: linear-gradient(to top, rgba(0,0,0,1) 37.5%, rgba(0,0,0,0) 50%); }
+  .layer-5 { backdrop-filter: blur(5px); -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 62.5%); mask-image: linear-gradient(to top, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 62.5%); }
+  .layer-6 { backdrop-filter: blur(6px); -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 62.5%, rgba(0,0,0,0) 75%); mask-image: linear-gradient(to top, rgba(0,0,0,1) 62.5%, rgba(0,0,0,0) 75%); }
+  .layer-7 { backdrop-filter: blur(8px); -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 87.5%); mask-image: linear-gradient(to top, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 87.5%); }
+  .layer-8 { backdrop-filter: blur(10px); -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 87.5%, rgba(0,0,0,0) 100%); mask-image: linear-gradient(to top, rgba(0,0,0,1) 87.5%, rgba(0,0,0,0) 100%); }
+
+  .hero-content {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-6);
+  }
+
+  .hero-center {
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-top: 120px;
-    padding-bottom: var(--space-10);
-    padding-inline: var(--col-pad);
-    max-width: var(--max-width);
-    margin-inline: auto;
-    overflow: hidden;
+    align-items: center;
+    text-align: center;
+    margin-top: 5vh;
   }
 
-  /* Hero label */
-  .hero-label {
+  .hero-title {
     margin-bottom: var(--space-4);
   }
 
-  /* Display headline wrapper — clip overflow per design.md */
-  .hero-headline-wrap {
-    overflow: hidden;
-    /* allow text to intentionally exceed container */
+  .hero-title .word {
+    display: inline-block;
+    overflow: hidden; 
   }
 
-  .hero-name {
-    margin-bottom: var(--space-5);
-    /* Display-1 at 12vw overflows — line-height 0.92 */
+  .hero-title .char {
+    display: inline-block;
+    opacity: 0.001;
+    transform: translateY(10px);
+    will-change: transform, opacity;
   }
 
-  /* Sub-copy */
-  .hero-role {
-    max-width: 480px;
+  .hero-sublabel {
+    max-width: 400px;
+    margin-inline: auto;
+    opacity: 0;
+    transform: translateY(10px);
     color: var(--c-off-white);
-    margin-bottom: var(--space-5);
   }
 
-  .br-md { display: none; }
-  @media (min-width: 768px) { .br-md { display: block; } }
-
-  /* Meta strip */
-  .hero-meta {
+  /* Bottom Section */
+  .hero-bottom {
     display: flex;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+  }
+
+  .hero-thumbnails {
+    display: flex;
+    gap: var(--space-2);
+  }
+
+  .thumb {
+    width: 60px;
+    height: 80px;
+    background: var(--c-dust);
+    background-size: cover;
+    background-position: center;
+    border-radius: 2px;
+    cursor: crosshair;
+    transition: transform var(--dur-base) var(--ease-out);
+    will-change: transform;
+  }
+
+  .thumb:hover {
+    transform: translateY(-8px);
+  }
+
+  .hero-scroll {
+    display: flex;
     align-items: center;
     gap: var(--space-3);
-    margin-bottom: var(--space-5);
   }
 
-  .hero-meta-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    color: var(--c-stone);
+  .scroll-line {
+    width: 60px;
+    height: 1px;
+    background: var(--c-line-strong);
   }
 
-  .meta-dot {
-    display: inline-block;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background-color: var(--c-lime);
-    flex-shrink: 0;
-  }
-
-  .meta-sep {
-    color: var(--c-stone);
-    opacity: 0.5;
-  }
-
-  /* Actions row */
-  .hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: var(--space-4);
-    margin-bottom: var(--space-8);
-  }
-
-  /* Scroll indicator — Signal Lime slow bounce */
-  .scroll-indicator {
-    position: absolute;
-    bottom: 40px;
-    left: var(--col-pad);
-  }
-
-  .scroll-arrow {
-    display: block;
-    font-size: 20px;
-    color: var(--c-lime);
-    animation: scroll-bounce 1.8s ease-in-out infinite;
-  }
-
-  @keyframes scroll-bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(6px); }
-  }
-
-  /* ── Mobile ──────────────────────────────────────────────────── */
-  @media (max-width: 600px) {
-    #home {
-      padding-top: 100px;
-    }
-
-    .hero-meta {
+  @media (max-width: 768px) {
+    .hero-bottom {
       flex-direction: column;
       align-items: flex-start;
+      gap: var(--space-5);
     }
-
-    .meta-sep { display: none; }
-
-    .hero-actions {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: var(--space-3);
+    
+    .hero-thumbnails {
+      order: 2;
     }
-
-    .btn-primary,
-    .btn-ghost {
-      width: 100%;
-      justify-content: center;
+    
+    .hero-scroll {
+      order: 1;
     }
   }
 </style>
+
+<script>
+  import { gsap } from "gsap";
+  
+  document.addEventListener("DOMContentLoaded", () => {
+    const tl = gsap.timeline();
+
+    // 1. Background parallax spring
+    tl.to(".hero-bg-image", {
+      scale: 1,
+      duration: 2.4,
+      ease: "power4.out"
+    }, 0);
+
+    // 2. Letter by letter reveal
+    tl.to(".hero-title .char", {
+      opacity: 1,
+      y: 0,
+      duration: 1.2,
+      stagger: 0.04,
+      ease: "power3.out"
+    }, 0.2);
+
+    // 3. Sublabel fade up
+    tl.to(".hero-sublabel", {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power2.out"
+    }, 1.0);
+  });
+</script>
