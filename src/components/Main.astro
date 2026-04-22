@@ -1,62 +1,58 @@
 ---
 ---
-<section id="home" aria-label="Hero — Identity">
-  <div class="hero-bg-word parallax-slow" aria-hidden="true">Srinivas</div>
-  <div class="hero-bg-rings" aria-hidden="true"></div>
+<section id="home" aria-label="Hero — Srinivas Nampalli">
 
-  <div class="container hero-layout">
+  <!-- Section label -->
+  <p class="t-label hero-label" data-hero="label" style="opacity:0">
+    Srinivas Nampalli · IIT Madras · AI + Quantum
+  </p>
 
-    <!-- Top label -->
-    <p class="t-label hero-label" data-hero="label" style="opacity:0">
-      Srinivas Nampalli · IIT Madras · AI + Quantum
-    </p>
-
-    <!-- Primary Name -->
-    <h1 class="t-hero hero-name" data-hero="name" style="opacity:0">
-      Systems
+  <!-- Display headline — overflow clipped at container edge per design.md -->
+  <div class="hero-headline-wrap">
+    <h1 class="t-display-1 hero-name" data-hero="name" style="opacity:0">
+      Systems<br/>Engineer.
     </h1>
-    <p class="t-script hero-script parallax-fast" style="opacity:0">Engineer</p>
-
-    <!-- Role statement -->
-    <p class="hero-role" data-hero="role" style="opacity:0">
-      Designing intelligent systems at the intersection of<br class="br-md"/>
-      AI, Quantum Computing, and Mechanical Engineering.
-    </p>
-
-    <!-- Metadata row -->
-    <div class="hero-meta" data-hero="meta" style="opacity:0">
-      <span class="t-mono hero-meta-item">
-        <span class="meta-dot"></span>
-        Qiskit Fall Fest 2025 Winner
-      </span>
-      <span class="t-mono hero-meta-sep" aria-hidden="true">·</span>
-      <span class="t-mono hero-meta-item">
-        5+ Industry Internships
-      </span>
-      <span class="t-mono hero-meta-sep" aria-hidden="true">·</span>
-      <span class="t-mono hero-meta-item">
-        1k+ HuggingFace Downloads
-      </span>
-    </div>
-
-    <!-- Actions -->
-    <div class="hero-actions" data-hero="actions" style="opacity:0">
-      <a href="#work" class="btn-primary-text">
-        View Work <span aria-hidden="true">↓</span>
-      </a>
-      <a
-        href="https://in.linkedin.com/in/srinivas-nampalli"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="btn-secondary-text"
-      >
-        LinkedIn ↗
-      </a>
-    </div>
   </div>
 
-  <!-- Decorative vertical rule -->
-  <div class="hero-rule" aria-hidden="true"></div>
+  <!-- Sub-copy — --body-large, weight 300, max 440px -->
+  <p class="t-body-lg hero-role" data-hero="role" style="opacity:0">
+    Designing intelligent systems at the intersection of<br class="br-md"/>
+    AI, Quantum Computing, and Mechanical Engineering.
+  </p>
+
+  <!-- Metadata row -->
+  <div class="hero-meta" data-hero="meta" style="opacity:0">
+    <span class="hero-meta-item">
+      <span class="meta-dot" aria-hidden="true"></span>
+      <span class="t-mono">Qiskit Fall Fest 2025 Winner</span>
+    </span>
+    <span class="meta-sep t-mono" aria-hidden="true">·</span>
+    <span class="t-mono hero-meta-item">5+ Industry Internships</span>
+    <span class="meta-sep t-mono" aria-hidden="true">·</span>
+    <span class="t-mono hero-meta-item">1k+ HuggingFace Downloads</span>
+  </div>
+
+  <!-- CTAs — Primary Lime + Ghost per design.md -->
+  <div class="hero-actions" data-hero="actions" style="opacity:0">
+    <a href="#work" class="btn-primary" id="hero-cta-primary">
+      View Work ↓
+    </a>
+    <a
+      href="https://in.linkedin.com/in/srinivas-nampalli"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn-ghost"
+      id="hero-cta-secondary"
+    >
+      LinkedIn ↗
+    </a>
+  </div>
+
+  <!-- Scroll indicator — Signal Lime bouncing arrow per design.md -->
+  <div class="scroll-indicator" aria-hidden="true">
+    <span class="scroll-arrow">↓</span>
+  </div>
+
 </section>
 
 <style>
@@ -64,75 +60,56 @@
     position: relative;
     min-height: 100vh;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
     padding-top: 120px;
-    padding-bottom: var(--sp-20);
+    padding-bottom: var(--space-10);
+    padding-inline: var(--col-pad);
+    max-width: var(--max-width);
+    margin-inline: auto;
     overflow: hidden;
   }
 
-  .hero-layout {
-    display: flex;
-    flex-direction: column;
-    gap: var(--sp-4);
-    max-width: 900px;
-    position: relative;
-    z-index: 3;
+  /* Hero label */
+  .hero-label {
+    margin-bottom: var(--space-4);
   }
 
-  .hero-label {
-    display: flex;
-    align-items: center;
-    gap: var(--sp-1);
+  /* Display headline wrapper — clip overflow per design.md */
+  .hero-headline-wrap {
+    overflow: hidden;
+    /* allow text to intentionally exceed container */
   }
 
   .hero-name {
-    /* Override line-height for dramatic effect */
-    line-height: 0.88;
-    margin-top: var(--sp-1);
-    text-wrap: balance;
-    text-shadow: 0 20px 70px rgba(0, 0, 0, 0.45);
+    margin-bottom: var(--space-5);
+    /* Display-1 at 12vw overflows — line-height 0.92 */
   }
 
-  .hero-script {
-    margin-top: calc(var(--sp-2) * -1);
-    margin-left: clamp(8px, 3vw, 34px);
-    transform-origin: left center;
-  }
-
+  /* Sub-copy */
   .hero-role {
-    font-size: clamp(1rem, 2vw, 1.2rem);
-    line-height: 1.6;
-    color: var(--c-text-secondary);
-    max-width: 620px;
-    margin-top: var(--sp-1);
+    max-width: 480px;
+    color: var(--c-off-white);
+    margin-bottom: var(--space-5);
   }
 
-  .br-md {
-    display: none;
-  }
+  .br-md { display: none; }
+  @media (min-width: 768px) { .br-md { display: block; } }
 
-  @media (min-width: 768px) {
-    .br-md { display: block; }
-  }
-
-  /* Meta row */
+  /* Meta strip */
   .hero-meta {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: var(--sp-2);
-    margin-top: var(--sp-2);
-    padding: 12px 14px;
-    border: 1px solid var(--c-border);
-    border-radius: var(--radius-md);
-    background: rgba(18, 18, 18, 0.6);
-    backdrop-filter: blur(10px);
+    gap: var(--space-3);
+    margin-bottom: var(--space-5);
   }
 
   .hero-meta-item {
     display: flex;
     align-items: center;
     gap: 6px;
+    color: var(--c-stone);
   }
 
   .meta-dot {
@@ -140,133 +117,66 @@
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background-color: var(--c-text-faint);
+    background-color: var(--c-lime);
     flex-shrink: 0;
   }
 
-  .hero-meta-sep {
-    color: var(--c-text-faint);
+  .meta-sep {
+    color: var(--c-stone);
+    opacity: 0.5;
   }
 
-  /* Actions */
+  /* Actions row */
   .hero-actions {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: var(--sp-4);
-    margin-top: var(--sp-2);
+    gap: var(--space-4);
+    margin-bottom: var(--space-8);
   }
 
-  .btn-primary-text {
-    font-family: var(--font-sans);
-    font-size: var(--fs-small);
-    font-weight: 500;
-    color: var(--c-text-primary);
-    text-decoration: none;
-    transition: color var(--dur-fast) var(--ease-in-out), transform var(--dur-base) var(--ease-out-expo);
-    padding: 11px 16px;
-    border: 1px solid var(--c-border);
-    border-radius: var(--radius-sm);
-    background: rgba(255, 255, 255, 0.02);
-  }
-
-  .btn-primary-text:hover {
-    color: var(--c-white);
-    transform: translateY(-2px);
-  }
-
-  .btn-secondary-text {
-    font-family: var(--font-mono);
-    font-size: var(--fs-mono);
-    letter-spacing: var(--ls-mono);
-    color: var(--c-text-mono);
-    text-decoration: none;
-    transition: color var(--dur-fast) var(--ease-in-out), transform var(--dur-base) var(--ease-out-expo);
-    padding: 11px 16px;
-    border: 1px solid var(--c-border-subtle);
-    border-radius: var(--radius-sm);
-  }
-
-  .btn-secondary-text:hover {
-    color: var(--c-text-secondary);
-    transform: translateY(-2px);
-  }
-
-  .hero-bg-word {
+  /* Scroll indicator — Signal Lime slow bounce */
+  .scroll-indicator {
     position: absolute;
-    top: 44%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: var(--font-sans);
-    font-weight: 700;
-    font-size: clamp(4.8rem, 19vw, 18rem);
-    letter-spacing: -0.04em;
-    color: transparent;
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.06);
-    opacity: 0.33;
-    pointer-events: none;
-    white-space: nowrap;
-    z-index: 1;
+    bottom: 40px;
+    left: var(--col-pad);
   }
 
-  .hero-bg-rings {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background:
-      radial-gradient(circle at 75% 25%, rgba(117, 104, 160, 0.16) 0, transparent 34%),
-      radial-gradient(circle at 20% 70%, rgba(181, 154, 111, 0.12) 0, transparent 38%);
-    z-index: 0;
+  .scroll-arrow {
+    display: block;
+    font-size: 20px;
+    color: var(--c-lime);
+    animation: scroll-bounce 1.8s ease-in-out infinite;
   }
 
-  /* Vertical decorative line */
-  .hero-rule {
-    position: absolute;
-    right: var(--col-pad);
-    top: 15%;
-    bottom: 15%;
-    width: 1px;
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      var(--c-border) 20%,
-      var(--c-border) 80%,
-      transparent 100%
-    );
-    opacity: 0.5;
-    display: none;
+  @keyframes scroll-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
   }
 
-  @media (min-width: 1024px) {
-    .hero-rule { display: block; }
-  }
-
+  /* ── Mobile ──────────────────────────────────────────────────── */
   @media (max-width: 600px) {
-    .hero-script {
-      margin-top: -8px;
-      margin-left: 4px;
+    #home {
+      padding-top: 100px;
     }
 
     .hero-meta {
       flex-direction: column;
       align-items: flex-start;
     }
-    .hero-meta-sep { display: none; }
+
+    .meta-sep { display: none; }
 
     .hero-actions {
-      flex-wrap: wrap;
-      gap: var(--sp-2);
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-3);
     }
 
-    .btn-primary-text,
-    .btn-secondary-text {
+    .btn-primary,
+    .btn-ghost {
       width: 100%;
-      text-align: center;
-    }
-
-    .hero-bg-word {
-      font-size: 7.5rem;
-      top: 40%;
-      opacity: 0.24;
+      justify-content: center;
     }
   }
 </style>
